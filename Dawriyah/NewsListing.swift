@@ -41,7 +41,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.newsTitle.text = "News Title"
         cell.newsSubTitle.text = "News Subtitle"
-        cell.newsDate.text = "Date"
+        cell.newsDate.text = "Date: "
         
         cell.bgView.layer.cornerRadius = 4.0
         return cell

@@ -55,6 +55,8 @@ class Login: SuperViewController, UITextFieldDelegate {
     
     //MARK: - Submit
     @IBAction func btnSubmitClicked(_ sender: Any) {
+        let homeD = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! Home
+        self.navigationController?.pushViewController(homeD, animated: true)
     }
     
     //MARK: - Sign Up

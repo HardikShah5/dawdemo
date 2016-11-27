@@ -35,6 +35,7 @@ class LandingPage: UIViewController {
 
     //MARK: - Login
     @IBAction func btnLoginClicked(_ sender: Any) {
+   
         let signD = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
         signD.strNavBarTitle = (btnLogin.titleLabel?.text)!
         self.navigationController?.pushViewController(signD, animated: true)
@@ -42,6 +43,7 @@ class LandingPage: UIViewController {
 
     //MARK: - Sign Up
     @IBAction func btnSignUpClicked(_ sender: Any) {
+    
         let signD = self.storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
         signD.strNavBarTitle = (btnSignUp.titleLabel?.text)!
         self.navigationController?.pushViewController(signD, animated: true)

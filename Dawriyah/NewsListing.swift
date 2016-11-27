@@ -12,7 +12,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "أحدث الأخبار";
         // Do any additional setup after loading the view.
     }
     
@@ -39,13 +39,18 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellNewsListing
         //var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellSignUp
         
-        cell.newsTitle.text = "News Title"
-        cell.newsSubTitle.text = "News Subtitle"
-        cell.newsDate.text = "Date: "
+        cell.newsTitle.text = "مادلين مطر: لهذا السبب عزُّوا راغب علامة ولم يعزُّوني;"
+        cell.newsSubTitle.text = "اختارت الفنانة دنيا باطما أن تؤدي الأغنية المغربية الشهيرة \"ياك أجرحي\" لقيدومة ..."
+        cell.newsDate.text = "08/22/2016"
         
         cell.bgView.layer.cornerRadius = 4.0
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newsDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "NewsDetail") as! NewsDetail
+        self.navigationController?.pushViewController(newsDetailVC, animated: true)
     }
     
     

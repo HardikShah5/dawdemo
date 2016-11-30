@@ -8,8 +8,11 @@
 
 import UIKit
 
-class GalleryView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class GalleryView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var GalleryCollectionView: UICollectionView!
+    var itemsPerRow = 3;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +41,22 @@ class GalleryView: UIViewController, UICollectionViewDelegate, UICollectionViewD
         
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView,
+                                 layout collectionViewLayout: UICollectionViewLayout,
+                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    {
+        
+        let availableWidth = GalleryCollectionView.frame.width - 32
+        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+//    func collectionView(collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        //let size = (GalleryCollectionView.frame.size.width-32)/3;
+//        var size = CGSize(width: 300, height: 100)
+//        return CGSize(width: 100.0, height: 100.0)
+//    }
 
     /*
     // MARK: - Navigation

@@ -1861,7 +1861,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="presskit_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-cK-2w8">
-                                                    <rect key="frame" x="0.0" y="29" width="114" height="84"/>
+                                                    <rect key="frame" x="0.0" y="29" width="114" height="85"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -1895,6 +1895,9 @@
                             <constraint firstItem="KQB-VY-tSc" firstAttribute="top" secondItem="RMe-v3-EuL" secondAttribute="bottom" id="pdQ-9M-Ovf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="GalleryCollectionView" destination="RMe-v3-EuL" id="IhB-dk-FQO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esp-ZH-0x8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

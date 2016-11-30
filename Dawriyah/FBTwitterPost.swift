@@ -8,8 +8,11 @@
 
 import UIKit
 
-class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,7 +46,37 @@ class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionV
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    {
+        
+//        var cellHeight:CGFloat! = 0.0
+//        var font:UIFont! = UIFont()
+//        cellHeight = cellHeight + font.sizeOfString(string: "منى أبوسليمان", constrainedToWidth: 200).height
+//        cellHeight = cellHeight + font.sizeOfString(string: "ودي اني قدرت ارد على الجميع ولكن محبتكم كبيرة و كثيرة علي الحمدلله الذي تصبحون على خير أظهر الحسن و ستر القبيح فينا", constrainedToWidth: 200).height
+        
+        
+        
+        return CGSize(width: collectionView.frame.width - 16, height: 160)
+    }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 45)
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var reusableView : UICollectionReusableView? = nil
+        
+        // Create header
+        if (kind == UICollectionElementKindSectionHeader) {
+            // Create Header
+            let headerView : CollectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView", for: indexPath as IndexPath) as! CollectionHeaderView
+            headerView.HeaderTitle.text = "مغردو تويتر"
+            reusableView = headerView
+        }
+        
+        return reusableView!
+    }
     /*
     // MARK: - Navigation
 

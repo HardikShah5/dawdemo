@@ -43,13 +43,16 @@ class GalleryView: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView,
                                  layout collectionViewLayout: UICollectionViewLayout,
-                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+                                 sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         
         let availableWidth = GalleryCollectionView.frame.width - 32
         let widthPerItem = availableWidth / CGFloat(itemsPerRow)
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
+    
+    
+    
 //    func collectionView(collectionView: UICollectionView,
 //                        layout collectionViewLayout: UICollectionViewLayout,
 //                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

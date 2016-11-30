@@ -1839,13 +1839,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N07-UI-ecX">
                                     <size key="itemSize" width="398" height="135"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FBTwitterPostCell" id="Vn5-DH-12h" customClass="FBTwitterPostCell" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="398" height="135"/>
+                                        <rect key="frame" x="8" y="58" width="398" height="135"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="135"/>
@@ -1901,6 +1901,27 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionHeaderView" id="bXZ-5Y-5AU" customClass="CollectionHeaderView" customModule="Dawriyah" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWg-2y-0ZC">
+                                            <rect key="frame" x="12" y="21" width="390" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gWg-2y-0ZC" firstAttribute="top" secondItem="bXZ-5Y-5AU" secondAttribute="topMargin" constant="13" id="3at-Xl-Eky"/>
+                                        <constraint firstItem="gWg-2y-0ZC" firstAttribute="bottom" secondItem="bXZ-5Y-5AU" secondAttribute="bottomMargin" id="Jhk-Pi-9rq"/>
+                                        <constraint firstItem="gWg-2y-0ZC" firstAttribute="leading" secondItem="bXZ-5Y-5AU" secondAttribute="leadingMargin" constant="4" id="O8k-Tb-ER5"/>
+                                        <constraint firstItem="gWg-2y-0ZC" firstAttribute="trailing" secondItem="bXZ-5Y-5AU" secondAttribute="trailingMargin" constant="-4" id="yr3-O8-hOx"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="HeaderTitle" destination="gWg-2y-0ZC" id="rID-Pa-5GQ"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="Bea-an-yDt" id="Gxf-4e-E8t"/>
                                     <outlet property="delegate" destination="Bea-an-yDt" id="Cvz-QM-QlS"/>
@@ -1919,6 +1940,9 @@
                             <constraint firstItem="lU8-TE-LzG" firstAttribute="top" secondItem="Wtu-Aw-Tou" secondAttribute="bottom" id="xNJ-XC-Rhe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="WTU-Gj-cs2" id="bQk-mM-Nzd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weh-KI-2EK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -71,7 +71,8 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         //Set frame and add slider menu
         self.frame = CGRect(x: 0, y: 0, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height)
         viewCTR.view.window?.addSubview(self)
-        viewCTR.view.window?.bringSubview(toFront: viewCTR.navigationController!.view)
+        viewCTR.view.window?.bringSubview(toFront: self)
+        //viewCTR.view.window?.bringSubview(toFront: viewCTR.navigationController!.view)
         
         self.tableViewMenus.layoutIfNeeded()
         

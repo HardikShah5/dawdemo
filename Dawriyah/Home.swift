@@ -185,7 +185,18 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     //MARK: - Highlights
     func Highlights() -> Void {
+        //Hide other Views
+        if viewTopRatedNews != nil {
+            viewTopRatedNews.isHidden = true
+        }
         
+        if viewMostPopularNews != nil {
+            self.viewMostPopularNews.isHidden = true
+        }
+        
+        if viewElectronicPress != nil {
+            viewElectronicPress.isHidden = true
+        }
     }
     
     //MARK: - TOP RATED NEWS
@@ -198,6 +209,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             viewTopRatedNews = CollectionViewCustom()
             viewTopRatedNews = viewTopRatedNews.getCollectionView()
         }
+        //Show View
+        viewTopRatedNews.isHidden = false
+        
         viewTopRatedNews.collectionViewData.tag = TOP_RATED_NEWS
         viewTopRatedNews.showCollectionViewIn(viewCTR: self)
     }
@@ -212,6 +226,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             viewMostPopularNews = CollectionViewCustom()
             viewMostPopularNews = viewMostPopularNews.getCollectionView()
         }
+        //Show View
+        viewMostPopularNews.isHidden = false
+        
         viewMostPopularNews.collectionViewData.tag = MOST_POPULAR_NEWS
         viewMostPopularNews.showCollectionViewIn(viewCTR: self)
     }
@@ -226,6 +243,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             viewElectronicPress = CollectionViewCustom()
             viewElectronicPress = viewElectronicPress.getCollectionView()
         }
+        //Show View
+        viewElectronicPress.isHidden = false
+        
         viewElectronicPress.collectionViewData.tag = ELECTRONIC_PRESS
         viewElectronicPress.showCollectionViewIn(viewCTR: self)
     }
@@ -500,8 +520,6 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             
             return cell
         }
-        
-        
         
         return UICollectionViewCell()
     }

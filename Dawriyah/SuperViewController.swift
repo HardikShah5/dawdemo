@@ -21,14 +21,6 @@ extension UITextField{
     }
 }
 
-extension UIFont {
-    func sizeOfString (string: String, constrainedToWidth width: Double) -> CGSize {
-        return NSString(string: string).boundingRect(with: CGSize(width: width, height: DBL_MAX),
-                                                             options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                             attributes: [NSFontAttributeName: self],
-                                                             context: nil).size
-    }
-}
 class SuperViewController: UIViewController {
 
     //MARK: - View Life Cycle

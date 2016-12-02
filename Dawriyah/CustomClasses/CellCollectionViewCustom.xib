@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellData" id="hUj-3p-iiA" customClass="CellCollectionViewCustom" customModule="Dawriyah" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_stripe_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="90g-5S-xUl">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="JbY-5C-uat"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title title title title tile title title title title title tile title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppO-yj-Lhi">
+                        <rect key="frame" x="158" y="4" width="209" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="g7r-e5-6tF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" red="0.1176470588" green="0.4941176471" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title title title title tile title title title title title tile title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emT-A8-fWO">
+                        <rect key="frame" x="158" y="56" width="209" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="ghs-Jf-7M9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08/22/2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEY-uf-rHg">
+                        <rect key="frame" x="158" y="98" width="209" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Uds-6T-hAy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="emT-A8-fWO" firstAttribute="top" secondItem="ppO-yj-Lhi" secondAttribute="bottom" constant="2" id="1dA-l2-Ozx"/>
+                <constraint firstAttribute="trailing" secondItem="PEY-uf-rHg" secondAttribute="trailing" constant="8" id="5Wg-Qq-pLj"/>
+                <constraint firstItem="PEY-uf-rHg" firstAttribute="top" secondItem="emT-A8-fWO" secondAttribute="bottom" constant="10" id="6LD-fx-GV2"/>
+                <constraint firstAttribute="bottom" secondItem="90g-5S-xUl" secondAttribute="bottom" id="7Gu-Xn-9zY"/>
+                <constraint firstAttribute="trailing" secondItem="ppO-yj-Lhi" secondAttribute="trailing" constant="8" id="BKj-KM-7h4"/>
+                <constraint firstAttribute="trailing" secondItem="emT-A8-fWO" secondAttribute="trailing" constant="8" id="JSm-VR-Qwh"/>
+                <constraint firstItem="ppO-yj-Lhi" firstAttribute="top" secondItem="hUj-3p-iiA" secondAttribute="top" constant="4" id="SAL-mt-tth"/>
+                <constraint firstItem="90g-5S-xUl" firstAttribute="top" secondItem="hUj-3p-iiA" secondAttribute="top" id="Shk-yi-N62"/>
+                <constraint firstItem="PEY-uf-rHg" firstAttribute="leading" secondItem="90g-5S-xUl" secondAttribute="trailing" constant="8" id="ZEE-yW-2cE"/>
+                <constraint firstAttribute="bottom" secondItem="PEY-uf-rHg" secondAttribute="bottom" constant="4" id="b6v-aZ-Usy"/>
+                <constraint firstItem="ppO-yj-Lhi" firstAttribute="leading" secondItem="90g-5S-xUl" secondAttribute="trailing" constant="8" id="d51-gf-KqJ"/>
+                <constraint firstItem="90g-5S-xUl" firstAttribute="leading" secondItem="hUj-3p-iiA" secondAttribute="leading" id="rjX-S1-MMZ"/>
+                <constraint firstItem="emT-A8-fWO" firstAttribute="leading" secondItem="90g-5S-xUl" secondAttribute="trailing" constant="8" id="zU1-qJ-9Do"/>
+            </constraints>
+            <size key="customSize" width="399" height="112"/>
+            <connections>
+                <outlet property="imageViewPost" destination="90g-5S-xUl" id="k0N-2Z-xda"/>
+                <outlet property="lblDate" destination="PEY-uf-rHg" id="fY7-I5-Izc"/>
+                <outlet property="lblDescription" destination="emT-A8-fWO" id="HiX-pi-XtR"/>
+                <outlet property="lblTitle" destination="ppO-yj-Lhi" id="RPy-pb-Rc7"/>
+            </connections>
+            <point key="canvasLocation" x="-131.5" y="-104"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="news_stripe_img.png" width="234" height="160"/>
+    </resources>
+</document>

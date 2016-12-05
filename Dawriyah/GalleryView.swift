@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GalleryView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class GalleryView: SuperViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var GalleryCollectionView: UICollectionView!
     var itemsPerRow = 3;

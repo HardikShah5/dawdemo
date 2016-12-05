@@ -8,14 +8,16 @@
 
 import UIKit
 
-class FBTWProfile: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tblComment: UITableView!
     @IBOutlet weak var ProfileTitle: UILabel!
     @IBOutlet weak var ProfileImage: UIImageView!
+    
+    
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -26,7 +28,7 @@ class FBTWProfile: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
 
     
-    
+    //MARK: - UITableView Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -37,10 +39,10 @@ class FBTWProfile: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let cellIdentifier = "CellComments"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellComments
         
-        
         return cell
-        
     }
+    
+    
     /*
     // MARK: - Navigation
 

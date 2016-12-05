@@ -14,10 +14,12 @@ class NewsDetail: SuperViewController {
     @IBOutlet weak var lblNewsDesc: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
-        self.title = "أخبار الكامل"
+        //Title
+        self.title = AppUtils.localized("FULL_NEWS", value: "")
+        
+        
         //lblNewsTitle.text = "test asdfsdfsdf";
         lblNewsTitle.text = "بالفيديو: هل ستنتقل دنيا باطما إلى التمثيل؟"
         lblNewsDesc.text = "اختارت الفنانة دنيا باطما أن تؤدي الأغنية المغربية الشهيرة ياك أجرحي لقيدومة الطرب المغربي نعيمة سميح ، وذلك في الحفل الختامي لسهرات مهرجان أصوات نسائية في دورته التاسعة بمدينة تطوان (شمال المغرب) ، حيث خصص المهرجان تكريماً خاصاً لنجمة الطرب المغربي الأصيل نعيمة سميح ، التي اختارت التواري عن الأضواء والاستمتاع بوقتها مع عائلتها ." 

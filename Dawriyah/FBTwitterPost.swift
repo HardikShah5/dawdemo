@@ -8,9 +8,11 @@
 
 import UIKit
 
-class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionViewTwitter: UICollectionView!
+    
+    var isForTwitter: Bool = false
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -24,11 +26,97 @@ class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionV
         } else {
             // Fallback on earlier versions
         }
+        
+        //Title View
+        if AppUtils.currentLanguage() == CurrentLanguage.ENGLISH {
+            titleViewForEnglish()
+        }else {
+            titleViewForArabic()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func titleViewForEnglish() -> Void {
+        let viewTitle = UIView()
+        viewTitle.backgroundColor = UIColor.clear
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 7, width: 30, height: 30))
+        if isForTwitter == true {
+            imageView.image = UIImage(named: "icn_twitter")?.withRenderingMode(.alwaysOriginal)
+        }else {
+            imageView.image = UIImage(named: "icn_facebook")?.withRenderingMode(.alwaysOriginal)
+        }
+        imageView.contentMode = .center
+        viewTitle.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        
+        let lblTitle = UILabel(frame: CGRect(x: 30, y: 0, width: 150, height: 44))
+        lblTitle.textAlignment = .left
+        lblTitle.textColor = UIColor.white
+        lblTitle.font = UIFont(name: "HelveticaNeue", size: 17.0)
+        
+        if isForTwitter == true {
+            lblTitle.text = AppUtils.localized("TWITTER_TWEETS", value: "")
+        }else {
+            lblTitle.text = AppUtils.localized("FACEBOOK_POSTS", value: "")
+        }
+        lblTitle.sizeToFit()
+        
+        var rect = lblTitle.frame
+        rect.size.height = 44
+        lblTitle.frame = rect
+        
+        viewTitle.addSubview(lblTitle)
+        lblTitle.translatesAutoresizingMaskIntoConstraints = true
+        
+        viewTitle.frame = CGRect(x: 0, y: 0, width: 30 + lblTitle.frame.size.width, height: 44)
+        viewTitle.translatesAutoresizingMaskIntoConstraints = true
+        
+        self.navigationItem.titleView = viewTitle
+    }
+    
+    func titleViewForArabic() -> Void {
+        let viewTitle = UIView()
+        viewTitle.backgroundColor = UIColor.clear
+        
+        let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+        lblTitle.textAlignment = .left
+        lblTitle.textColor = UIColor.white
+        lblTitle.font = UIFont(name: "HelveticaNeue", size: 17.0)
+        
+        if isForTwitter == true {
+            lblTitle.text = AppUtils.localized("TWITTER_TWEETS", value: "")
+        }else {
+            lblTitle.text = AppUtils.localized("FACEBOOK_POSTS", value: "")
+        }
+        lblTitle.sizeToFit()
+        
+        var rect = lblTitle.frame
+        rect.size.height = 44
+        lblTitle.frame = rect
+        
+        viewTitle.addSubview(lblTitle)
+        lblTitle.translatesAutoresizingMaskIntoConstraints = true
+        
+        
+        let imageView = UIImageView(frame: CGRect(x: lblTitle.frame.size.width, y: 7, width: 30, height: 30))
+        if isForTwitter == true {
+            imageView.image = UIImage(named: "icn_twitter")?.withRenderingMode(.alwaysOriginal)
+        }else {
+            imageView.image = UIImage(named: "icn_facebook")?.withRenderingMode(.alwaysOriginal)
+        }
+        imageView.contentMode = .center
+        viewTitle.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        
+        viewTitle.frame = CGRect(x: 0, y: 0, width: 30 + lblTitle.frame.size.width, height: 44)
+        viewTitle.translatesAutoresizingMaskIntoConstraints = true
+        
+        self.navigationItem.titleView = viewTitle
     }
     
     
@@ -46,7 +134,7 @@ class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionV
         return 30;
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    /*func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var reusableView : UICollectionReusableView? = nil
         
@@ -60,7 +148,7 @@ class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionV
         
         return reusableView!
 
-    }
+    }*/
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellIdentifier = "FBTwitterPostCell"
@@ -71,6 +159,18 @@ class FBTwitterPost: UIViewController, UICollectionViewDataSource, UICollectionV
         cell.lblDate.text = " م 04:10:00 16/09/2016"
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var detailVC: UIViewController!
+        
+        if isForTwitter == true {
+            detailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.TWITTER_DETAILS) as! FBTWProfile
+        }else {
+            detailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.FACEBOOK_DETAILS) as! FBTWProfile
+        }
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
 

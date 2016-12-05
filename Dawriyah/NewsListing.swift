@@ -12,8 +12,10 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "أحدث الأخبار";
-        // Do any additional setup after loading the view.
+        
+        //Title
+        self.navigationItem.titleView = nil
+        self.title = AppUtils.localized("FULL_NEWS", value: "")
     }
     
     
@@ -49,8 +51,9 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newsDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "NewsDetail") as! NewsDetail
-        self.navigationController?.pushViewController(newsDetailVC, animated: true)
+        let newsDVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.NEWS_DETAILS) as! NewsDetail
+        
+        self.navigationController?.pushViewController(newsDVC, animated: true)
     }
     
     

@@ -51,28 +51,29 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         tableViewMenus.tableFooterView = UIView(frame: CGRect.zero)
         
         //Set Menu Items in ARRAY
-        arrayMenuItems = ["Home ",
-                            "Advance search",
-                            "News",
-                            "Press kit",
-                            "Twitter Tweet",
-                            "Facebook Post",
-                            "annual report",
-                            "Newspaper",
-                            "Official Magazine",
-                            "the book",
-                            "statistics",
-                            "Favorite",
-                            "about us",
-                            "contact us",
-                            "Help",
-                            "Log out"]
+        arrayMenuItems = [AppUtils.localized("HOME", value: ""),
+                            AppUtils.localized("ADVANCE_SEARCH", value: ""),
+                            AppUtils.localized("NEWS", value: ""),
+                            AppUtils.localized("PRESS_KIT", value: ""),
+                            AppUtils.localized("TWITTER_TWEET", value: ""),
+                            AppUtils.localized("FACEBOOK_POST", value: ""),
+                            AppUtils.localized("ANNUAL_REPORT", value: ""),
+                            AppUtils.localized("NEWSPAPER", value: ""),
+                            AppUtils.localized("OFFICAIL_MAGAZINE", value: ""),
+                            AppUtils.localized("THE_BOOK", value: ""),
+                            AppUtils.localized("STATTISTICS", value: ""),
+                            AppUtils.localized("FAVORITE", value: ""),
+                            AppUtils.localized("ABOUT_US", value: ""),
+                            AppUtils.localized("CONTACT_US", value: ""),
+                            AppUtils.localized("HELP", value: ""),
+                            AppUtils.localized("LOGOUT", value: "")]
         
         //Set frame and add slider menu
         self.frame = CGRect(x: 0, y: 0, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height)
         viewCTR.view.window?.addSubview(self)
         viewCTR.view.window?.bringSubview(toFront: self)
-        //viewCTR.view.window?.bringSubview(toFront: viewCTR.navigationController!.view)
+        viewCTR.view.window?.bringSubview(toFront: viewCTR.navigationController!.view)
+        viewCTR.view.window?.bringSubview(toFront: tableViewMenus)
         
         self.tableViewMenus.layoutIfNeeded()
         
@@ -84,7 +85,7 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         //viewVisualBlur.isHidden = true*/
         
         //Either with Tap or Swipe, for removing self
-        btnToHideSelf.frame = CGRect(x: self.tableViewMenus.frame.size.width, y: 0, width: self.frame.size.width - self.tableViewMenus.frame.size.width, height: (viewCTR.view.window?.frame.size.height)!)
+        btnToHideSelf.frame = CGRect(x: 0, y: 0, width: self.frame.size.width - self.tableViewMenus.frame.size.width, height: (viewCTR.view.window?.frame.size.height)!)
         btnToHideSelf.backgroundColor = UIColor.clear
         btnToHideSelf.addTarget(self, action: #selector(SliderMenu.hideSliderMenu), for: UIControlEvents.touchUpInside)
         viewCTR.view.window?.addSubview(btnToHideSelf)
@@ -94,7 +95,7 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         
         //Swipe Gesture
         let swipeGesture: UISwipeGestureRecognizer! = UISwipeGestureRecognizer(target: self, action: #selector(SliderMenu.hideSliderMenu))
-        swipeGesture.direction = .left
+        swipeGesture.direction = .right
         btnToHideSelf.addGestureRecognizer(swipeGesture)
         
         //Detect Current Language
@@ -107,6 +108,7 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
             self.viewVisualBlur.alpha = 0.65
         }) { (isFinished) -> Void in
             self.btnToHideSelf.isHidden = false
+            self.viewCTRParent.view.window?.bringSubview(toFront: self.btnToHideSelf)
         }
     }
     
@@ -159,7 +161,7 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 44
+            return 64
         }
         return 56
     }
@@ -174,9 +176,8 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.row == 0 {
             cell?.imageView?.image = UIImage(named: "ProfilePic")
-            cell?.imageView?.contentMode = .scaleAspectFit
-            cell?.imageView?.transform = CGAffineTransform(scaleX: 20, y: 20)
-            cell?.textLabel?.textColor = UIColor.white
+            cell?.imageView?.contentMode = .center
+            cell?.textLabel?.textColor = UIColor.black
         }else {
             cell?.imageView?.image = nil
             cell?.backgroundColor = UIColor.white

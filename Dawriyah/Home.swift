@@ -18,7 +18,10 @@ private let MOST_READ_ARTICLES = 102
 private let FACEBOOK_TWITTER = 103
 private let CLUB_PLAYER = 104
 
-class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SliderMenuDelegate, UITableViewDelegate, UITableViewDataSource {
+private let CLUBS = 201
+private let PLAYERS = 202
+
+class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableViewHome: UITableView!
     @IBOutlet weak var scrollViewTopOptinos: UIScrollView!
@@ -31,7 +34,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     var viewTopRatedNews: CollectionViewCustom! = nil
     var viewMostPopularNews: CollectionViewCustom! = nil
     var viewElectronicPress: CollectionViewCustom! = nil
-    var sliderMenu: SliderMenu! = nil
+    
     
     var arrayTopOptions = [String]()
     var arrayNewImages = [String]()
@@ -39,30 +42,46 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     //Header News
     var imageViewNews: UIImageView!
     var counterCurrentImageNews: Int! = 0
+    var viewBottomLineTopOptions: UIView!
+    var viewBottomLineClubsPlayers: UIView!
+    
+    var indexForClubsPlayers: Int! = CLUBS
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //Set Up Navigation Bar Buttons
-        self.setupNavigationBar()
+        //Initialise bottom line view
+        viewBottomLineTopOptions = UIView()
+        viewBottomLineTopOptions.backgroundColor = Constants.Color.BLUE_UNDERLINE
         
+        viewBottomLineClubsPlayers = UIView()
+        viewBottomLineClubsPlayers.backgroundColor = Constants.Color.BLUE_UNDERLINE
+        
+        print("Lang : \(AppUtils.currentLanguage())")
         
         //Top options
-        arrayTopOptions = ["Highlights",
-                            "Top Rated News",
-                            "Most Popular News",
-                            "Electronic Press"]
+        arrayTopOptions = ["HIGHLIGHTS",
+                            "TOP_RATED_NEWS",
+                            "MOST_POPULAR_NEWS",
+                            "ELECTRONIC_PRESS"]
         
         var x: CGFloat = 0.0
         var index: Int = 101
         for str in arrayTopOptions {
             let button = UIButton(frame: CGRect(x: x, y: 0, width: 150, height: scrollViewTopOptinos.frame.size.height))
-            button.setTitle(str, for: .normal)
+            button.setTitle(AppUtils.localized(str, value: ""), for: .normal)
             button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
             
+            button.translatesAutoresizingMaskIntoConstraints = true
             scrollViewTopOptinos.addSubview(button)
+            
+            //Bottom Line
+            if index == 101 {
+                viewBottomLineTopOptions.frame = CGRect(x: x, y: button.frame.size.height - 3, width: 150, height: 3.0)
+                scrollViewTopOptinos.addSubview(viewBottomLineTopOptions)
+            }
             
             button.tag = index
             index = index + 1
@@ -83,6 +102,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //Load Email Subscription Footer 
         self.loadFooter()
         
+        //Swipe to change views
+        let swipeTopRatedNews = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNews))
+        swipeTopRatedNews.direction = .left
+        self.view.addGestureRecognizer(swipeTopRatedNews)
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +119,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         let headerNews = tableViewHome.dequeueReusableCell(withIdentifier: "CellNews") as! CellHome
         tableViewHome.tableHeaderView = headerNews
         headerNews.backgroundColor = UIColor.white
+        
+        
+        headerNews.lblTitleNews.text = AppUtils.localized("Title", value: "")
+        headerNews.lblSubTitleNews.text = AppUtils.localized("SubTitle", value: "")
         
         //Get bigger image reference
         imageViewNews = headerNews.imageViewNews
@@ -160,6 +187,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     //MARK: - Load Email Subscription Footer
     func loadFooter() -> Void {
         let footer = tableViewHome.dequeueReusableCell(withIdentifier: "CellFooter") as! CellHome
+        
+        //Title
+        footer.lblTitleNews.text = AppUtils.localized("MAIL_LIST_SUBSCRIPTION", value: "")
+        
         tableViewHome.tableFooterView = footer
     }
     
@@ -167,6 +198,16 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     //MARK: - Top Option
     func btnTopOptionClicked(sender: UIButton) -> Void {
         print("Tag : \(sender.tag)")
+        
+        //Change frame of Bottom Line
+        UIView.animate(withDuration: 0.2, animations: {
+            var rect = self.viewBottomLineTopOptions.frame
+            rect.origin.x = sender.frame.origin.x
+            self.viewBottomLineTopOptions.frame = rect
+        })
+        
+        
+        //viewBottomLineTopOptions.frame = CGRect(x: x, y: button.frame.size.height - 3, width: 150, height: 3.0)
         
         if sender.tag == HIGHLIGHTS {
             print("Highlights")
@@ -214,6 +255,15 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         
         viewTopRatedNews.collectionViewData.tag = TOP_RATED_NEWS
         viewTopRatedNews.showCollectionViewIn(viewCTR: self)
+        
+        //Swipe Gesture
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(mostPopularNews))
+        swipeRight.direction = .left
+        viewTopRatedNews.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(Highlights))
+        swipeLeft.direction = .right
+        viewTopRatedNews.addGestureRecognizer(swipeLeft)
     }
     
     //MARK: - MOST Popular NEWS
@@ -231,6 +281,16 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         
         viewMostPopularNews.collectionViewData.tag = MOST_POPULAR_NEWS
         viewMostPopularNews.showCollectionViewIn(viewCTR: self)
+        
+        
+        //Swipe Gesture
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(electronicPress))
+        swipeRight.direction = .left
+        viewMostPopularNews.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNews))
+        swipeLeft.direction = .right
+        viewMostPopularNews.addGestureRecognizer(swipeLeft)
     }
     
     //MARK: - Electronic Press
@@ -248,52 +308,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         
         viewElectronicPress.collectionViewData.tag = ELECTRONIC_PRESS
         viewElectronicPress.showCollectionViewIn(viewCTR: self)
+        
+        //Swipe Gesture
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(mostPopularNews))
+        swipeLeft.direction = .right
+        viewElectronicPress.addGestureRecognizer(swipeLeft)
     }
     
-    
-    //MARK: - Set Up Navigation Bar Buttons
-    func setupNavigationBar() -> Void {
-        //Left Buttons
-        let leftMenu = UIBarButtonItem(image: UIImage(named: "Menu")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(btnMenuClicked))
-        
-        let leftSearch = UIBarButtonItem(image: UIImage(named: "Search")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(btnSearchClicked))
-        
-        self.navigationItem.leftBarButtonItems = [leftMenu, leftSearch]
-        
-        
-        //Right Button
-        let rightMore = UIBarButtonItem(image: UIImage(named: "More")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(btnMoreClicked))
-        
-        self.navigationItem.rightBarButtonItem = rightMore
-        
-        
-        //Title View
-        let imageView = UIImageView(image: UIImage(named: "logo_nav")?.withRenderingMode(.alwaysOriginal))
-        self.navigationItem.titleView = imageView
-    }
-    
-    
-    func btnMenuClicked() -> Void {
-        print("Menu Clicked.")
-        
-        sliderMenu = SliderMenu.getSliderMenuView()
-        sliderMenu.delegate = self
-        sliderMenu.showSliderMenu(viewCTR: self)
-    }
-    
-    func indexSelectedFromSliderMenu(index: Int) {
-        self.view.endEditing(true)
-        
-        print("Selected Index : \(index)")
-    }
-    
-    func btnSearchClicked() -> Void {
-        print("Search Clicked.")
-    }
-
-    func btnMoreClicked() -> Void {
-        print("More Clicked.")
-    }
     
     @IBAction func btnNewsDetailClicked(_ sender: Any) {
         let newsVC = self.storyboard?.instantiateViewController(withIdentifier: "NewsListing") as! NewsListing
@@ -337,33 +358,48 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         if section == 0 {
             //Latest News
             headerSection.imageViewIcon.image = UIImage(named: "icn_latest_news")
-            headerSection.lblTitleHeader.text = "Latest News"
+            headerSection.lblTitleHeader.text = AppUtils.localized("LATEST_NEWS", value: "")
         }else if section == 1 {
             //Latest News
             headerSection.imageViewIcon.image = UIImage(named: "icn_articles")
-            headerSection.lblTitleHeader.text = "Most Read Articles"
+            headerSection.lblTitleHeader.text = AppUtils.localized("MOST_READ_ARTICLE", value: "")
         }else if section == 2 {
             //Facebook & Twitter
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellHeaderFacebookTwitter") as! CellHome
             
             //Set Title
-            headerSection.lblTweets.text = "Latest Tweets"
-            headerSection.lblFacebookPost.text = "Latest Facebook Post"
+            headerSection.lblTweets.text = AppUtils.localized("LATEST_TWEET", value: "")
+            headerSection.lblFacebookPost.text = AppUtils.localized("LATEST_FACEBOOK_POST", value: "")
         }else if section == 3 {
             //Clubs & Players
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellClubPlayer") as! CellHome
             
+            if indexForClubsPlayers == CLUBS {
+                viewBottomLineClubsPlayers.frame = CGRect(x: 0, y: headerSection.btnClubs.frame.size.height - 3, width: headerSection.btnClubs.frame.size.width, height: 3.0)
+                
+                headerSection.btnClubs.addSubview(viewBottomLineClubsPlayers)
+            }else {
+                var rect = viewBottomLineClubsPlayers.frame
+                rect.origin.x = headerSection.btnPlayers.frame.origin.x
+                viewBottomLineClubsPlayers.frame = rect
+                
+                headerSection.btnPlayers.addSubview(viewBottomLineClubsPlayers)
+            }
+            
             //Add Target
+            headerSection.btnClubs.setTitle(AppUtils.localized("CLUBS", value: ""), for: .normal)
+            headerSection.btnPlayers.setTitle(AppUtils.localized("PLAYERS", value: ""), for: .normal)
+            
             headerSection.btnClubs.addTarget(self, action: #selector(btnClubsClicked), for: .touchUpInside)
             headerSection.btnPlayers.addTarget(self, action: #selector(btnPlayersClicked), for: .touchUpInside)
         }else if section == 4 {
             //Polls
             headerSection.imageViewIcon.image = UIImage(named: "icn_vote")
-            headerSection.lblTitleHeader.text = "Poll"
+            headerSection.lblTitleHeader.text = AppUtils.localized("POLL", value: "")
         }else if section == 5 {
             //Advertisement
             headerSection.imageViewIcon.image = UIImage(named: "icn_advertisement")
-            headerSection.lblTitleHeader.text = "Advertisement"
+            headerSection.lblTitleHeader.text = AppUtils.localized("ADVERTISEMENT", value: "")
         }
         
         return headerSection
@@ -464,6 +500,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 cell.imageViewPost.image = UIImage(named: "SliderImage.png")
             }
             
+            cell.lblTitle.text = AppUtils.localized("Title", value: "")
+            cell.lblDescription.text = AppUtils.localized("SubTitle", value: "")
+            
             return cell
         }else if collectionView.tag == MOST_READ_ARTICLES {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellQuickInfo", for: indexPath) as! CellCollectionViewCustom
@@ -481,6 +520,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }else {
                 cell.imageViewPost.image = UIImage(named: "SliderImage.png")
             }
+            
+            cell.lblTitle.text = AppUtils.localized("Title", value: "")
+            cell.lblDescription.text = AppUtils.localized("SubTitle", value: "")
             
             return cell
         }else if collectionView.tag == FACEBOOK_TWITTER {
@@ -500,6 +542,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 cell.imageViewPost.image = UIImage(named: "SliderImage.png")
             }
             
+            cell.lblTitle.text = AppUtils.localized("Title", value: "")
+            cell.lblDescription.text = AppUtils.localized("SubTitle", value: "")
+            
             return cell
         }else if collectionView.tag == CLUB_PLAYER {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellClubPlayer", for: indexPath) as! CellCollectionViewCustom
@@ -518,6 +563,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 cell.imageViewClubPlayer.image = UIImage(named: "SliderImage.png")
             }
             
+            cell.lblClubPlayerName.text = AppUtils.localized("Name", value: "")
+            
             return cell
         }
         
@@ -527,11 +574,28 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     
     //MARK: - Clubs 
-    func btnClubsClicked() -> Void {
+    func btnClubsClicked(sender: UIButton) -> Void {
         print("Clubs Clicked")
+        
+        indexForClubsPlayers = CLUBS
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            var rect = self.viewBottomLineClubsPlayers.frame
+            rect.origin.x = sender.frame.origin.x
+            self.viewBottomLineClubsPlayers.frame = rect
+        })
     }
     
-    func btnPlayersClicked() -> Void {
+    //MARK: - Players
+    func btnPlayersClicked(sender: UIButton) -> Void {
         print("Players Clicked")
+        
+        indexForClubsPlayers = PLAYERS
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            var rect = self.viewBottomLineClubsPlayers.frame
+            rect.origin.x = sender.frame.origin.x
+            self.viewBottomLineClubsPlayers.frame = rect
+        })
     }
 }

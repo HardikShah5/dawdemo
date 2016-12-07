@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Hides Status Bar
         application.isStatusBarHidden = true
         
+        //Change System language
+        UserDefaults.standard.set(["ar"], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        
         return true
     }
 

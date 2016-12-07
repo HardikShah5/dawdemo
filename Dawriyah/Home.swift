@@ -21,6 +21,8 @@ private let CLUB_PLAYER = 104
 private let CLUBS = 201
 private let PLAYERS = 202
 
+private var kHeaderImageHeight: CGFloat = 200
+
 class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableViewHome: UITableView!
@@ -106,6 +108,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         let swipeTopRatedNews = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNews))
         swipeTopRatedNews.direction = .left
         self.view.addGestureRecognizer(swipeTopRatedNews)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,6 +129,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         
         //Get bigger image reference
         imageViewNews = headerNews.imageViewNews
+        kHeaderImageHeight = imageViewNews.frame.size.height
         
         //Initialise Array for images
         arrayNewImages = ["image1.png", "image2.png", "image3.png", "image4.png", "image5.png", "image6.png", "image7.png", "image8.png"]
@@ -195,6 +199,22 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     
+    //MARK: - Top Option Selected Option
+    func setTopOptionsUnderline(sender: UIButton) -> Void {
+        print("Tag : \(sender.tag)")
+        
+        //scrollViewTopOptinos.setContentOffset(CGPoint(x: sender.frame.origin.x, y: 0), animated: true)
+        scrollViewTopOptinos.scrollRectToVisible(CGRect(x: sender.frame.origin.x, y: 0, width: scrollViewTopOptinos.frame.size.width, height: scrollViewTopOptinos.frame.size.height), animated: true)
+        
+        //Change frame of Bottom Line
+        UIView.animate(withDuration: 0.2, animations: {
+            var rect = self.viewBottomLineTopOptions.frame
+            rect.origin.x = sender.frame.origin.x
+            self.viewBottomLineTopOptions.frame = rect
+        })
+
+    }
+    
     //MARK: - Top Option
     func btnTopOptionClicked(sender: UIButton) -> Void {
         print("Tag : \(sender.tag)")
@@ -226,18 +246,72 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     //MARK: - Highlights
     func Highlights() -> Void {
-        //Hide other Views
-        if viewTopRatedNews != nil {
-            viewTopRatedNews.isHidden = true
-        }
+        //Select Option
+        let button = scrollViewTopOptinos.viewWithTag(HIGHLIGHTS) as! UIButton
+        self.setTopOptionsUnderline(sender: button)
         
-        if viewMostPopularNews != nil {
-            self.viewMostPopularNews.isHidden = true
-        }
+        //Change frame of Top Rated News
+        UIView.animate(withDuration: 0.3, animations: {
+            //Top Rated News
+            if self.viewTopRatedNews != nil {
+                var rect = self.viewTopRatedNews.frame
+                rect.origin.x = self.viewTopRatedNews.frame.size.width
+                self.viewTopRatedNews.frame = rect
+            }
+            
+            //MOST Popular NEWS
+            if self.viewMostPopularNews != nil {
+                var rect = self.viewMostPopularNews.frame
+                rect.origin.x = self.viewMostPopularNews.frame.size.width
+                self.viewMostPopularNews.frame = rect
+            }
+            
+            //Electronic Press
+            if self.viewElectronicPress != nil {
+                var rect = self.viewElectronicPress.frame
+                rect.origin.x = self.viewElectronicPress.frame.size.width
+                self.viewElectronicPress.frame = rect
+            }
+        }, completion: { (finished) -> Void in
+            //Hide other Views
+            if self.viewTopRatedNews != nil {
+                self.viewTopRatedNews.isHidden = true
+            }
+            
+            if self.viewMostPopularNews != nil {
+                self.viewMostPopularNews.isHidden = true
+            }
+            
+            if self.viewElectronicPress != nil {
+                self.viewElectronicPress.isHidden = true
+            }
+        })
+    }
+    
+    func HighlightsRightSwipe() -> Void {
+        //Select Option
+        let button = scrollViewTopOptinos.viewWithTag(HIGHLIGHTS) as! UIButton
+        self.setTopOptionsUnderline(sender: button)
         
-        if viewElectronicPress != nil {
-            viewElectronicPress.isHidden = true
-        }
+        //Change frame of Top Rated News
+        UIView.animate(withDuration: 0.3, animations: {
+            var rect = self.viewTopRatedNews.frame
+            rect.origin.x = self.viewTopRatedNews.frame.size.width
+            self.viewTopRatedNews.frame = rect
+        }, completion: { (finished) -> Void in
+            //Hide other Views
+            if self.viewTopRatedNews != nil {
+                self.viewTopRatedNews.isHidden = true
+            }
+            
+            if self.viewMostPopularNews != nil {
+                self.viewMostPopularNews.isHidden = true
+            }
+            
+            if self.viewElectronicPress != nil {
+                self.viewElectronicPress.isHidden = true
+            }
+        })
     }
     
     //MARK: - TOP RATED NEWS
@@ -245,6 +319,11 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         /*viewTopRatedNews = CollectionViewCustom.getCollectionView()
         viewTopRatedNews.collectionViewData.tag = TOP_RATED_NEWS
         viewTopRatedNews.showCollectionViewIn(viewCTR: self)*/
+        
+        
+        //Select Option
+        let button = scrollViewTopOptinos.viewWithTag(TOP_RATED_NEWS) as! UIButton
+        self.setTopOptionsUnderline(sender: button)
         
         if viewTopRatedNews == nil {
             viewTopRatedNews = CollectionViewCustom()
@@ -254,16 +333,40 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         viewTopRatedNews.isHidden = false
         
         viewTopRatedNews.collectionViewData.tag = TOP_RATED_NEWS
-        viewTopRatedNews.showCollectionViewIn(viewCTR: self)
+        
+        //Hide Electronic Press
+        if viewMostPopularNews != nil && viewMostPopularNews.frame.origin.x == 0 {
+            UIView.animate(withDuration: 0.3, animations: {
+                var rect = self.viewMostPopularNews.frame
+                rect.origin.x = self.viewMostPopularNews.frame.size.width
+                self.viewMostPopularNews.frame = rect
+            }, completion: { (finished) -> Void in
+            })
+        }else {
+            viewTopRatedNews.showCollectionViewIn(viewCTR: self)
+        }
         
         //Swipe Gesture
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(mostPopularNews))
         swipeRight.direction = .left
         viewTopRatedNews.addGestureRecognizer(swipeRight)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(Highlights))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(HighlightsRightSwipe))
         swipeLeft.direction = .right
         viewTopRatedNews.addGestureRecognizer(swipeLeft)
+    }
+    
+    func topRatedNewsRightSwipe() -> Void {
+        //Select Option
+        let button = scrollViewTopOptinos.viewWithTag(TOP_RATED_NEWS) as! UIButton
+        self.setTopOptionsUnderline(sender: button)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            var rect = self.viewMostPopularNews.frame
+            rect.origin.x = self.viewMostPopularNews.frame.size.width
+            self.viewMostPopularNews.frame = rect
+        }, completion: { (finished) -> Void in
+        })
     }
     
     //MARK: - MOST Popular NEWS
@@ -271,6 +374,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         /*viewMostPopularNews = CollectionViewCustom.getCollectionView()
         viewMostPopularNews.collectionViewData.tag = MOST_POPULAR_NEWS
         viewMostPopularNews.showCollectionViewIn(viewCTR: self)*/
+        
+        //Select Option
+        let button = scrollViewTopOptinos.viewWithTag(MOST_POPULAR_NEWS) as! UIButton
+        self.setTopOptionsUnderline(sender: button)
         
         if viewMostPopularNews == nil {
             viewMostPopularNews = CollectionViewCustom()
@@ -280,17 +387,30 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         viewMostPopularNews.isHidden = false
         
         viewMostPopularNews.collectionViewData.tag = MOST_POPULAR_NEWS
-        viewMostPopularNews.showCollectionViewIn(viewCTR: self)
         
+        //Hide Electronic Press
+        if viewElectronicPress != nil && viewElectronicPress.frame.origin.x == 0 {
+            UIView.animate(withDuration: 0.3, animations: {
+                var rect = self.viewElectronicPress.frame
+                rect.origin.x = self.viewElectronicPress.frame.size.width
+                self.viewElectronicPress.frame = rect
+            }, completion: { (finished) -> Void in
+            })
+        }else {
+            viewMostPopularNews.showCollectionViewIn(viewCTR: self)
+        }
         
         //Swipe Gesture
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(electronicPress))
         swipeRight.direction = .left
         viewMostPopularNews.addGestureRecognizer(swipeRight)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNews))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNewsRightSwipe))
         swipeLeft.direction = .right
         viewMostPopularNews.addGestureRecognizer(swipeLeft)
+        
+        
+        
     }
     
     //MARK: - Electronic Press
@@ -298,6 +418,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         /*viewElectronicPress = CollectionViewCustom.getCollectionView()
         viewElectronicPress.collectionViewData.tag = ELECTRONIC_PRESS
         viewElectronicPress.showCollectionViewIn(viewCTR: self)*/
+        
+        //Select Option
+        let button = scrollViewTopOptinos.viewWithTag(ELECTRONIC_PRESS) as! UIButton
+        self.setTopOptionsUnderline(sender: button)
         
         if viewElectronicPress == nil {
             viewElectronicPress = CollectionViewCustom()
@@ -343,7 +467,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }else if indexPath.section == 2 {
             return 230
         }else if indexPath.section == 3 {
-            return 740
+            let size: CGFloat = (tableView.frame.size.width - 36) / 3
+            return (size * 6.0) + 60
         }else if indexPath.section == 4 {
             return 40
         }else if indexPath.section == 5 {

@@ -45,6 +45,10 @@
 		C7153CAC1DEE7DEA004F0CCE /* FBTwitterPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7153CAB1DEE7DEA004F0CCE /* FBTwitterPostCell.swift */; };
 		C7153CAE1DEE7E98004F0CCE /* social_stripe_avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7153CAD1DEE7E98004F0CCE /* social_stripe_avatar@3x.png */; };
 		C7153CB01DEE7E9D004F0CCE /* social_user_avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7153CAF1DEE7E9D004F0CCE /* social_user_avatar@3x.png */; };
+		C747B4C21DF876D200BE0955 /* OfficialMagazineListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747B4C11DF876D200BE0955 /* OfficialMagazineListing.swift */; };
+		C747B4C41DF878B500BE0955 /* OfficialMagazineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747B4C31DF878B500BE0955 /* OfficialMagazineCell.swift */; };
+		C747B4C61DF886C200BE0955 /* rating_star_4.png in Resources */ = {isa = PBXBuildFile; fileRef = C747B4C51DF886C200BE0955 /* rating_star_4.png */; };
+		C747B4C81DF886F900BE0955 /* magazine_img.png in Resources */ = {isa = PBXBuildFile; fileRef = C747B4C71DF886F900BE0955 /* magazine_img.png */; };
 		C798C20F1DE990CB00C3799C /* NewsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798C20E1DE990CB00C3799C /* NewsListing.swift */; };
 		C798C2111DE994B200C3799C /* CellNewsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798C2101DE994B200C3799C /* CellNewsListing.swift */; };
 		C79EFAFA1DED2BFB00224FF4 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EFAF91DED2BFB00224FF4 /* GalleryView.swift */; };
@@ -121,6 +125,10 @@
 		C7153CAB1DEE7DEA004F0CCE /* FBTwitterPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterPostCell.swift; sourceTree = "<group>"; };
 		C7153CAD1DEE7E98004F0CCE /* social_stripe_avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social_stripe_avatar@3x.png"; sourceTree = "<group>"; };
 		C7153CAF1DEE7E9D004F0CCE /* social_user_avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social_user_avatar@3x.png"; sourceTree = "<group>"; };
+		C747B4C11DF876D200BE0955 /* OfficialMagazineListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficialMagazineListing.swift; sourceTree = "<group>"; };
+		C747B4C31DF878B500BE0955 /* OfficialMagazineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficialMagazineCell.swift; sourceTree = "<group>"; };
+		C747B4C51DF886C200BE0955 /* rating_star_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rating_star_4.png; path = SliderImages/rating_star_4.png; sourceTree = "<group>"; };
+		C747B4C71DF886F900BE0955 /* magazine_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magazine_img.png; sourceTree = "<group>"; };
 		C798C20E1DE990CB00C3799C /* NewsListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListing.swift; sourceTree = "<group>"; };
 		C798C2101DE994B200C3799C /* CellNewsListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellNewsListing.swift; sourceTree = "<group>"; };
 		C79EFAF91DED2BFB00224FF4 /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 				C79EFAFD1DED31DA00224FF4 /* presskit_img@3x.png */,
 				0E18025D1DEA0E7700EC0C50 /* SliderImage.png */,
 				0E18025F1DEA12FF00EC0C50 /* news_stripe_img.png */,
+				C747B4C71DF886F900BE0955 /* magazine_img.png */,
+				C747B4C51DF886C200BE0955 /* rating_star_4.png */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -243,6 +253,8 @@
 				C7ADD6C61DF11A9700F1208A /* FBTWProfile.swift */,
 				C7ADD6C81DF1223C00F1208A /* CellComments.swift */,
 				0E6CBCF01DF1EEB8006B1C2D /* CollectionHeaderView.swift */,
+				C747B4C11DF876D200BE0955 /* OfficialMagazineListing.swift */,
+				C747B4C31DF878B500BE0955 /* OfficialMagazineCell.swift */,
 			);
 			path = Dawriyah;
 			sourceTree = "<group>";
@@ -390,12 +402,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C747B4C61DF886C200BE0955 /* rating_star_4.png in Resources */,
 				C7153CAE1DEE7E98004F0CCE /* social_stripe_avatar@3x.png in Resources */,
 				0E6CBF111DEF5F7D00826EA4 /* CellCollectionViewCustom.xib in Resources */,
 				0E6CBF191DEF712800826EA4 /* SliderMenu.xib in Resources */,
 				0E7957B61DF0A26800E929B9 /* image2.png in Resources */,
 				0E1802601DEA12FF00EC0C50 /* news_stripe_img.png in Resources */,
 				0E62AD591DF3F5F000E94143 /* Localizable.strings in Resources */,
+				C747B4C81DF886F900BE0955 /* magazine_img.png in Resources */,
 				0E7957B91DF0A26800E929B9 /* image5.png in Resources */,
 				0E7957B71DF0A26800E929B9 /* image3.png in Resources */,
 				0E7957B81DF0A26800E929B9 /* image4.png in Resources */,
@@ -455,10 +469,12 @@
 				C7153CAC1DEE7DEA004F0CCE /* FBTwitterPostCell.swift in Sources */,
 				C7C9294A1DEB19DC00637F01 /* NewsCollectionViewCell.swift in Sources */,
 				C79EFAFC1DED2CED00224FF4 /* GalleryViewCell.swift in Sources */,
+				C747B4C21DF876D200BE0955 /* OfficialMagazineListing.swift in Sources */,
 				0E7957AB1DF0A0A300E929B9 /* CellHome.swift in Sources */,
 				0E6CBCF11DF1EEB8006B1C2D /* CollectionHeaderView.swift in Sources */,
 				C7153CAA1DEE79E2004F0CCE /* FBTwitterPost.swift in Sources */,
 				0E6CBCF61DF2105B006B1C2D /* Constants.swift in Sources */,
+				C747B4C41DF878B500BE0955 /* OfficialMagazineCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  Dawriyah
+
+  Created by MehulS on 04/12/16.
+  Copyright © 2016 MehulS. All rights reserved.
+*/
+
+
+//Temp
+"Title"     =   "title tile title title title title tile title title title";
+"SubTitle"     =   "title tile title title title title tile title title title title tile title title title title tile title title title title tile title title title title tile title title title title tile title title title title tile title title title";
+"Name"      =   "Name";
+
+
+//HOME
+"HIGHLIGHTS"            =   "Highlights";
+"TOP_RATED_NEWS"        =   "Top Rated News";
+"MOST_POPULAR_NEWS"     =   "Most Popular News";
+"ELECTRONIC_PRESS"      =   "Electronic Press";
+
+"LATEST_NEWS"           =   "Latest News";
+
+"MOST_READ_ARTICLE"     =   "Most Read Articles";
+
+"LATEST_TWEET"          =   "Latest Tweets";
+"LATEST_FACEBOOK_POST"  =   "Latest Facebook Post";
+
+"CLUBS"                 =   "Clubs";
+"PLAYERS"               =   "Players";
+
+"POLL"                  =   "Poll";
+"ADVERTISEMENT"         =   "Advertisement";
+"MAIL_LIST_SUBSCRIPTION"=   "Mailing list subscription";
+
+
+//Slider Menu
+"HOME"                  =   "Home";
+"ADVANCE_SEARCH"        =   "Advance search";
+"NEWS"                  =   "News";
+"PRESS_KIT"             =   "Press kit";
+"TWITTER_TWEET"         =   "Twitter Tweet";
+"FACEBOOK_POST"         =   "Facebook Post";
+"ANNUAL_REPORT"         =   "Annual Report";
+"NEWSPAPER"             =   "Newspaper";
+"OFFICAIL_MAGAZINE"     =   "Official Magazine";
+"THE_BOOK"              =   "The Book";
+"STATTISTICS"           =   "Statistics";
+"FAVORITE"              =   "Favorite";
+"ABOUT_US"              =   "About Us";
+"CONTACT_US"            =   "Contact Us";
+"HELP"                  =   "Help";
+"LOGOUT"                =   "Log out";
+
+//Twitter & Facebook
+"TWITTER_TWEETS"        =   "Twitter Tweets";
+"FACEBOOK_POSTS"        =   "Facebook Posts";
+
+//NEWS LISTING and Details
+"FULL_NEWS"            =   "Full news";
+

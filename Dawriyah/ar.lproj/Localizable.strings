@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  Dawriyah
+
+  Created by MehulS on 04/12/16.
+  Copyright © 2016 MehulS. All rights reserved.
+*/
+
+//Temp
+"Title"     =   "بالفيديو: هل ستنتقل دنيا باطما إلى التمثيل؟";
+"SubTitle"     =   "اختارت الفنانة دنيا باطما أن تؤدي الأغنية المغربية الشهيرة ياك أجرحي لقيدومة الطرب المغربي نعيمة سميح ، وذلك في الحفل الختامي لسهرات مهرجان أصوات نسائية في دورته التاسعة بمدينة تطوان (شمال المغرب) ، حيث خصص المهرجان تكريماً خاصاً لنجمة الطرب المغربي الأصيل نعيمة سميح ، التي اختارت التواري عن الأضواء والاستمتاع بوقتها مع عائلتها .";
+"Name"      =   "اسم";
+
+
+//HOME
+"HIGHLIGHTS"            =   "يسلط الضوء على";
+"TOP_RATED_NEWS"        =   "الأعلى تقييما الأخبار";
+"MOST_POPULAR_NEWS"     =   "الأكثر قراءة الأخبار";
+"ELECTRONIC_PRESS"      =   "الصحافة الالكترونية";
+
+"LATEST_NEWS"           =   "أحدث الأخبار";
+
+"MOST_READ_ARTICLE"     =   "معظم المواد مقروءة";
+
+"LATEST_TWEET"          =   "أحدث تويت";
+"LATEST_FACEBOOK_POST"  =   "آخر مساهمة الفيسبوك";
+
+"CLUBS"                 =   "الاندية الرياضية";
+"PLAYERS"               =   "مشاهير الكورة";
+
+"POLL"                  =   "صندوق الاقتراع
+";
+"ADVERTISEMENT"         =   "الاعلان";
+"MAIL_LIST_SUBSCRIPTION"=   "القائمة البريدية اشتراك";
+
+
+//Slider Menu
+"HOME"                  =   "الرئيسية";
+"ADVANCE_SEARCH"        =   "البحث المتقدم";
+"NEWS"                  =   "أخبار";
+"PRESS_KIT"             =   "الملف الصحفي";
+"TWITTER_TWEET"         =   "تويتر تويت";
+"FACEBOOK_POST"         =   "الفيسبوك المشاركة";
+"ANNUAL_REPORT"         =   "التقرير السنوي";
+"NEWSPAPER"             =   "جريدة";
+"OFFICAIL_MAGAZINE"     =   "مجلة رسمية";
+"THE_BOOK"              =   "الكتاب";
+"STATTISTICS"           =   "إحصائيات";
+"FAVORITE"              =   "المفضلة";
+"ABOUT_US"              =   "معلومات عنا";
+"CONTACT_US"            =   "اتصل بنا";
+"HELP"                  =   "مساعدة";
+"LOGOUT"                =   "خروج";
+
+//Twitter & Facebook
+"TWITTER_TWEETS"        =   "تغريدات تويتر";
+"FACEBOOK_POSTS"        =   "مشاركات الفيس بوك";
+
+//NEWS LISTING and Details
+"FULL_NEWS"            =   "أخبار الكامل";

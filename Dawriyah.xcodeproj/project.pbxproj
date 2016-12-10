@@ -59,6 +59,8 @@
 		C7ADD6C91DF1223C00F1208A /* CellComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ADD6C81DF1223C00F1208A /* CellComments.swift */; };
 		C7C9294A1DEB19DC00637F01 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C929491DEB19DC00637F01 /* NewsCollectionViewCell.swift */; };
 		C7C9294C1DEB5A8300637F01 /* NewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C9294B1DEB5A8300637F01 /* NewsDetail.swift */; };
+		C7D8C24B1DFC5FCB004C0A4B /* NewspaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */; };
+		C7D8C24D1DFC6051004C0A4B /* NewspaperList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		C7ADD6C81DF1223C00F1208A /* CellComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellComments.swift; sourceTree = "<group>"; };
 		C7C929491DEB19DC00637F01 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7C9294B1DEB5A8300637F01 /* NewsDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetail.swift; sourceTree = "<group>"; };
+		C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperCell.swift; sourceTree = "<group>"; };
+		C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +253,8 @@
 				0E6CBCF01DF1EEB8006B1C2D /* CollectionHeaderView.swift */,
 				C747B4C11DF876D200BE0955 /* OfficialMagazineListing.swift */,
 				C747B4C31DF878B500BE0955 /* OfficialMagazineCell.swift */,
+				C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */,
+				C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */,
 			);
 			path = Dawriyah;
 			sourceTree = "<group>";
@@ -464,12 +470,14 @@
 				0E1AFD921DE6474000F13606 /* CellSignUp.swift in Sources */,
 				C79EFAFA1DED2BFB00224FF4 /* GalleryView.swift in Sources */,
 				0E6CBF181DEF712800826EA4 /* SliderMenu.swift in Sources */,
+				C7D8C24B1DFC5FCB004C0A4B /* NewspaperCell.swift in Sources */,
 				0E70172F1DE4D09D001636CF /* AppDelegate.swift in Sources */,
 				0E1AFD901DE62C8A00F13606 /* SignUp.swift in Sources */,
 				C7ADD6C91DF1223C00F1208A /* CellComments.swift in Sources */,
 				C798C2111DE994B200C3799C /* CellNewsListing.swift in Sources */,
 				0E7957BE1DF0BA3400E929B9 /* CellInfo.swift in Sources */,
 				0E6CBF131DEF611D00826EA4 /* CellCollectionViewCustom.swift in Sources */,
+				C7D8C24D1DFC6051004C0A4B /* NewspaperList.swift in Sources */,
 				C7153CAC1DEE7DEA004F0CCE /* FBTwitterPostCell.swift in Sources */,
 				C7C9294A1DEB19DC00637F01 /* NewsCollectionViewCell.swift in Sources */,
 				C79EFAFC1DED2CED00224FF4 /* GalleryViewCell.swift in Sources */,

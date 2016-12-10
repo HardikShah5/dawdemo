@@ -10,6 +10,9 @@ import UIKit
 
 class Constants: NSObject {
     
+    //Static Value to Comonly Use
+    static let CornerRaius:CGFloat = 5.0;
+    
     //Colors
     struct Color {
         static let BLUE_UNDERLINE   =   UIColor(colorLiteralRed: 30/255.0, green: 126/255.0, blue: 233/255.0, alpha: 1.0)

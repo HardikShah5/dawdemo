@@ -10,6 +10,14 @@ import UIKit
 
 class Constants: NSObject {
     
+    //Web Service Pre URL
+    static let WEBSERVICE_URL : String = ""
+    
+    //Web Services End Points
+    static let LOGIN : String           = ""
+    
+    
+    
     //Static Value to Comonly Use
     static let CornerRaius:CGFloat = 5.0;
     

@@ -11,6 +11,8 @@ import AVFoundation
 
 class AppUtils: NSObject {
     
+    static var progressView : MBProgressHUD?
+    
     
     //MARK: App Delegate Object
     static func APPDELEGATE() -> AppDelegate {
@@ -51,5 +53,22 @@ class AppUtils: NSObject {
     static func currentLanguage() -> String {
         let langStr = Locale.current.languageCode
         return langStr!
+    }
+    
+    //MARK: Loading View
+    static func startLoading(view : UIView) {
+        progressView = MBProgressHUD.showAdded(to: view, animated: true)
+    }
+    
+    static func startLoadingWithText(strText: String, view : UIView) {
+        progressView = MBProgressHUD.showAdded(to: view, animated: true)
+        progressView?.labelText = strText
+    }
+    
+    static func stopLoading() {
+        self.progressView!.hide(true)
+    }
+    
+    static func hudWasHidden() {
     }
 }

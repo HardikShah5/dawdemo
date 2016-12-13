@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E00304E1E0080D700F65678 /* CellNewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00304D1E0080D700F65678 /* CellNewsDetail.swift */; };
 		0E18025B1DEA085800EC0C50 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18025A1DEA085800EC0C50 /* Home.swift */; };
 		0E18025E1DEA0E7700EC0C50 /* SliderImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E18025D1DEA0E7700EC0C50 /* SliderImage.png */; };
 		0E1802601DEA12FF00EC0C50 /* news_stripe_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E18025F1DEA12FF00EC0C50 /* news_stripe_img.png */; };
@@ -102,6 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E00304D1E0080D700F65678 /* CellNewsDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellNewsDetail.swift; sourceTree = "<group>"; };
 		0E18025A1DEA085800EC0C50 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		0E18025D1DEA0E7700EC0C50 /* SliderImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderImage.png; sourceTree = "<group>"; };
 		0E18025F1DEA12FF00EC0C50 /* news_stripe_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_stripe_img.png; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				0E18025C1DEA0E6F00EC0C50 /* Media */,
 				C7C929491DEB19DC00637F01 /* NewsCollectionViewCell.swift */,
 				C7C9294B1DEB5A8300637F01 /* NewsDetail.swift */,
+				0E00304D1E0080D700F65678 /* CellNewsDetail.swift */,
 				C79EFAF91DED2BFB00224FF4 /* GalleryView.swift */,
 				C79EFAFB1DED2CED00224FF4 /* GalleryViewCell.swift */,
 				C7153CA91DEE79E2004F0CCE /* FBTwitterPost.swift */,
@@ -605,6 +608,7 @@
 				C798C20F1DE990CB00C3799C /* NewsListing.swift in Sources */,
 				0E70175D1DE4DD8D001636CF /* Login.swift in Sources */,
 				0E2811CC1DFDE11800E906E8 /* AFHTTPSessionManager.m in Sources */,
+				0E00304E1E0080D700F65678 /* CellNewsDetail.swift in Sources */,
 				0E2811CE1DFDE11800E906E8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0E2811DB1DFDE11800E906E8 /* MBProgressHUD.m in Sources */,
 				0E2811D51DFDE11800E906E8 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

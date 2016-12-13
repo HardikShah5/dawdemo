@@ -21,8 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.isStatusBarHidden = true
         
         //Change System language
-        UserDefaults.standard.set(["ar"], forKey: "AppleLanguages")
+        //let language = "ar"
+        let language = "en"
+        UserDefaults.standard.set([language], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
+        
+        if language == "ar" {
+            AppUtils.isArabicLayout = true
+        }else {
+            AppUtils.isArabicLayout = false
+        }
         
         return true
     }

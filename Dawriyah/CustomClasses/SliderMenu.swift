@@ -104,7 +104,12 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         
         //Animation for Parent view
         UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            
+            if AppUtils.isArabicLayout == true {
             viewCTR.navigationController!.view.frame = CGRect(x: -self.tableViewMenus.frame.size.width, y: 0, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height)
+            }else {
+                viewCTR.navigationController!.view.frame = CGRect(x: self.tableViewMenus.frame.size.width, y: 0, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height)
+            }
             self.viewVisualBlur.alpha = 0.65
         }) { (isFinished) -> Void in
             self.btnToHideSelf.isHidden = false

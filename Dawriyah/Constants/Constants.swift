@@ -35,6 +35,7 @@ class Constants: NSObject {
         static let TWITTER_DETAILS          = "FBTWProfile"
         static let NEWS_LISTING             = "NewsListing"
         static let NEWS_DETAILS             = "NewsDetail"
+        static let PRESS_KIT                = "PressKit"
     }
 }
 

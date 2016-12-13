@@ -43,7 +43,6 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
         })
         
         //Resgister Cell
-        
         collectionViewData.register(UINib(nibName: "CellCollectionViewCustom", bundle: nil), forCellWithReuseIdentifier: "CellData")
         
         collectionViewData.reloadData()

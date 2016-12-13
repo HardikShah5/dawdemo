@@ -102,6 +102,7 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
             navigateToNews()
         }else if index == SliderMenuOption.PRESS_KIT {
             //Press Kit
+            navigateToPressKit()
         }else if index == SliderMenuOption.TWITTER {
             //Twitter
             navigateToTwitter()
@@ -128,6 +129,7 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
             //Help
         }else if index == SliderMenuOption.LOGOUT {
             //Logout
+            doLogout()
         }
     }
     
@@ -156,6 +158,13 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
         self.navigationController?.pushViewController(newsVC, animated: true)
     }
     
+    //MARK: - Navigate To PressKit
+    func navigateToPressKit() -> Void {
+        let pressVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.PRESS_KIT) as! PressKit
+        
+        self.navigationController?.pushViewController(pressVC, animated: true)
+    }
+    
     //MARK: - Navigate To Twitter
     func navigateToTwitter() -> Void {
         let twitterVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.TWITTER) as! FBTwitterPost
@@ -172,6 +181,19 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
         facebookVC.isForTwitter = false
         
         self.navigationController?.pushViewController(facebookVC, animated: true)
+    }
+    
+    
+    //MARK: - Logout
+    func doLogout() -> Void {
+        let alert = UIAlertController(title: AppUtils.localized("LOGOUT", value: ""), message: AppUtils.localized("LOGOUT_ALERT", value: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: AppUtils.localized("NO", value: ""), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: AppUtils.localized("LOGOUT", value: ""), style: .default, handler: { (action) in
+            //Pop to landing page : Login
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     

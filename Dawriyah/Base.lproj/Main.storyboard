@@ -1007,7 +1007,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3z-TB-0hL">
-                                                    <rect key="frame" x="196" y="7" width="100" height="25.5"/>
+                                                    <rect key="frame" x="196" y="7" width="100" height="26"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                     <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" backgroundImage="vote_opt_nor">
@@ -1020,7 +1020,7 @@ Good</string>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCI-jJ-xJ5">
-                                                    <rect key="frame" x="306" y="7" width="100" height="25.5"/>
+                                                    <rect key="frame" x="306" y="7" width="100" height="26"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Acceptable" backgroundImage="vote_opt_nor">
@@ -1433,7 +1433,7 @@ Good</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4i-qi-gZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-951" y="841"/>
+            <point key="canvasLocation" x="-1028" y="806"/>
         </scene>
         <!--Twitter Post-->
         <scene sceneID="zBv-qv-8lT">
@@ -1562,7 +1562,7 @@ Good</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weh-KI-2EK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1078" y="129"/>
+            <point key="canvasLocation" x="-1028" y="127"/>
         </scene>
         <!--Profile-->
         <scene sceneID="wBb-yq-REU">
@@ -1700,7 +1700,58 @@ Good</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFC-Wf-f7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-390" y="129"/>
+            <point key="canvasLocation" x="-263" y="125"/>
+        </scene>
+        <!--Press Kit-->
+        <scene sceneID="sno-7B-31g">
+            <objects>
+                <viewController storyboardIdentifier="PressKit" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ldJ-HW-fVX" customClass="PressKit" customModule="Dawriyah" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FCE-Ue-l5u"/>
+                        <viewControllerLayoutGuide type="bottom" id="fi0-eO-bUA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dc8-YM-9HH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="7NV-sB-sG5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C9g-AJ-4BS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="djJ-6h-4KD">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ldJ-HW-fVX" id="61A-sS-Ufb"/>
+                                    <outlet property="delegate" destination="ldJ-HW-fVX" id="4P6-pO-TWa"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7NV-sB-sG5" firstAttribute="top" secondItem="dc8-YM-9HH" secondAttribute="top" id="A6w-k4-ybS"/>
+                            <constraint firstItem="7NV-sB-sG5" firstAttribute="leading" secondItem="dc8-YM-9HH" secondAttribute="leading" id="AK0-et-e5D"/>
+                            <constraint firstItem="fi0-eO-bUA" firstAttribute="top" secondItem="C9g-AJ-4BS" secondAttribute="bottom" id="HD9-FN-Oco"/>
+                            <constraint firstItem="C9g-AJ-4BS" firstAttribute="top" secondItem="dc8-YM-9HH" secondAttribute="top" constant="64" id="LFc-Ep-V4g"/>
+                            <constraint firstAttribute="trailing" secondItem="7NV-sB-sG5" secondAttribute="trailing" id="Mff-mW-vM0"/>
+                            <constraint firstAttribute="trailing" secondItem="C9g-AJ-4BS" secondAttribute="trailing" id="PGZ-j1-vy8"/>
+                            <constraint firstItem="fi0-eO-bUA" firstAttribute="top" secondItem="7NV-sB-sG5" secondAttribute="bottom" id="YaA-sg-q1W"/>
+                            <constraint firstItem="C9g-AJ-4BS" firstAttribute="leading" secondItem="dc8-YM-9HH" secondAttribute="leading" id="gz5-OL-ad4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionViewPressKit" destination="C9g-AJ-4BS" id="G8M-ic-E9o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3UT-5H-zDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="471" y="128"/>
         </scene>
         <!--Gallery View-->
         <scene sceneID="gYT-n7-hoq">
@@ -1784,7 +1835,7 @@ Good</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esp-ZH-0x8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1866" y="128"/>
+            <point key="canvasLocation" x="-1834" y="126"/>
         </scene>
         <!--News Listing-->
         <scene sceneID="dpf-he-vCr">

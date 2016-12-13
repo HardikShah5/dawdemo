@@ -11,6 +11,7 @@ import AVFoundation
 
 class AppUtils: NSObject {
     
+    static var isArabicLayout: Bool! = false
     static var progressView : MBProgressHUD?
     
     

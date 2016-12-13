@@ -59,3 +59,11 @@
 //NEWS LISTING and Details
 "FULL_NEWS"            =   "Full news";
 
+//PRESS KIT
+"PRESS_KIT"             =   "General Press Kit";
+
+//LOGOUT
+"LOGOUT"                =   "Logout";
+"LOGOUT_ALERT"          =   "Are you sure, want to logout?";
+"NO"                    =   "No";
+

@@ -58,3 +58,12 @@
 
 //NEWS LISTING and Details
 "FULL_NEWS"            =   "أخبار الكامل";
+
+//PRESS KIT
+"PRESS_KIT"             =   "الملف الصحفى العام";
+
+
+//LOGOUT
+"LOGOUT"                =   "خروج";
+"LOGOUT_ALERT"          =   "هل أنت متأكد تريد الخروج؟";
+"NO"                    =   "لا";

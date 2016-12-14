@@ -73,6 +73,8 @@
 		C747B4C41DF878B500BE0955 /* OfficialMagazineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747B4C31DF878B500BE0955 /* OfficialMagazineCell.swift */; };
 		C747B4C61DF886C200BE0955 /* rating_star_4.png in Resources */ = {isa = PBXBuildFile; fileRef = C747B4C51DF886C200BE0955 /* rating_star_4.png */; };
 		C747B4C81DF886F900BE0955 /* magazine_img.png in Resources */ = {isa = PBXBuildFile; fileRef = C747B4C71DF886F900BE0955 /* magazine_img.png */; };
+		C78B8D641E00B9320014CADF /* AnnualReportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78B8D631E00B9320014CADF /* AnnualReportList.swift */; };
+		C78B8D661E00B9730014CADF /* AnnualReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78B8D651E00B9730014CADF /* AnnualReportCell.swift */; };
 		C798C20F1DE990CB00C3799C /* NewsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798C20E1DE990CB00C3799C /* NewsListing.swift */; };
 		C798C2111DE994B200C3799C /* CellNewsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798C2101DE994B200C3799C /* CellNewsListing.swift */; };
 		C79EFAFA1DED2BFB00224FF4 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79EFAF91DED2BFB00224FF4 /* GalleryView.swift */; };
@@ -202,6 +204,8 @@
 		C747B4C31DF878B500BE0955 /* OfficialMagazineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficialMagazineCell.swift; sourceTree = "<group>"; };
 		C747B4C51DF886C200BE0955 /* rating_star_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rating_star_4.png; path = SliderImages/rating_star_4.png; sourceTree = "<group>"; };
 		C747B4C71DF886F900BE0955 /* magazine_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magazine_img.png; sourceTree = "<group>"; };
+		C78B8D631E00B9320014CADF /* AnnualReportList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnualReportList.swift; sourceTree = "<group>"; };
+		C78B8D651E00B9730014CADF /* AnnualReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnualReportCell.swift; sourceTree = "<group>"; };
 		C798C20E1DE990CB00C3799C /* NewsListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListing.swift; sourceTree = "<group>"; };
 		C798C2101DE994B200C3799C /* CellNewsListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellNewsListing.swift; sourceTree = "<group>"; };
 		C79EFAF91DED2BFB00224FF4 /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -402,6 +406,8 @@
 				C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */,
 				C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */,
 				0E96AC571E00921300A85F78 /* PressKit.swift */,
+				C78B8D631E00B9320014CADF /* AnnualReportList.swift */,
+				C78B8D651E00B9730014CADF /* AnnualReportCell.swift */,
 			);
 			path = Dawriyah;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				0E2811D61DFDE11800E906E8 /* UIButton+AFNetworking.m in Sources */,
 				C7153CAC1DEE7DEA004F0CCE /* FBTwitterPostCell.swift in Sources */,
 				C7C9294A1DEB19DC00637F01 /* NewsCollectionViewCell.swift in Sources */,
+				C78B8D641E00B9320014CADF /* AnnualReportList.swift in Sources */,
 				0E96AC581E00921300A85F78 /* PressKit.swift in Sources */,
 				C79EFAFC1DED2CED00224FF4 /* GalleryViewCell.swift in Sources */,
 				C747B4C21DF876D200BE0955 /* OfficialMagazineListing.swift in Sources */,
@@ -654,6 +661,7 @@
 				C747B4C41DF878B500BE0955 /* OfficialMagazineCell.swift in Sources */,
 				0E7885F41DF895D600DB1848 /* Constants.swift in Sources */,
 				0E2811D01DFDE11800E906E8 /* AFSecurityPolicy.m in Sources */,
+				C78B8D661E00B9730014CADF /* AnnualReportCell.swift in Sources */,
 				0E2811CB1DFDE11800E906E8 /* AFHTTPRequestOperationManager.m in Sources */,
 				0E2811CA1DFDE11800E906E8 /* AFHTTPRequestOperation.m in Sources */,
 				0E28119C1DFDE0D400E906E8 /* WebServiceHandler.swift in Sources */,

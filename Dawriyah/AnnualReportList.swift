@@ -8,12 +8,20 @@
 
 import UIKit
 
-class AnnualReportList: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AnnualReportList: SuperViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var lblTotal: UILabel!
+    
+    var viewFilter: Filter!
+    
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        //Title
+        self.title = AppUtils.localized("ANNUAL_REPORT", value: "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,11 +29,8 @@ class AnnualReportList: UIViewController, UITableViewDataSource, UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
-
-    
     
     //MARK: - UITableView Delegates
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,14 +52,20 @@ class AnnualReportList: UIViewController, UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    
+    //MARK: - Filter
+    @IBAction func btnFilterClicked(_ sender: Any) {
+        if viewFilter == nil {
+            viewFilter = Bundle.main.loadNibNamed("Filter", owner: self, options: nil)?.first as! Filter
+            AppUtils.APPDELEGATE().window?.addSubview(viewFilter)
+        }
+        viewFilter.isHidden = false
+        
+        viewFilter.setLayout()
+        AppUtils.APPDELEGATE().window?.bringSubview(toFront: viewFilter)
     }
-    */
+    
 
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var constraintWidth_CollectionView: NSLayoutConstraint!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +21,53 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
         //Title
         self.title = AppUtils.localized("FULL_NEWS", value: "")
         
+        /*
+        var x: CGFloat = 0.0
+        var height: CGFloat = 0.0
+        for _ in 0...9 {
+            let viewContainer = UIView()
+            viewContainer.backgroundColor = UIColor.clear
+            
+            //View News Info
+            let viewNews: ViewNewsInfo = Bundle.main.loadNibNamed("ViewNewsInfo", owner: self, options: nil)?.first as! ViewNewsInfo
+            
+            viewNews.frame = CGRect(x: 0, y: 0.0, width: self.view.frame.size.width, height: viewNews.frame.size.height)
+            viewNews.backgroundColor = UIColor.red
+            
+            viewContainer.addSubview(viewNews)
+            
+            //Comments
+            var y: CGFloat = viewNews.frame.size.height
+            for _ in 0...2 {
+                let viewComment: ViewNewsComment = Bundle.main.loadNibNamed("ViewNewsComment", owner: self, options: nil)?.first as! ViewNewsComment
+                
+                
+                viewComment.frame = CGRect(x: 0, y: y, width: self.view.frame.size.width, height: viewComment.frame.size.height)
+                
+                y = y + viewComment.frame.size.height + 10
+                
+                viewContainer.addSubview(viewComment)
+            }
+            
+            viewContainer.frame = CGRect(x: x, y: 0, width: self.view.frame.size.width, height: y)
+            scrollView.addSubview(viewContainer)
+            //viewContainer.translatesAutoresizingMaskIntoConstraints = true
+            
+            height = viewContainer.frame.size.height
+            
+            x = x + self.view.frame.size.width
+        }
+        scrollView.contentSize = CGSize(width: x, height: height)
+        */
         
+        /*
         constraintWidth_CollectionView.constant = (self.view.frame.size.width * 10)
         scrollView.contentSize = collectionView.frame.size
         //scrollView.contentSize = CGSize(width: collectionView.contentSize.width, height: collectionView.contentSize.height)
         
         collectionView.reloadData()
         print(collectionView.frame)
-        
+        */
         
         //lblNewsTitle.text = "test asdfsdfsdf";
         //lblNewsTitle.text = "بالفيديو: هل ستنتقل دنيا باطما إلى التمثيل؟"
@@ -40,7 +79,61 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    
+    //MARK: - UICollectionView Methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.size.width, height: self.view.frame.size.height)
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cellIdentifier = "CellNewsDetails"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CellNewsDetail
+        
+        //Reload TableView
+        cell.tableViewNewsDetails.reloadData()
+        
+        return cell
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
     //MARK: - UICollectionView Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -77,6 +170,6 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
         //        cell.lblDate.text = " م 04:10:00 16/09/2016"
         
         return cell
-    }
+    }*/
 
 }

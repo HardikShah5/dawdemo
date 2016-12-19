@@ -55,8 +55,20 @@ class Login: SuperViewController, UITextFieldDelegate {
     
     //MARK: - Submit
     @IBAction func btnSubmitClicked(_ sender: Any) {
-        let homeD = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! Home
-        self.navigationController?.pushViewController(homeD, animated: true)
+        
+        UserHandler.loginWith(txtUserName.text, password: txtPassword.text, completion: {(responseObject, isSuccess)  -> Void in
+            print("Response : \(responseObject)")
+            
+            let dictData = responseObject?.value(forKey: "clientData") as! NSDictionary
+            
+            if (dictData.value(forKey: "statusCode") as! NSNumber) == 1 {
+            }
+            
+        })
+        
+        
+//        let homeD = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! Home
+//        self.navigationController?.pushViewController(homeD, animated: true)
         
         //Validation then Login
         //doLogin()

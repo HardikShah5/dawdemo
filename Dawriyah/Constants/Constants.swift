@@ -11,10 +11,10 @@ import UIKit
 class Constants: NSObject {
     
     //Web Service Pre URL
-    static let WEBSERVICE_URL : String = ""
+    static let WEBSERVICE_URL : String = "http://dawriyah.com/newsservices.aspx?cmd="
     
     //Web Services End Points
-    static let LOGIN : String           = ""
+    static let LOGIN : String           = "dlogin"
     
     
     

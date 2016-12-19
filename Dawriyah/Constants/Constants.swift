@@ -36,6 +36,9 @@ class Constants: NSObject {
         static let NEWS_LISTING             = "NewsListing"
         static let NEWS_DETAILS             = "NewsDetail"
         static let PRESS_KIT                = "PressKit"
+        static let ANNUAL_REPORT_LIST       = "AnnualReportList"
+        static let NEWS_PAPER_LIST          = "NewspaperList"
+        static let OFFICIAL_MAGAGINE_LIST   = "OfficialMagazineListing"
     }
 }
 

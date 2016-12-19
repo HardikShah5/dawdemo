@@ -111,10 +111,13 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
             navigateToFacebook()
         }else if index == SliderMenuOption.ANNUAL_REPORT {
             //Annual Report
+            navigateToAnnualReport()
         }else if index == SliderMenuOption.NEWS_PAPER {
             //News Paper
+            navigateToNewsPaper()
         }else if index == SliderMenuOption.OFFICIAL_MAGAZINE {
             //Official Magazine
+            navigateToOfficialMagagize()
         }else if index == SliderMenuOption.THE_BOOK {
             //The Book
         }else if index == SliderMenuOption.STATISTICS {
@@ -182,6 +185,31 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
         
         self.navigationController?.pushViewController(facebookVC, animated: true)
     }
+    
+    
+    //MARK: - Navigate To Annual Report
+    func navigateToAnnualReport() -> Void {
+        let annualReportVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.ANNUAL_REPORT_LIST) as! AnnualReportList
+        
+        self.navigationController?.pushViewController(annualReportVC, animated: true)
+    }
+    
+    
+    //MARK: - Navigate To News Paper
+    func navigateToNewsPaper() -> Void {
+        let newsPaperVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.NEWS_PAPER_LIST) as! NewspaperList
+        
+        self.navigationController?.pushViewController(newsPaperVC, animated: true)
+    }
+    
+    
+    //MARK: - Navigate To Official Magagize
+    func navigateToOfficialMagagize() -> Void {
+        let officialMagazineVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.OFFICIAL_MAGAGINE_LIST) as! OfficialMagazineListing
+        
+        self.navigationController?.pushViewController(officialMagazineVC, animated: true)
+    }
+    
     
     
     //MARK: - Logout

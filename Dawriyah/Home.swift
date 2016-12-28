@@ -109,6 +109,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         swipeTopRatedNews.direction = .left
         self.view.addGestureRecognizer(swipeTopRatedNews)
         
+        //self.tableViewHome.backgroundColor = UIColor.yellow
     }
 
     override func didReceiveMemoryWarning() {
@@ -457,6 +458,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

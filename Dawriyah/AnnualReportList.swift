@@ -21,6 +21,7 @@ class AnnualReportList: SuperViewController, UITableViewDataSource, UITableViewD
         // Do any additional setup after loading the view.
         
         //Title
+        self.navigationItem.titleView = nil
         self.title = AppUtils.localized("ANNUAL_REPORT", value: "")
     }
 

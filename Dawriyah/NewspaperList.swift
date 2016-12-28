@@ -22,6 +22,7 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
         // Do any additional setup after loading the view.
         
         //Title
+        self.navigationItem.titleView = nil
         self.title = AppUtils.localized("NEWSPAPER", value: "")
         
     }

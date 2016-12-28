@@ -19,7 +19,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         
         //Title
         self.navigationItem.titleView = nil
-        self.title = AppUtils.localized("FULL_NEWS", value: "")
+        self.title = AppUtils.localized("LATEST_NEWS", value: "")
         
         NewsHandler.latestNews("1", PageSize: "10") { (responseObject, success) in
             print("Response : \(responseObject)")

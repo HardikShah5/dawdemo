@@ -21,6 +21,7 @@ class OfficialMagazineListing: SuperViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
         
         //Title
+        self.navigationItem.titleView = nil
         self.title = AppUtils.localized("OFFICAIL_MAGAZINE", value: "")
     }
 

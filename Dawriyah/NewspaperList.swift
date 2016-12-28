@@ -23,6 +23,7 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
         
         //Title
         self.title = AppUtils.localized("NEWSPAPER", value: "")
+        
     }
 
     override func didReceiveMemoryWarning() {

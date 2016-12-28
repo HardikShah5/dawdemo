@@ -92,6 +92,7 @@
 		C7C9294C1DEB5A8300637F01 /* NewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C9294B1DEB5A8300637F01 /* NewsDetail.swift */; };
 		C7D8C24B1DFC5FCB004C0A4B /* NewspaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */; };
 		C7D8C24D1DFC6051004C0A4B /* NewspaperList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */; };
+		C7F5EF9E1E0FDDA000C625A3 /* NewsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		C7C9294B1DEB5A8300637F01 /* NewsDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetail.swift; sourceTree = "<group>"; };
 		C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperCell.swift; sourceTree = "<group>"; };
 		C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperList.swift; sourceTree = "<group>"; };
+		C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 			children = (
 				0E2811981DFDE0D400E906E8 /* UserHandler.swift */,
 				0E2811991DFDE0D400E906E8 /* WebServiceHandler.swift */,
+				C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				0E8E6FF21E03862B00E6EEFA /* ReusableViewHeader.swift in Sources */,
 				0E2811D01DFDE11800E906E8 /* AFSecurityPolicy.m in Sources */,
 				C78B8D661E00B9730014CADF /* AnnualReportCell.swift in Sources */,
+				C7F5EF9E1E0FDDA000C625A3 /* NewsHandler.swift in Sources */,
 				0E2811CB1DFDE11800E906E8 /* AFHTTPRequestOperationManager.m in Sources */,
 				0E2811CA1DFDE11800E906E8 /* AFHTTPRequestOperation.m in Sources */,
 				0E28119C1DFDE0D400E906E8 /* WebServiceHandler.swift in Sources */,

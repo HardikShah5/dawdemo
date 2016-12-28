@@ -9,17 +9,32 @@
 import UIKit
 
 class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    var dicsNewsData: NSArray!
+    var arrayNews = [NSDictionary]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Title
         self.navigationItem.titleView = nil
         self.title = AppUtils.localized("FULL_NEWS", value: "")
+        
+        NewsHandler.latestNews("1", PageSize: "5") { (responseObject, success) in
+            print("Response : \(responseObject)")
+            
+            let issuccess = responseObject?.value(forKey: "success") as! Bool
+            if(issuccess)
+            {
+                let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                self.dicsNewsData = dicsData.value(forKey: "news") as! NSArray
+                print("Response : \(self.dicsNewsData)")
+            }
+        }
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -27,13 +42,13 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     
     
     //MARK: - UITableView Delegates
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return self.dicsNewsData.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,15 +72,15 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

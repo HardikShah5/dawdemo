@@ -15,6 +15,7 @@ class Constants: NSObject {
     
     //Web Services End Points
     static let LOGIN : String           = "dlogin"
+    static let LATESTNEWS : String           = "last"
     
     
     

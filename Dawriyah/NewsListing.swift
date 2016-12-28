@@ -10,6 +10,7 @@ import UIKit
 
 class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableViewNews: UITableView!
     var dicsNewsData: NSArray!
     var arrayNews = [NSDictionary]()
     
@@ -20,15 +21,16 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.titleView = nil
         self.title = AppUtils.localized("FULL_NEWS", value: "")
         
-        NewsHandler.latestNews("1", PageSize: "5") { (responseObject, success) in
+        NewsHandler.latestNews("1", PageSize: "10") { (responseObject, success) in
             print("Response : \(responseObject)")
             
             let issuccess = responseObject?.value(forKey: "success") as! Bool
-            if(issuccess)
-            {
+            if(issuccess) {
                 let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                self.dicsNewsData = dicsData.value(forKey: "news") as! NSArray
-                print("Response : \(self.dicsNewsData)")
+                self.arrayNews = dicsData.value(forKey: "news") as! [NSDictionary]
+                print("Response : \(self.arrayNews)")
+                
+                self.tableViewNews.reloadData()
             }
         }
     }
@@ -48,7 +50,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dicsNewsData.count;
+        return self.arrayNews.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,9 +58,21 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellNewsListing
         //var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellSignUp
         
+        let dictionary = self.arrayNews[indexPath.row]
+        
+        cell.newsTitle.text = dictionary.value(forKey: "NTitle") as? String
+        cell.newsSubTitle.text = dictionary.value(forKey: "NBody") as? String
+        cell.newsDate.text = dictionary.value(forKey: "NPosteddate") as? String
+        
+        let strImageURL = dictionary.value(forKey: "NImg") as? String
+        let urlImage = URL(string: strImageURL!)
+        cell.imgNews.setImageWith(urlImage!, placeholderImage: UIImage(named: "newslistImg"))
+        
+        /*
         cell.newsTitle.text = "مادلين مطر: لهذا السبب عزُّوا راغب علامة ولم يعزُّوني;"
         cell.newsSubTitle.text = "اختارت الفنانة دنيا باطما أن تؤدي الأغنية المغربية الشهيرة \"ياك أجرحي\" لقيدومة ..."
         cell.newsDate.text = "08/22/2016"
+        */
         
         cell.bgView.layer.cornerRadius = 4.0
         return cell

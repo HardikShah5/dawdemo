@@ -85,7 +85,12 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         //viewVisualBlur.isHidden = true*/
         
         //Either with Tap or Swipe, for removing self
-        btnToHideSelf.frame = CGRect(x: 0, y: 0, width: self.frame.size.width - self.tableViewMenus.frame.size.width, height: (viewCTR.view.window?.frame.size.height)!)
+        if AppUtils.isArabicLayout == true {
+            btnToHideSelf.frame = CGRect(x: 0, y: 0, width: self.frame.size.width - self.tableViewMenus.frame.size.width, height: (viewCTR.view.window?.frame.size.height)!)
+        }else {
+            btnToHideSelf.frame = CGRect(x: self.tableViewMenus.frame.size.width, y: 0, width: self.frame.size.width - self.tableViewMenus.frame.size.width, height: (viewCTR.view.window?.frame.size.height)!)
+        }
+        
         btnToHideSelf.backgroundColor = UIColor.clear
         btnToHideSelf.addTarget(self, action: #selector(SliderMenu.hideSliderMenu), for: UIControlEvents.touchUpInside)
         viewCTR.view.window?.addSubview(btnToHideSelf)

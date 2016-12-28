@@ -14,5 +14,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "MBProgressHUD.h"
 
+#import "UIImageView+AFNetworking.h"
+
 
 #endif /* Dawriyah_Bridging_Header_h */

@@ -11,6 +11,15 @@ import UIKit
 class AnnualReportCell: UITableViewCell {
 
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var lblReportTitle: UILabel!
+    
+    @IBOutlet weak var lblLanguage: UILabel!
+    @IBOutlet weak var lblCountry: UILabel!
+    @IBOutlet weak var lblFreq: UILabel!
+    @IBOutlet weak var lblDatePublish: UILabel!
+    @IBOutlet weak var lblClassification: UILabel!
+    
+    @IBOutlet weak var lblDateHistory: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

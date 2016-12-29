@@ -53,8 +53,15 @@ class AnnualReportList: SuperViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "AnnualReportCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! AnnualReportCell
-        //var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellSignUp
         
+        cell.lblReportTitle.text = "موسوعة اكبر منة شركة سعودية"
+        cell.lblLanguage.text = "عربى"
+        cell.lblCountry.text = "المملكة العربية السعودية"
+        cell.lblClassification.text = "عام"
+        cell.lblFreq.text = "سنوى "
+        
+        cell.lblDatePublish.text = "8/27/2013"
+        cell.lblDateHistory.text = "7/24/2013"
         
         return cell
         

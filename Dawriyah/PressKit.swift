@@ -60,6 +60,8 @@ class PressKit: SuperViewController, UICollectionViewDelegate, UICollectionViewD
             cell.imageViewPost.image = UIImage(named: "SliderImage.png")
         }
         
+        cell.lblTitle.text = "نوددجي نونطاوم ..نيزنبلا_عطاقن_حار ةديدجلا #راعسألل مهضفر ةديدجلا"
+        cell.lblDescription.text = "د أحمد بصفر ينال براءتي اختراع أوروبية عن مركبات بوليمرات لمحاكاة أنسجة جسم الإنسان تساعد في العلاج الإ ..."
         //Layer Properties
         cell.layer.cornerRadius = 3.0
         cell.layer.masksToBounds = true

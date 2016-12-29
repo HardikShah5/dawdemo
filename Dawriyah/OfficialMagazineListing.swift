@@ -23,6 +23,17 @@ class OfficialMagazineListing: SuperViewController, UITableViewDelegate, UITable
         //Title
         self.navigationItem.titleView = nil
         self.title = AppUtils.localized("OFFICAIL_MAGAZINE", value: "")
+        
+        
+        //For RTL - Mehul December 29, 2016
+        if UIView.userInterfaceLayoutDirection(for: btnFilter.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+            
+            btnFilter.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            btnFilter.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10)
+            btnFilter.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 18)
+            
+            lblTotal.textAlignment = .left
+        }
     }
 
     override func didReceiveMemoryWarning() {

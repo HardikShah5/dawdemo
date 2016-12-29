@@ -36,6 +36,19 @@ class Filter: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //MARK: - Set Layout
     func setLayout() -> Void {
+        //For RTL - Mehul December 29, 2016
+        if UIView.userInterfaceLayoutDirection(for: btnCategory.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+            
+            btnCategory.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            btnCategory.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10)
+        
+            btnCountry.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            btnCountry.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10)
+            
+            btnPublisher.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            btnPublisher.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10)
+        }
+        
         //Set Frame
         self.frame = CGRect(x: 0, y: 0, width: (AppUtils.APPDELEGATE().window?.frame.size.width)!, height: (AppUtils.APPDELEGATE().window?.frame.size.height)!)
         

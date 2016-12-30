@@ -567,6 +567,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }else if indexPath.section == 4 {
             //Polls
             cell = tableView.dequeueReusableCell(withIdentifier: "CellVote") as! CellHome
+            
         }else if indexPath.section == 5 {
             //Advertisement
             cell = tableView.dequeueReusableCell(withIdentifier: "CellAd") as! CellHome

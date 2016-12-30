@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sxi-3a-CFb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sxi-3a-CFb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -363,7 +363,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tiS-7c-HU2" id="AGI-Lg-PO3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdE-US-gyV">
@@ -419,7 +419,7 @@
                                         <rect key="frame" x="0.0" y="78" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s35-F5-BXF" id="MDo-B7-Ld9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location" translatesAutoresizingMaskIntoConstraints="NO" id="2TJ-oA-mSN">
@@ -468,7 +468,7 @@
                                         <rect key="frame" x="0.0" y="133" width="375" height="156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="jT8-Lq-rgu" id="Ni4-4M-JVq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="155.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMe-eQ-ov5">
@@ -612,10 +612,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellNews" rowHeight="333" id="aqb-Yc-jXJ" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="333"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="333"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aqb-Yc-jXJ" id="dNW-d1-eSW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="332.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SliderImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzL-9z-MIH">
@@ -701,10 +701,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellHeaderSection" focusStyle="custom" rowHeight="50" id="wSV-NV-Ob0" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="388.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="389" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wSV-NV-Ob0" id="9la-rY-MzO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_latest_news" translatesAutoresizingMaskIntoConstraints="NO" id="rN2-gr-37y">
@@ -739,10 +739,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellHeaderFacebookTwitter" focusStyle="custom" rowHeight="50" id="BgI-Qg-ZnH" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="438.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="439" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BgI-Qg-ZnH" id="Siu-K0-V38">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_twitter" translatesAutoresizingMaskIntoConstraints="NO" id="FK8-r1-xlW">
@@ -799,10 +799,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellClubPlayer" focusStyle="custom" rowHeight="50" id="d57-Qj-enk" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="488.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="489" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d57-Qj-enk" id="hQU-sl-4SO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ett-3R-Bvc">
@@ -839,10 +839,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellCollectionView" id="JYX-XP-hj6" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="538.5" width="414" height="332"/>
+                                        <rect key="frame" x="0.0" y="539" width="414" height="332"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JYX-XP-hj6" id="3Xb-Xl-SBZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="331.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-Y6-vQT">
@@ -978,10 +978,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellVote" rowHeight="40" id="LVi-9u-Hyg" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="870.5" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="871" width="414" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LVi-9u-Hyg" id="F2Q-pq-9Iy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJu-9o-Gsh">
@@ -1010,9 +1010,7 @@
                                                     <rect key="frame" x="196" y="7" width="100" height="25"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                     <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" backgroundImage="vote_opt_nor">
-                                                        <string key="title">Good
-Good</string>
+                                                    <state key="normal" title="Good" backgroundImage="vote_opt_nor">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" backgroundImage="vote_opt_select">
@@ -1051,12 +1049,17 @@ Good</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="btnAcceptable" destination="aCI-jJ-xJ5" id="dcS-aB-UgH"/>
+                                            <outlet property="btnExcellent" destination="99Y-Gk-Uen" id="5mc-cE-xdS"/>
+                                            <outlet property="btnGood" destination="N3z-TB-0hL" id="58S-co-ATG"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellAd" rowHeight="180" id="DCt-T3-Qjx" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="910.5" width="414" height="180"/>
+                                        <rect key="frame" x="0.0" y="911" width="414" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DCt-T3-Qjx" id="5dd-O1-NPy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="179.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advertisement_img" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-J6-J4I">
@@ -1099,10 +1102,10 @@ Good</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellFooter" rowHeight="70" id="RYU-Zc-DBy" customClass="CellHome" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1090.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="1091" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RYU-Zc-DBy" id="CfX-Wk-MI2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmailSubscription" translatesAutoresizingMaskIntoConstraints="NO" id="KpC-Tp-aK8">
@@ -2734,28 +2737,28 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RdQ-5C-tTN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="RK8-fG-Lgk">
-                                    <size key="itemSize" width="375" height="645"/>
+                                    <size key="itemSize" width="375" height="597"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellNewsDetails" id="nQk-Kw-q66" customClass="CellNewsDetail" customModule="Dawriyah" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="281" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yah-2x-9Q5">
-                                                    <rect key="frame" x="5" y="0.0" width="365" height="667"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="281" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="yah-2x-9Q5">
+                                                    <rect key="frame" x="5" y="0.0" width="365" height="596"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellImage" rowHeight="200" id="CHW-qs-C5q" customClass="CellNewsDetailTable" customModule="Dawriyah" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="28" width="365" height="200"/>
+                                                            <rect key="frame" x="0.0" y="1" width="365" height="200"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CHW-qs-C5q" id="Ebs-3K-Gaq">
                                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="200"/>
@@ -2777,7 +2780,7 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                                             </connections>
                                                         </tableViewCell>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellInfo" rowHeight="369" id="Eko-Yd-UVd" customClass="CellNewsDetailTable" customModule="Dawriyah" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="228" width="365" height="369"/>
+                                                            <rect key="frame" x="0.0" y="201" width="365" height="369"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eko-Yd-UVd" id="5mn-vd-HGB">
                                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="369"/>
@@ -2818,7 +2821,7 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                                             </connections>
                                                         </tableViewCell>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellComment" rowHeight="143" id="Glq-zK-qjo" customClass="CellNewsDetailTable" customModule="Dawriyah" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="597" width="365" height="143"/>
+                                                            <rect key="frame" x="0.0" y="570" width="365" height="143"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Glq-zK-qjo" id="bcN-xA-Ns2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="143"/>
@@ -2855,12 +2858,22 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                                             </connections>
                                                         </tableViewCell>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellSignUp" rowHeight="85" id="wWy-uE-M1T" customClass="CellNewsDetailTable" customModule="Dawriyah" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="740" width="365" height="85"/>
+                                                            <rect key="frame" x="0.0" y="713" width="365" height="85"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wWy-uE-M1T" id="kfn-2g-C5Q">
                                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="85"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uh6-Eb-tim">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="1"/>
+                                                                        <color key="backgroundColor" white="1" alpha="0.3042219606164383" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="1" id="8k4-43-ReG"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snV-j5-5ov">
                                                                         <rect key="frame" x="0.0" y="15" width="175" height="40"/>
                                                                         <color key="backgroundColor" red="0.4823529412" green="0.50588235290000005" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2874,17 +2887,21 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstItem="Uh6-Eb-tim" firstAttribute="leading" secondItem="kfn-2g-C5Q" secondAttribute="leading" id="8II-OI-WeJ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Uh6-Eb-tim" secondAttribute="trailing" id="ICN-ke-uqE"/>
                                                                     <constraint firstItem="snV-j5-5ov" firstAttribute="leading" secondItem="kfn-2g-C5Q" secondAttribute="leading" id="Mhf-sX-f1F"/>
+                                                                    <constraint firstItem="Uh6-Eb-tim" firstAttribute="top" secondItem="kfn-2g-C5Q" secondAttribute="top" id="a3b-Rq-0GO"/>
                                                                     <constraint firstAttribute="bottom" secondItem="snV-j5-5ov" secondAttribute="bottom" constant="30" id="flO-lK-72b"/>
                                                                     <constraint firstItem="snV-j5-5ov" firstAttribute="top" secondItem="kfn-2g-C5Q" secondAttribute="top" constant="15" id="wa9-Js-6hm"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <connections>
                                                                 <outlet property="btnSignUp" destination="snV-j5-5ov" id="Wmj-W7-31s"/>
                                                             </connections>
                                                         </tableViewCell>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellPeopleComments" rowHeight="108" id="HZs-Wl-891" customClass="CellNewsDetailTable" customModule="Dawriyah" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="825" width="365" height="108"/>
+                                                            <rect key="frame" x="0.0" y="798" width="365" height="108"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HZs-Wl-891" id="AGH-lz-Ppi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="108"/>
@@ -2929,7 +2946,7 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstItem="326-Q5-XHg" firstAttribute="leading" secondItem="4Hf-gJ-zcr" secondAttribute="trailing" constant="8" id="44B-0t-WbE"/>
                                                                             <constraint firstAttribute="trailing" secondItem="Gj1-vK-Pdj" secondAttribute="trailing" constant="8" id="5eO-WU-O4Q"/>
@@ -2976,7 +2993,7 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                                             <constraint firstAttribute="trailing" secondItem="yah-2x-9Q5" secondAttribute="trailing" constant="5" id="TG2-qn-AWa"/>
                                             <constraint firstItem="yah-2x-9Q5" firstAttribute="leading" secondItem="nQk-Kw-q66" secondAttribute="leading" constant="5" id="hwJ-3d-AOX"/>
                                         </constraints>
-                                        <size key="customSize" width="375" height="667"/>
+                                        <size key="customSize" width="375" height="597"/>
                                         <connections>
                                             <outlet property="tableViewNewsDetails" destination="yah-2x-9Q5" id="Hb4-aQ-usw"/>
                                         </connections>
@@ -2993,7 +3010,7 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                             <constraint firstAttribute="trailing" secondItem="yP4-rI-eu8" secondAttribute="trailing" id="JG1-Y6-0uf"/>
                             <constraint firstItem="eow-8x-RrV" firstAttribute="top" secondItem="RdQ-5C-tTN" secondAttribute="bottom" id="PLj-gP-x1v"/>
                             <constraint firstItem="yP4-rI-eu8" firstAttribute="top" secondItem="2lK-FP-biU" secondAttribute="top" id="nMQ-le-eEP"/>
-                            <constraint firstItem="RdQ-5C-tTN" firstAttribute="top" secondItem="2lK-FP-biU" secondAttribute="top" id="qOf-W9-zOh"/>
+                            <constraint firstItem="RdQ-5C-tTN" firstAttribute="top" secondItem="2lK-FP-biU" secondAttribute="top" constant="70" id="qOf-W9-zOh"/>
                             <constraint firstAttribute="trailing" secondItem="RdQ-5C-tTN" secondAttribute="trailing" id="xDU-xk-8xh"/>
                             <constraint firstItem="yP4-rI-eu8" firstAttribute="leading" secondItem="2lK-FP-biU" secondAttribute="leading" id="xb6-kr-qqY"/>
                             <constraint firstItem="eow-8x-RrV" firstAttribute="top" secondItem="yP4-rI-eu8" secondAttribute="bottom" id="yxf-fq-2QY"/>
@@ -3007,7 +3024,7 @@ The audience and expressed his admiration for Baltvath minimum in order to honor
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kr9-iy-ymR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3260" y="128"/>
+            <point key="canvasLocation" x="-3260" y="127.28635682158921"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="l2s-ry-geN">

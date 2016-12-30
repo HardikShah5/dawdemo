@@ -46,22 +46,28 @@ class CellNewsDetail: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CellImage"
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellNewsDetailTable
+        cell.backgroundColor = UIColor.clear
         
         if indexPath.row == 0 {
             //For Image
         }else if indexPath.row == 1 {
             //News Info
             cell = tableView.dequeueReusableCell(withIdentifier: "CellInfo") as! CellNewsDetailTable
+            cell.backgroundColor = UIColor.white
         }else if indexPath.row == 2 {
             //Comment
             cell = tableView.dequeueReusableCell(withIdentifier: "CellComment") as! CellNewsDetailTable
+            cell.backgroundColor = UIColor.clear
         }else if indexPath.row == 3 {
             //CellSignUp
             cell = tableView.dequeueReusableCell(withIdentifier: "CellSignUp") as! CellNewsDetailTable
+            cell.backgroundColor = UIColor.clear
         }else {
             //CellPeopleComments
             cell = tableView.dequeueReusableCell(withIdentifier: "CellPeopleComments") as! CellNewsDetailTable
+            cell.backgroundColor = UIColor.clear
         }
+        
         
         cell.selectionStyle = .none
         return cell

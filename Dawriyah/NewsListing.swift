@@ -14,12 +14,29 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     var dicsNewsData: NSArray!
     var arrayNews = [NSDictionary]()
     
+    
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Title
         self.navigationItem.titleView = nil
         self.title = AppUtils.localized("LATEST_NEWS", value: "")
+        
+        //Call web service for getting News
+        self.newsWS()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //MARK: - News WS
+    func newsWS() -> Void {
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
         
         NewsHandler.latestNews("1", PageSize: "10") { (responseObject, success) in
             print("Response : \(responseObject)")
@@ -32,19 +49,14 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
                 
                 self.tableViewNews.reloadData()
             }
+            
+            //Stop Loading
+            AppUtils.stopLoading()
         }
     }
     
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     //MARK: - UITableView Delegates
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -75,6 +87,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         */
         
         cell.bgView.layer.cornerRadius = 4.0
+        cell.selectionStyle = .none
         return cell
         
     }

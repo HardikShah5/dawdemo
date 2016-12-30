@@ -34,6 +34,12 @@ class CellHome: UITableViewCell {
     //CellCollectionView
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //CellVote
+    @IBOutlet weak var btnExcellent: UIButton!
+    @IBOutlet weak var btnGood: UIButton!
+    @IBOutlet weak var btnAcceptable: UIButton!
+    
+    
     //Advertisement
     @IBOutlet weak var imageViewAd: UIImageView!
     @IBOutlet weak var btnPreviousAd: UIButton!

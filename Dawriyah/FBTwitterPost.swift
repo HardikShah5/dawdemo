@@ -28,10 +28,10 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         }
         
         //Title View
-        if AppUtils.currentLanguage() == CurrentLanguage.ENGLISH {
-            titleViewForEnglish()
-        }else {
+        if AppUtils.isArabicLayout == true {
             titleViewForArabic()
+        }else {
+            titleViewForEnglish()
         }
     }
 

@@ -99,8 +99,10 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
         
         let cellIdentifier = "CellNewsDetails"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CellNewsDetail
+        cell.backgroundColor = UIColor.clear
         
         //Reload TableView
+        cell.tableViewNewsDetails.backgroundColor = UIColor.clear
         cell.tableViewNewsDetails.reloadData()
         
         return cell

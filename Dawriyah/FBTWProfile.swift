@@ -14,7 +14,12 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var ProfileTitle: UILabel!
     @IBOutlet weak var ProfileImage: UIImageView!
     
+    public var WritterId: Int = 31
     var isForTwitter: Bool = false
+    var arrayOfWSData = [NSDictionary]()
+    let PageCount = 1
+    let IsMoreRecordsAvailbale = true;
+
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -42,6 +47,7 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
             lblTitle.text = AppUtils.localized("TWITTER_TWEETS", value: "")
         }else {
             lblTitle.text = AppUtils.localized("FACEBOOK_POSTS", value: "")
+            GetFacebookWritter();
         }
         lblTitle.sizeToFit()
         
@@ -68,20 +74,45 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-
+    func GetFacebookWritter() -> Void{
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
+        
+        FBTwitterHandler.GetFacebookWriterPost(String(WritterId), CurrentPage: String(PageCount), PageSize: "10")
+        { (responseObject, success) in
+            print("Response : \(responseObject)")
+            
+            if(success){
+                let issuccess = responseObject?.value(forKey: "success") as! Bool
+                if issuccess{
+                    let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    print("Response : \(self.arrayOfWSData)")
+                    
+                    self.tblComment.reloadData()
+                    
+                }
+            }
+            //Stop Loading
+            AppUtils.stopLoading()
+        }
+        
+    }
     
     //MARK: - UITableView Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return self.arrayOfWSData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CellComments"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellComments
         
-        cell.lblComment.text = "ودي اني قدرت ارد على الجميع ولكن محبتكم كبيرة و كثيرة علي الحمدلله الذي تصبحون "
+        let dictionary = self.arrayOfWSData[indexPath.row]
+        
+        cell.lblComment.text = dictionary.value(forKey: "message") as? String
         cell.lblDate.text = "04:10:00 16/09/2016"
         
         return cell

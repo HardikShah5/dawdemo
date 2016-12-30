@@ -17,6 +17,11 @@ class Constants: NSObject {
     static let LOGIN : String           = "dlogin"
     static let LATESTNEWS : String           = "last"
     
+    static let TWITTER : String           = "twitter"
+    static let TWITTERWRITER : String           = "twitternews"
+    static let FACEBOOK : String           = "facebook"
+    static let FACEBOOKWRITER : String           = "facebooknews"
+    
     
     
     //Static Value to Comonly Use

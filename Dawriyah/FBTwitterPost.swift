@@ -13,6 +13,10 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var collectionViewTwitter: UICollectionView!
     
     var isForTwitter: Bool = false
+
+    var arrayOfWSData = [NSDictionary]()
+    let PageCount = 1
+    let IsMoreRecordsAvailbale = true;
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -33,11 +37,65 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         }else {
             titleViewForEnglish()
         }
+        
+        if isForTwitter == true {
+            GetTwitter()
+        }else {
+            GetFacebook()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func GetTwitter() -> Void{
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
+        
+        FBTwitterHandler.GetTwittsData(String(PageCount), PageSize: "10") { (responseObject, success) in
+            print("Response : \(responseObject)")
+            
+            if(success){
+                let issuccess = responseObject?.value(forKey: "success") as! Bool
+                if issuccess{
+                    let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
+                    print("Response : \(self.arrayOfWSData)")
+                    
+                    self.collectionViewTwitter.reloadData()
+
+                }
+            }
+            //Stop Loading
+            AppUtils.stopLoading()
+        }
+        
+    }
+    
+    func GetFacebook() -> Void{
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
+        
+        FBTwitterHandler.GetFacebookData(String(PageCount), PageSize: "10") { (responseObject, success) in
+            print("Response : \(responseObject)")
+            
+            if(success){
+                let issuccess = responseObject?.value(forKey: "success") as! Bool
+                if issuccess{
+                    let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
+                    print("Response : \(self.arrayOfWSData)")
+                    
+                    self.collectionViewTwitter.reloadData()
+                    
+                }
+            }
+            //Stop Loading
+            AppUtils.stopLoading()
+        }
+        
     }
     
     func titleViewForEnglish() -> Void {
@@ -131,7 +189,7 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30;
+        return arrayOfWSData.count;
     }
     
     /*func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -154,15 +212,23 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         let cellIdentifier = "FBTwitterPostCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FBTwitterPostCell
         
-        cell.lblTitle.text = "منى أبوسليمان"
-        cell.lblSubTitle.text = "ودي اني قدرت ارد على الجميع ولكن محبتكم كبيرة و كثيرة علي الحمدلله الذي تصبحون على خير أظهر الحسن و ستر القبيح فينا"
-        cell.lblDate.text = " م 04:10:00 16/09/2016"
+        let dictionary = self.arrayOfWSData[indexPath.row]
+        
+        cell.lblTitle.text = dictionary.value(forKey: "Name") as? String
+        cell.lblSubTitle.text = "" // "ودي اني قدرت ارد على الجميع ولكن محبتكم كبيرة و كثيرة علي الحمدلله الذي تصبحون على خير أظهر الحسن و ستر القبيح فينا"
+        cell.lblDate.text = "" // " م 04:10:00 16/09/2016"
+        
+        
+        let strImageURL = dictionary.value(forKey: "Img") as? String
+        let urlImage = URL(string: strImageURL!)
+        cell.image.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var detailVC: UIViewController!
+        var detailVC: FBTWProfile!
         
         if isForTwitter == true {
             detailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.TWITTER_DETAILS) as! FBTWProfile
@@ -170,6 +236,7 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
             detailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.FACEBOOK_DETAILS) as! FBTWProfile
         }
         
+        //detailVC.WritterId = (self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

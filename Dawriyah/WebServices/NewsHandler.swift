@@ -33,12 +33,6 @@ class NewsHandler: WebServiceHandler {
             completion!(error as AnyObject?, false)
         })
         
-//        manager.post(strWebServiceURL, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
-//            completion!(responseObject as AnyObject?, true)
-//        }) { (responseObject: Any, error: Error) in
-//            
-//            completion!(error as AnyObject?, false)
-//        }
     }
 
     

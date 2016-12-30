@@ -11,9 +11,10 @@ import UIKit
 class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableViewNews: UITableView!
-    var dicsNewsData: NSArray!
-    var arrayNews = [NSDictionary]()
     
+    var arrayNews = [NSDictionary]()
+    let PageCount = 0
+    let IsMoreRecordsAvailbale = true;
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -22,6 +23,9 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         //Title
         self.navigationItem.titleView = nil
         self.title = AppUtils.localized("LATEST_NEWS", value: "")
+        
+        tableViewNews.estimatedRowHeight = 110
+        tableViewNews.rowHeight = UITableViewAutomaticDimension
         
         //Call web service for getting News
         self.newsWS()
@@ -38,9 +42,9 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
-        NewsHandler.latestNews("1", PageSize: "10") { (responseObject, success) in
+        NewsHandler.latestNews(String(PageCount), PageSize: "10") { (responseObject, success) in
             print("Response : \(responseObject)")
-            
+            if(success){
             let issuccess = responseObject?.value(forKey: "success") as! Bool
             if(issuccess) {
                 let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
@@ -49,7 +53,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
                 
                 self.tableViewNews.reloadData()
             }
-            
+            }
             //Stop Loading
             AppUtils.stopLoading()
         }
@@ -78,7 +82,7 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         
         let strImageURL = dictionary.value(forKey: "NImg") as? String
         let urlImage = URL(string: strImageURL!)
-        cell.imgNews.setImageWith(urlImage!, placeholderImage: UIImage(named: "newslistImg"))
+        cell.imgNews.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
         
         /*
         cell.newsTitle.text = "مادلين مطر: لهذا السبب عزُّوا راغب علامة ولم يعزُّوني;"

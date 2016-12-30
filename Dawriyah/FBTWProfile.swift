@@ -14,7 +14,7 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var ProfileTitle: UILabel!
     @IBOutlet weak var ProfileImage: UIImageView!
     
-    public var WritterId: Int = 31
+    var WritterId: Int = 31
     var isForTwitter: Bool = false
     var arrayOfWSData = [NSDictionary]()
     let PageCount = 1
@@ -25,6 +25,31 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //Title View
+        if AppUtils.isArabicLayout == true {
+            titleViewForArabic()
+        }else {
+            titleViewForEnglish()
+        }
+        
+        if isForTwitter == true {
+            GetTwitterWritter()
+        }else {
+            GetFacebookWritter();
+        }
+        
+        tblComment.estimatedRowHeight = 68
+        tblComment.rowHeight = UITableViewAutomaticDimension
+        
+        ProfileTitle.text = "منى أبوسليمان"
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func titleViewForEnglish() -> Void {
         let viewTitle = UIView()
         viewTitle.backgroundColor = UIColor.clear
         
@@ -47,7 +72,6 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
             lblTitle.text = AppUtils.localized("TWITTER_TWEETS", value: "")
         }else {
             lblTitle.text = AppUtils.localized("FACEBOOK_POSTS", value: "")
-            GetFacebookWritter();
         }
         lblTitle.sizeToFit()
         
@@ -62,23 +86,77 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         viewTitle.translatesAutoresizingMaskIntoConstraints = true
         
         self.navigationItem.titleView = viewTitle
-        
-        tblComment.estimatedRowHeight = 68
-        tblComment.rowHeight = UITableViewAutomaticDimension
-        
-        ProfileTitle.text = "منى أبوسليمان"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    func titleViewForArabic() -> Void {
+        let viewTitle = UIView()
+        viewTitle.backgroundColor = UIColor.clear
+        
+        let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+        lblTitle.textAlignment = .left
+        lblTitle.textColor = UIColor.white
+        lblTitle.font = UIFont(name: "HelveticaNeue", size: 17.0)
+        
+        if isForTwitter == true {
+            lblTitle.text = AppUtils.localized("TWITTER_TWEETS", value: "")
+        }else {
+            lblTitle.text = AppUtils.localized("FACEBOOK_POSTS", value: "")
+        }
+        lblTitle.sizeToFit()
+        
+        var rect = lblTitle.frame
+        rect.size.height = 44
+        lblTitle.frame = rect
+        
+        viewTitle.addSubview(lblTitle)
+        lblTitle.translatesAutoresizingMaskIntoConstraints = true
+        
+        
+        let imageView = UIImageView(frame: CGRect(x: lblTitle.frame.size.width, y: 7, width: 30, height: 30))
+        if isForTwitter == true {
+            imageView.image = UIImage(named: "icn_twitter")?.withRenderingMode(.alwaysOriginal)
+        }else {
+            imageView.image = UIImage(named: "icn_facebook")?.withRenderingMode(.alwaysOriginal)
+        }
+        imageView.contentMode = .center
+        viewTitle.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        
+        viewTitle.frame = CGRect(x: 0, y: 0, width: 30 + lblTitle.frame.size.width, height: 44)
+        viewTitle.translatesAutoresizingMaskIntoConstraints = true
+        
+        self.navigationItem.titleView = viewTitle
+    }
     func GetFacebookWritter() -> Void{
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
         FBTwitterHandler.GetFacebookWriterPost(String(WritterId), CurrentPage: String(PageCount), PageSize: "10")
+        { (responseObject, success) in
+            print("Response : \(responseObject)")
+            
+            if(success){
+                let issuccess = responseObject?.value(forKey: "success") as! Bool
+                if issuccess{
+                    let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    print("Response : \(self.arrayOfWSData)")
+                    
+                    self.tblComment.reloadData()
+                    
+                }
+            }
+            //Stop Loading
+            AppUtils.stopLoading()
+        }
+        
+    }
+    
+    func GetTwitterWritter() -> Void{
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
+        
+        FBTwitterHandler.GetTwitterWriterPost(String(WritterId), CurrentPage: String(PageCount), PageSize: "10")
         { (responseObject, success) in
             print("Response : \(responseObject)")
             

@@ -236,6 +236,7 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
             detailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.FACEBOOK_DETAILS) as! FBTWProfile
         }
         
+        detailVC.isForTwitter = self.isForTwitter;
         //detailVC.WritterId = (self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

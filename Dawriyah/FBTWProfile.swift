@@ -193,6 +193,7 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         cell.lblComment.text = dictionary.value(forKey: "message") as? String
         cell.lblDate.text = dictionary.value(forKey: "created_time") as? String
         
+        cell.selectionStyle = .none
         return cell
     }
     

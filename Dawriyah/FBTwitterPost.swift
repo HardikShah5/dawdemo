@@ -15,7 +15,7 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
     var isForTwitter: Bool = false
 
     var arrayOfWSData = [NSDictionary]()
-    let PageCount = 1
+    var PageCount = 1
     let IsMoreRecordsAvailbale = true;
     
     //MARK: - View Life Cycle
@@ -61,8 +61,14 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                    self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
+                    
+                    if self.arrayOfWSData.count <= 0 {
+                        self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
+                    }else {
+                        self.arrayOfWSData.append(contentsOf: dicsData.value(forKey: "writers") as! [NSDictionary])
+                    }
                     print("Response : \(self.arrayOfWSData)")
+                    
                     
                     self.collectionViewTwitter.reloadData()
 
@@ -223,11 +229,22 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         let urlImage = URL(string: strImageURL!)
         cell.image.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
         
+        if indexPath.row == self.arrayOfWSData.count - 1 {
+            PageCount = PageCount + 1
+            self.GetTwitter()
+        }
+        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //For selection Color
+        //let cell = self.collectionViewTwitter.cellForItem(at: indexPath) as! FBTwitterPostCell
+        //cell.backgroundColor = UIColor.lightGray
+        
+        
+        //Navigation
         var detailVC: FBTWProfile!
         
         if isForTwitter == true {
@@ -238,9 +255,13 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         
         detailVC.isForTwitter = self.isForTwitter;
         print(self.arrayOfWSData)
-        var dictionary = self.arrayOfWSData[indexPath.row]
-        print("dic: ", dictionary["ID"] as! NSNumber)
-        detailVC.WritterId =  (dictionary.value(forKey: "ID") as? Int)! //(self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
+        let dictionary = self.arrayOfWSData[indexPath.row]
+        print("dic: ", dictionary["ID"] as! String)
+        //detailVC.WritterId =  (dictionary.value(forKey: "ID") as? Int)! //(self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
+        
+        print(Int(dictionary["ID"] as! String)!)
+        detailVC.WritterId =  Int(dictionary["ID"] as! String)!
+        
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

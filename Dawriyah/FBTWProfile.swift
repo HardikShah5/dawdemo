@@ -191,7 +191,7 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         let dictionary = self.arrayOfWSData[indexPath.row]
         
         cell.lblComment.text = dictionary.value(forKey: "message") as? String
-        cell.lblDate.text = "04:10:00 16/09/2016"
+        cell.lblDate.text = dictionary.value(forKey: "created_time") as? String
         
         return cell
     }

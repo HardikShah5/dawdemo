@@ -237,7 +237,10 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         }
         
         detailVC.isForTwitter = self.isForTwitter;
-        //detailVC.WritterId = (self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
+        print(self.arrayOfWSData)
+        var dictionary = self.arrayOfWSData[indexPath.row]
+        print("dic: ", dictionary["ID"] as! NSNumber)
+        detailVC.WritterId =  (dictionary.value(forKey: "ID") as? Int)! //(self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

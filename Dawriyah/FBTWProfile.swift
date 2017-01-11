@@ -14,12 +14,13 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var ProfileTitle: UILabel!
     @IBOutlet weak var ProfileImage: UIImageView!
     
-    var WritterId: Int = 31
+    //var WritterId: Int = 31
     var isForTwitter: Bool = false
     var arrayOfWSData = [NSDictionary]()
-    let PageCount = 1
-    let IsMoreRecordsAvailbale = true;
-
+    var PageCount = 1
+    var IsMoreRecordsAvailbale = true
+    var dicsOfSelectedData = [NSDictionary]()
+    var PageSize = Constants.ItemsPerPage
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -42,7 +43,15 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         tblComment.estimatedRowHeight = 68
         tblComment.rowHeight = UITableViewAutomaticDimension
         
-        ProfileTitle.text = "منى أبوسليمان"
+        ProfileTitle.text = dicsOfSelectedData[0].value(forKey: "Name") as? String
+        
+        let strImageURL = dicsOfSelectedData[0].value(forKey: "Img") as? String
+        if (strImageURL != nil) {
+            let urlImage = URL(string: strImageURL!)
+            self.ProfileImage.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+        }
+        
+        self.ProfileImage.layer.cornerRadius = Constants.CornerRaius;
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,7 +140,7 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
-        FBTwitterHandler.GetFacebookWriterPost(String(WritterId), CurrentPage: String(PageCount), PageSize: "10")
+        FBTwitterHandler.GetFacebookWriterPost(dicsOfSelectedData[0].value(forKey: "ID") as! String, CurrentPage: String(PageCount), PageSize: String(PageSize))
         { (responseObject, success) in
             print("Response : \(responseObject)")
             
@@ -139,7 +148,15 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                    self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
+                        self.IsMoreRecordsAvailbale = false
+                    }
+                    //                    self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    if self.arrayOfWSData.count <= 0 {
+                        self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    }else {
+                        self.arrayOfWSData.append(contentsOf: dicsData.value(forKey: "news") as! [NSDictionary])
+                    }
                     print("Response : \(self.arrayOfWSData)")
                     
                     self.tblComment.reloadData()
@@ -156,7 +173,7 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
-        FBTwitterHandler.GetTwitterWriterPost(String(WritterId), CurrentPage: String(PageCount), PageSize: "10")
+        FBTwitterHandler.GetTwitterWriterPost(dicsOfSelectedData[0].value(forKey: "ID") as! String, CurrentPage: String(PageCount), PageSize: String(PageSize))
         { (responseObject, success) in
             print("Response : \(responseObject)")
             
@@ -164,7 +181,15 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                    self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
+                        self.IsMoreRecordsAvailbale = false
+                    }
+//                    self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    if self.arrayOfWSData.count <= 0 {
+                        self.arrayOfWSData = dicsData.value(forKey: "news") as! [NSDictionary]
+                    }else {
+                        self.arrayOfWSData.append(contentsOf: dicsData.value(forKey: "news") as! [NSDictionary])
+                    }
                     print("Response : \(self.arrayOfWSData)")
                     
                     self.tblComment.reloadData()
@@ -194,6 +219,17 @@ class FBTWProfile: SuperViewController, UITableViewDataSource, UITableViewDelega
         cell.lblDate.text = dictionary.value(forKey: "created_time") as? String
         
         cell.selectionStyle = .none
+        
+        if indexPath.row == self.arrayOfWSData.count - 1 && self.IsMoreRecordsAvailbale {
+            PageCount = PageCount + 1
+            if (self.isForTwitter){
+                self.GetTwitterWritter()
+            }
+            else{
+                self.GetFacebookWritter()
+            }
+        }
+        
         return cell
     }
     

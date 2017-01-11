@@ -16,7 +16,9 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
 
     var arrayOfWSData = [NSDictionary]()
     var PageCount = 1
-    let IsMoreRecordsAvailbale = true;
+    var PageSize = Constants.ItemsPerPage
+    
+    var IsMoreRecordsAvailbale = true;
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -54,14 +56,16 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
-        FBTwitterHandler.GetTwittsData(String(PageCount), PageSize: "10") { (responseObject, success) in
+        FBTwitterHandler.GetTwittsData(String(PageCount), PageSize: String(PageSize)) { (responseObject, success) in
             print("Response : \(responseObject)")
             
             if(success){
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                    
+                    if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
+                        self.IsMoreRecordsAvailbale = false
+                    }
                     if self.arrayOfWSData.count <= 0 {
                         self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
                     }else {
@@ -84,15 +88,24 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
-        FBTwitterHandler.GetFacebookData(String(PageCount), PageSize: "10") { (responseObject, success) in
+        FBTwitterHandler.GetFacebookData(String(PageCount), PageSize: String(PageSize)) { (responseObject, success) in
             print("Response : \(responseObject)")
             
             if(success){
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                    self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
-                    print("Response : \(self.arrayOfWSData)")
+                    if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
+                        self.IsMoreRecordsAvailbale = false
+                    }
+                    
+                    //self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
+                    if self.arrayOfWSData.count <= 0 {
+                        self.arrayOfWSData = dicsData.value(forKey: "writers") as! [NSDictionary]
+                    }else {
+                        self.arrayOfWSData.append(contentsOf: dicsData.value(forKey: "writers") as! [NSDictionary])
+                    }
+                    //print("Response : \(self.arrayOfWSData)")
                     
                     self.collectionViewTwitter.reloadData()
                     
@@ -219,19 +232,25 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FBTwitterPostCell
         
         let dictionary = self.arrayOfWSData[indexPath.row]
-        
         cell.lblTitle.text = dictionary.value(forKey: "Name") as? String
         cell.lblSubTitle.text = "" // "ودي اني قدرت ارد على الجميع ولكن محبتكم كبيرة و كثيرة علي الحمدلله الذي تصبحون على خير أظهر الحسن و ستر القبيح فينا"
         cell.lblDate.text = "" // " م 04:10:00 16/09/2016"
         
         
         let strImageURL = dictionary.value(forKey: "Img") as? String
-        let urlImage = URL(string: strImageURL!)
-        cell.image.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+        if (strImageURL != nil) {
+            let urlImage = URL(string: strImageURL!)
+            cell.image.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+        }
         
-        if indexPath.row == self.arrayOfWSData.count - 1 {
+        if indexPath.row == self.arrayOfWSData.count - 1 && self.IsMoreRecordsAvailbale {
             PageCount = PageCount + 1
-            self.GetTwitter()
+            if (self.isForTwitter){
+                self.GetTwitter()
+            }
+            else{
+                self.GetFacebook()
+            }
         }
         
         
@@ -254,14 +273,14 @@ class FBTwitterPost: SuperViewController, UICollectionViewDataSource, UICollecti
         }
         
         detailVC.isForTwitter = self.isForTwitter;
-        print(self.arrayOfWSData)
+        //print("Data1: ",self.arrayOfWSData)
         let dictionary = self.arrayOfWSData[indexPath.row]
         print("dic: ", dictionary["ID"] as! String)
         //detailVC.WritterId =  (dictionary.value(forKey: "ID") as? Int)! //(self.arrayOfWSData[indexPath.row].value(forKey: "ID") as? Int)!
         
         print(Int(dictionary["ID"] as! String)!)
-        detailVC.WritterId =  Int(dictionary["ID"] as! String)!
-        
+        //detailVC.WritterId =  Int(dictionary["ID"] as! String)!
+        detailVC.dicsOfSelectedData = [self.arrayOfWSData[indexPath.row]];
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

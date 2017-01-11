@@ -26,6 +26,7 @@ class Constants: NSObject {
     
     //Static Value to Comonly Use
     static let CornerRaius:CGFloat = 5.0;
+    static let ItemsPerPage:Int = 10;
     
     //Colors
     struct Color {

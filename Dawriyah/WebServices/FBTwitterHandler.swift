@@ -10,7 +10,7 @@ import UIKit
 
 class FBTwitterHandler: WebServiceHandler {
     
-    //Mark Twitt Call
+    //MARK: -  Twitt Call
     static func GetTwittsData(_ CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?){
         
         let manager:AFHTTPRequestOperationManager! = getRequestManager()
@@ -31,7 +31,7 @@ class FBTwitterHandler: WebServiceHandler {
         
     }
     
-    //Mark Facebook Call
+    //MARK: -  Facebook Call
     static func GetFacebookData(_ CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?){
         
         let manager:AFHTTPRequestOperationManager! = getRequestManager()
@@ -52,7 +52,7 @@ class FBTwitterHandler: WebServiceHandler {
         
     }
     
-    //Mark Facebook Writer Post Call
+    //MARK: -  Facebook Writer Post Call
     static func GetFacebookWriterPost(_ WriterId: String!, CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?){
         
         let manager:AFHTTPRequestOperationManager! = getRequestManager()
@@ -74,7 +74,7 @@ class FBTwitterHandler: WebServiceHandler {
         
     }
     
-    //Mark Twitter Writer Twitts Call
+    //MARK: - Twitter Writer Twitts Call
     static func GetTwitterWriterPost(_ WriterId: String!, CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?){
         
         let manager:AFHTTPRequestOperationManager! = getRequestManager()
@@ -93,6 +93,8 @@ class FBTwitterHandler: WebServiceHandler {
         }, failure: { (responseObject: Any, error: Error) in
             completion!(error as AnyObject?, false)
         })
-        
     }
+    
+    
+    
 }

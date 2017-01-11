@@ -14,14 +14,18 @@ class Constants: NSObject {
     static let WEBSERVICE_URL : String = "http://dawriyah.com/newsservices.aspx?cmd="
     
     //Web Services End Points
-    static let LOGIN : String           = "dlogin"
-    static let LATESTNEWS : String           = "last"
+    static let LOGIN : String               = "dlogin"
+    static let LATESTNEWS : String          = "last"
     
-    static let TWITTER : String           = "twitter"
-    static let TWITTERWRITER : String           = "twitternews"
-    static let FACEBOOK : String           = "facebook"
-    static let FACEBOOKWRITER : String           = "facebooknews"
+    static let TWITTER : String             = "twitter"
+    static let TWITTERWRITER : String       = "twitternews"
+    static let FACEBOOK : String            = "facebook"
+    static let FACEBOOKWRITER : String      = "facebooknews"
     
+    //Home Screen
+    static let LATEST_TWEETS: String        = "homelasttweets"
+    static let LATEST_FACEBOOK_POST: String = "homelastfacebookposts"
+    static let LATEST_ADS: String           = "ads"
     
     
     //Static Value to Comonly Use

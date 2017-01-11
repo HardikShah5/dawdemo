@@ -71,6 +71,7 @@
 		0E8E6FF41E0389E900E6EEFA /* Filter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E6FF31E0389E900E6EEFA /* Filter.xib */; };
 		0E8E6FF71E0389FF00E6EEFA /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E6FF61E0389FF00E6EEFA /* Filter.swift */; };
 		0E96AC581E00921300A85F78 /* PressKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E96AC571E00921300A85F78 /* PressKit.swift */; };
+		0E98F0761E20342500E03B2F /* HomeScreenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */; };
 		C7153CAA1DEE79E2004F0CCE /* FBTwitterPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7153CA91DEE79E2004F0CCE /* FBTwitterPost.swift */; };
 		C7153CAC1DEE7DEA004F0CCE /* FBTwitterPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7153CAB1DEE7DEA004F0CCE /* FBTwitterPostCell.swift */; };
 		C7153CAE1DEE7E98004F0CCE /* social_stripe_avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7153CAD1DEE7E98004F0CCE /* social_stripe_avatar@3x.png */; };
@@ -210,6 +211,7 @@
 		0E8E6FF31E0389E900E6EEFA /* Filter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Filter.xib; sourceTree = "<group>"; };
 		0E8E6FF61E0389FF00E6EEFA /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0E96AC571E00921300A85F78 /* PressKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressKit.swift; sourceTree = "<group>"; };
+		0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenHandler.swift; sourceTree = "<group>"; };
 		C7153CA91DEE79E2004F0CCE /* FBTwitterPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterPost.swift; sourceTree = "<group>"; };
 		C7153CAB1DEE7DEA004F0CCE /* FBTwitterPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterPostCell.swift; sourceTree = "<group>"; };
 		C7153CAD1DEE7E98004F0CCE /* social_stripe_avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social_stripe_avatar@3x.png"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				0E2811991DFDE0D400E906E8 /* WebServiceHandler.swift */,
 				C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */,
 				C7D6C59B1E1652A5003AD423 /* FBTwitterHandler.swift */,
+				0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				0E8E6FEF1E03799000E6EEFA /* ViewNewsComment.swift in Sources */,
 				0E00304E1E0080D700F65678 /* CellNewsDetail.swift in Sources */,
 				0E2811CE1DFDE11800E906E8 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0E98F0761E20342500E03B2F /* HomeScreenHandler.swift in Sources */,
 				0E2811DB1DFDE11800E906E8 /* MBProgressHUD.m in Sources */,
 				0E7D5A881E04E1D400B1CF28 /* CellNewsDetailTable.swift in Sources */,
 				0E2811D51DFDE11800E906E8 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

@@ -15,6 +15,6 @@
 #import "MBProgressHUD.h"
 
 #import "UIImageView+AFNetworking.h"
-
+#import "UIButton+AFNetworking.h"
 
 #endif /* Dawriyah_Bridging_Header_h */

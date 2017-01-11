@@ -42,6 +42,7 @@ class CellHome: UITableViewCell {
     
     //Advertisement
     @IBOutlet weak var imageViewAd: UIImageView!
+    @IBOutlet weak var scrollViewAds: UIScrollView!
     @IBOutlet weak var btnPreviousAd: UIButton!
     @IBOutlet weak var btnNextAd: UIButton!
     

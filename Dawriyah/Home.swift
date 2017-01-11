@@ -33,6 +33,11 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
 //    @IBOutlet weak var lblNewsSubTitle: UILabel!
     
+    var arrayTweets = [NSDictionary]()
+    var arrayFacebookPosts = [NSDictionary]()
+    var arrayTwitterFacebook = [NSDictionary]()
+    var arrayAds = [NSDictionary]()
+    
     var viewTopRatedNews: CollectionViewCustom! = nil
     var viewMostPopularNews: CollectionViewCustom! = nil
     var viewElectronicPress: CollectionViewCustom! = nil
@@ -48,6 +53,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     var viewBottomLineClubsPlayers: UIView!
     
     var indexForClubsPlayers: Int! = CLUBS
+    var indexSelectedTopOption: Int! = HIGHLIGHTS
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -110,6 +116,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         self.view.addGestureRecognizer(swipeTopRatedNews)
         
         //self.tableViewHome.backgroundColor = UIColor.yellow
+        
+        //Get Facebook and Twitter POSTs
+        self.getTwitterPosts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -219,6 +228,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     //MARK: - Top Option
     func btnTopOptionClicked(sender: UIButton) -> Void {
         print("Tag : \(sender.tag)")
+        
+        //If same option selected TWICE, we don't need to appear it again and again
+        if indexSelectedTopOption == sender.tag {
+            return
+        }
+        indexSelectedTopOption = sender.tag
         
         //Change frame of Bottom Line
         UIView.animate(withDuration: 0.2, animations: {
@@ -470,6 +485,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }else if indexPath.section == 1 {
             return 230
         }else if indexPath.section == 2 {
+            //Twitter & Facebook
             return 230
         }else if indexPath.section == 3 {
             let size: CGFloat = (tableView.frame.size.width - 36) / 3
@@ -571,6 +587,30 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }else if indexPath.section == 5 {
             //Advertisement
             cell = tableView.dequeueReusableCell(withIdentifier: "CellAd") as! CellHome
+            
+            var xOrigin: CGFloat = 0.0
+            let width = UIScreen.main.bounds.size.width
+            for dict in arrayAds {
+                //let btnAd = UIButton(frame:  CGRect(x: xOrigin, y: 0, width: width, height: cell.scrollViewAds.frame.size.height))
+                let imageViewAd = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: width, height: cell.scrollViewAds.frame.size.height))
+                
+                //btnAd.imageView?.contentMode = .scaleAspectFill
+                //btnAd.imageView?.clipsToBounds = true
+                
+                let strURL = dict.value(forKey: "image") as! String
+                let url = URL(string: strURL)
+                imageViewAd.setImageWith(url!)
+                //btnAd.setImageFor(.normal, with: url!)
+                //btnAd.setBackgroundImageFor(.normal, with: url!)
+                
+                imageViewAd.contentMode = .scaleAspectFill
+                imageViewAd.clipsToBounds = true
+                
+                cell.scrollViewAds.addSubview(imageViewAd)
+                
+                xOrigin = xOrigin + width
+            }
+            cell.scrollViewAds.contentSize = CGSize(width: xOrigin, height: cell.scrollViewAds.frame.size.height)
         }
         
         cell.selectionStyle = . none
@@ -604,7 +644,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }else if collectionView.tag == MOST_READ_ARTICLES {
             return 6
         }else if collectionView.tag == FACEBOOK_TWITTER {
-            return 6
+            return arrayTwitterFacebook.count
         }else if collectionView.tag == CLUB_PLAYER {
             return 18
         }
@@ -664,6 +704,19 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
             
+            let dict = self.arrayTwitterFacebook[indexPath.row]
+            
+            //Image
+            let strURL = dict.value(forKey: "profile_pic") as! String
+            let url = URL(string: strURL)
+            cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "ProfilePic"))
+            
+            //Data
+            cell.lblTitle.text = dict.value(forKey: "profile_name") as? String
+            cell.lblDescription.text = dict.value(forKey: "message") as? String
+            cell.lblDate.text = dict.value(forKey: "created_time") as? String
+            
+            /*
             //For few different images - Temporary Logic
             if indexPath.row % 3 == 0 {
                 cell.imageViewPost.image = UIImage(named: "news_stripe_img.png")
@@ -675,6 +728,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             
             cell.lblTitle.text = AppUtils.localized("Title", value: "")
             cell.lblDescription.text = AppUtils.localized("SubTitle", value: "")
+            */
             
             return cell
         }else if collectionView.tag == CLUB_PLAYER {
@@ -728,5 +782,85 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             rect.origin.x = sender.frame.origin.x
             self.viewBottomLineClubsPlayers.frame = rect
         })
+    }
+    
+    
+    
+    
+    //MARK: - Web Services
+    //MARK: - Twitter
+    func getTwitterPosts() -> Void {
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
+        
+        HomeScreenHandler.getLatestTweets { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayTweets.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Get Facebook Posts
+            self.getFacebookPosts()
+        }
+    }
+    
+    //MARK: - Facebook
+    func getFacebookPosts() -> Void {
+        
+        HomeScreenHandler.getLatestFacebookPosts { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayFacebookPosts.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Arrange Twitter and Facebook Response
+            self.arrangeTwitterAndFacebookData()
+        }
+    }
+    
+    func arrangeTwitterAndFacebookData() -> Void {
+        var totalData: Int = self.arrayTweets.count + self.arrayFacebookPosts.count
+        totalData = (totalData - 1) / 2
+        
+        for i in 0...totalData {
+            
+            arrayTwitterFacebook.append(self.arrayTweets[i])
+            arrayTwitterFacebook.append(self.arrayFacebookPosts[i])
+            
+            /*
+            if i % 2 == 0 {
+                //Twitter
+                arrayTwitterFacebook.append(self.arrayTweets[i])
+            }else {
+                //Facebook
+                let index = i - 1
+                arrayTwitterFacebook.append(self.arrayFacebookPosts[index])
+            }*/
+        }
+        
+        //Relaod Content
+        if arrayTwitterFacebook.count > 0 {
+            self.tableViewHome.reloadData()
+        }
+        
+        //Stop Loading
+        AppUtils.stopLoading()
+        
+        
+        //Get Ads
+        self.loadAds()
+    }
+    
+    
+    //MARK: - Ads
+    func loadAds() -> Void {
+        HomeScreenHandler.getAds { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayAds.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Relaod Content
+            if self.arrayAds.count > 0 {
+                self.tableViewHome.reloadData()
+            }
+        }
     }
 }

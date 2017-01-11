@@ -10,8 +10,17 @@ import UIKit
 
 class CellSignUp: UITableViewCell {
     
+    //CellHeader
+    @IBOutlet weak var btnParties: UIButton!
+    @IBOutlet weak var btnNewUser: UIButton!
+    
+    @IBOutlet weak var lblNewUserSelected: UILabel!
+    @IBOutlet weak var lblPartiesSelected: UILabel!
+    
+    
     @IBOutlet weak var imageViewIcon: UIImageView!
     @IBOutlet weak var txtValue: UITextField!
+    @IBOutlet weak var constraintLeading_TextField: NSLayoutConstraint!
     
     //Verification Code
     @IBOutlet weak var lblVerificationCode: UILabel!

@@ -49,38 +49,6 @@
             endingLineNumber = "87"
             landmarkName = "GetFacebook()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dawriyah.FBTwitterPost.GetFacebook () -&gt; ()"
-                  moduleName = "Dawriyah"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "505428198.059532"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "87"
-                  endingLineNumber = "87"
-                  offsetFromSymbolStart = "159">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dawriyah.FBTwitterPost.(GetFacebook () -&gt; ()).(closure #1)"
-                  moduleName = "Dawriyah"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "505428198.061154"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -97,6 +65,38 @@
             endingLineNumber = "90"
             landmarkName = "GetFacebook()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.FBTwitterPost.GetFacebook () -&gt; ()"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
+                  timestampString = "506675951.384305"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "159">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.FBTwitterPost.(GetFacebook () -&gt; ()).(closure #1)"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
+                  timestampString = "506675951.385646"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -127,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dawriyah/Home.swift"
-            timestampString = "505428107.994627"
+            timestampString = "506675887.93073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "592"
-            endingLineNumber = "592"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

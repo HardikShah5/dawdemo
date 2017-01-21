@@ -33,9 +33,17 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
 //    @IBOutlet weak var lblNewsSubTitle: UILabel!
     
-    var arrayTweets = [NSDictionary]()
-    var arrayFacebookPosts = [NSDictionary]()
-    var arrayTwitterFacebook = [NSDictionary]()
+    var arrayTweets             = [NSDictionary]()
+    var arrayFacebookPosts      = [NSDictionary]()
+    var arrayTwitterFacebook    = [NSDictionary]()
+    
+    var arraySliderArticles     = [NSDictionary]()
+    var arrayMostRatedArticles  = [NSDictionary]()
+    var arrayMostRatedNews      = [NSDictionary]()
+    
+    var arrayClubs              = [NSDictionary]()
+    var arrayPlayers            = [NSDictionary]()
+    
     var arrayAds = [NSDictionary]()
     
     var viewTopRatedNews: CollectionViewCustom! = nil
@@ -48,6 +56,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     //Header News
     var imageViewNews: UIImageView!
+    var lblTitleHeaderView: UILabel!
+    var lblSubTitleHeaderView: UILabel!
+    
     var counterCurrentImageNews: Int! = 0
     var viewBottomLineTopOptions: UIView!
     var viewBottomLineClubsPlayers: UIView!
@@ -105,7 +116,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //lblNewsSubTitle.text = "استكمل آندي موراي بطل ويمبلدون ما بدأه عندما حصد اللقب الأولمبي في ريو دي جانيرو وتغلب على";
         
         //Load News Header
-        self.loadNewsHeader()
+        //self.loadNewsHeader()
         
         //Load Email Subscription Footer 
         self.loadFooter()
@@ -118,7 +129,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //self.tableViewHome.backgroundColor = UIColor.yellow
         
         //Get Facebook and Twitter POSTs
-        self.getTwitterPosts()
+        self.getSliderArticles()
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,16 +152,36 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         imageViewNews = headerNews.imageViewNews
         kHeaderImageHeight = imageViewNews.frame.size.height
         
+        lblTitleHeaderView = headerNews.lblTitleNews
+        lblSubTitleHeaderView = headerNews.lblSubTitleNews
+        
         //Initialise Array for images
-        arrayNewImages = ["image1.png", "image2.png", "image3.png", "image4.png", "image5.png", "image6.png", "image7.png", "image8.png"]
+        //arrayNewImages = ["image1.png", "image2.png", "image3.png", "image4.png", "image5.png", "image6.png", "image7.png", "image8.png"]
         
         var x: CGFloat = 0.0
         var index: Int = 0
-        for strImageName in arrayNewImages {
+        for dict in arraySliderArticles {
+            
+            //Image URL
+            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let url = URL(string: strImageURL)
+            
             let button = UIButton(frame: CGRect(x: x, y: 0, width: 80, height: headerNews.scrollViewNewsImages.frame.size.height))
-            button.setBackgroundImage(UIImage(named: strImageName), for: .normal)
+            //button.setBackgroundImage(UIImage(named: strImageName), for: .normal)
             button.imageView?.contentMode = .scaleAspectFill
             button.imageView?.clipsToBounds = true
+            
+            //button.setImageFor(.normal, with: url!, placeholderImage: UIImage(named: ""))
+            button.setBackgroundImageFor(.normal, with: url!, placeholderImage: UIImage(named: "DefaultImg"))
+            
+            if index == 0 {
+                //Set First Text
+                headerNews.lblTitleNews.text  = dict.value(forKey: "title") as? String
+                headerNews.lblSubTitleNews.text = dict.value(forKey: "body") as? String
+                
+                //For setting image to Board
+                headerNews.imageViewNews.setImageWith(url!)
+            }
             
             headerNews.scrollViewNewsImages.addSubview(button)
             
@@ -174,7 +205,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         counterCurrentImageNews = sender.tag
         
         //Set selected image
-        imageViewNews.image = UIImage(named: arrayNewImages[sender.tag])
+        imageViewNews.image = sender.image(for: .normal)
+        
+        //Set Text
+        let dict = arraySliderArticles[sender.tag]
+        lblTitleHeaderView.text = dict.value(forKey: "title") as? String
+        lblSubTitleHeaderView.text = dict.value(forKey: "body") as? String
     }
     
     func btnPreviousNewsClicked() -> Void {
@@ -481,15 +517,30 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 350
+            //Latest News
+            print(arrayMostRatedNews.count)
+            return CGFloat(arrayMostRatedNews.count * 118)
         }else if indexPath.section == 1 {
-            return 230
+            //Most Read Articles
+            print(arrayMostRatedArticles.count)
+            return CGFloat((arrayMostRatedArticles.count / 2) * 70)
         }else if indexPath.section == 2 {
             //Twitter & Facebook
             return 230
         }else if indexPath.section == 3 {
+            //let size: CGFloat = (tableView.frame.size.width - 36) / 3
+            //return (size * 6.0) + 60
+            
             let size: CGFloat = (tableView.frame.size.width - 36) / 3
-            return (size * 6.0) + 60
+            if indexForClubsPlayers == CLUBS && arrayClubs.count > 0 {
+                let row = (arrayClubs.count / 2)
+                return CGFloat(size * CGFloat(row)) + CGFloat(row) * 10
+            }else if indexForClubsPlayers == PLAYERS && arrayPlayers.count > 0 {
+                let row = (arrayPlayers.count / 2)
+                return CGFloat(size * CGFloat(row)) + CGFloat(row) * 10
+            }else {
+                return 0
+            }
         }else if indexPath.section == 4 {
             return 40
         }else if indexPath.section == 5 {
@@ -624,7 +675,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         if collectionView.tag == LATEST_NEWS {
             return CGSize(width: collectionView.frame.size.width - 20, height: 110)
         }else if collectionView.tag == MOST_READ_ARTICLES {
-            return CGSize(width: (collectionView.frame.size.width - 26) / 2, height: 70)
+            return CGSize(width: (collectionView.frame.size.width - 26) / 2, height: CGFloat(arrayMostRatedArticles.count * 35))
         }else if collectionView.tag == FACEBOOK_TWITTER {
             return CGSize(width: (collectionView.frame.size.width - 26) / 2, height: 70)
         }else if collectionView.tag == CLUB_PLAYER {
@@ -640,13 +691,16 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == LATEST_NEWS {
-            return 3
+            return arrayMostRatedNews.count
         }else if collectionView.tag == MOST_READ_ARTICLES {
-            return 6
+            return arrayMostRatedArticles.count
         }else if collectionView.tag == FACEBOOK_TWITTER {
             return arrayTwitterFacebook.count
         }else if collectionView.tag == CLUB_PLAYER {
-            return 18
+            if indexForClubsPlayers == CLUBS {
+                return arrayClubs.count
+            }
+            return arrayPlayers.count
         }
         
         return 0
@@ -663,16 +717,25 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             cell.layer.masksToBounds = true
             
             //For few different images - Temporary Logic
-            if indexPath.row % 3 == 0 {
+            /*if indexPath.row % 3 == 0 {
                 cell.imageViewPost.image = UIImage(named: "news_stripe_img.png")
             }else if indexPath.row % 3 == 1 {
                 cell.imageViewPost.image = UIImage(named: "presskit_img@3x.png")
             }else {
                 cell.imageViewPost.image = UIImage(named: "SliderImage.png")
-            }
+            }*/
             
-            cell.lblTitle.text = AppUtils.localized("Title", value: "")
-            cell.lblDescription.text = AppUtils.localized("SubTitle", value: "")
+            let dict = arrayMostRatedNews[indexPath.row]
+            
+            //Image URL
+            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let url = URL(string: strImageURL)
+            cell.imageViewPost.setImageWith(url!)
+            
+            //Set First Text
+            cell.lblTitle.text  = dict.value(forKey: "title") as? String
+            cell.lblDescription.text = dict.value(forKey: "body") as? String
+            cell.lblDate.text = dict.value(forKey: "publishdate") as? String
             
             return cell
         }else if collectionView.tag == MOST_READ_ARTICLES {
@@ -683,17 +746,17 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
             
-            //For few different images - Temporary Logic
-            if indexPath.row % 3 == 0 {
-                cell.imageViewPost.image = UIImage(named: "news_stripe_img.png")
-            }else if indexPath.row % 3 == 1 {
-                cell.imageViewPost.image = UIImage(named: "presskit_img@3x.png")
-            }else {
-                cell.imageViewPost.image = UIImage(named: "SliderImage.png")
-            }
+            let dict = arrayMostRatedArticles[indexPath.row]
             
-            cell.lblTitle.text = AppUtils.localized("Title", value: "")
-            cell.lblDescription.text = AppUtils.localized("SubTitle", value: "")
+            //Image URL
+            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let url = URL(string: strImageURL)
+            cell.imageViewPost.setImageWith(url!)
+            
+            //Set First Text
+            cell.lblTitle.text  = dict.value(forKey: "title") as? String
+            cell.lblDescription.text = dict.value(forKey: "body") as? String
+            cell.lblDate.text = dict.value(forKey: "publishdate") as? String
             
             return cell
         }else if collectionView.tag == FACEBOOK_TWITTER {
@@ -739,16 +802,23 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
             
-            //For few different images - Temporary Logic
-            if indexPath.row % 3 == 0 {
-                cell.imageViewClubPlayer.image = UIImage(named: "news_stripe_img.png")
-            }else if indexPath.row % 3 == 1 {
-                cell.imageViewClubPlayer.image = UIImage(named: "presskit_img@3x.png")
+            var dict: NSDictionary!
+            if indexForClubsPlayers == CLUBS {
+                //Club
+                dict = arrayClubs[indexPath.row]
             }else {
-                cell.imageViewClubPlayer.image = UIImage(named: "SliderImage.png")
+                //Players
+                dict = arrayPlayers[indexPath.row]
             }
             
-            cell.lblClubPlayerName.text = AppUtils.localized("Name", value: "")
+            
+            //Image
+            let strURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let url = URL(string: strURL)
+            cell.imageViewClubPlayer.setImageWith(url!, placeholderImage: UIImage(named: "ProfilePic"))
+            
+            //Title
+            cell.lblClubPlayerName.text = dict.value(forKey: "classification") as? String
             
             return cell
         }
@@ -769,6 +839,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             rect.origin.x = sender.frame.origin.x
             self.viewBottomLineClubsPlayers.frame = rect
         })
+        
+        self.tableViewHome.reloadData()
     }
     
     //MARK: - Players
@@ -782,12 +854,71 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             rect.origin.x = sender.frame.origin.x
             self.viewBottomLineClubsPlayers.frame = rect
         })
+        
+        self.tableViewHome.reloadData()
     }
     
     
     
     
     //MARK: - Web Services
+    //MARK: - Slider Articles
+    func getSliderArticles() -> Void {
+        //Start Loading
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //AppUtils.startLoading(view: self.view)
+        
+        HomeScreenHandler.getSliderArticles { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arraySliderArticles.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Relaod Content
+            if self.arraySliderArticles.count > 0 {
+                self.loadNewsHeader()
+            }
+            
+            //Get Most Rated Articles
+            self.getMostRatedNews()
+        }
+    }
+    
+    
+    //MARK: - Most Rated News
+    func getMostRatedNews() -> Void {
+        
+        HomeScreenHandler.getMostRatedNews { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayMostRatedNews.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Relaod Content
+            if self.arrayMostRatedNews.count > 0 {
+                self.tableViewHome.reloadData()
+            }
+            
+            //Get Most Rated Articles
+            self.getMostRatedArticles()
+        }
+    }
+    
+    //MARK: - Most Rated Articles
+    func getMostRatedArticles() -> Void {
+        
+        HomeScreenHandler.getMostRatedArticles { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayMostRatedArticles.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Get Most Rated Articles
+            self.getTwitterPosts()
+        }
+    }
+    
+    
+    
+    
+    
     //MARK: - Twitter
     func getTwitterPosts() -> Void {
         //Start Loading
@@ -836,17 +967,46 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }*/
         }
         
-        //Relaod Content
-        if arrayTwitterFacebook.count > 0 {
-            self.tableViewHome.reloadData()
+        //Get Club News
+        self.getClubsNews()
+    }
+    
+    
+    //MARK: - Facebook
+    func getClubsNews() -> Void {
+        
+        HomeScreenHandler.getClubNews { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayClubs.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Get Players News
+            self.getPlayersNews()
         }
+    }
+    
+    
+    //MARK: - Facebook
+    func getPlayersNews() -> Void {
         
-        //Stop Loading
-        AppUtils.stopLoading()
-        
-        
-        //Get Ads
-        self.loadAds()
+        HomeScreenHandler.getPlayersNews { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayPlayers.append(contentsOf: responseObject as! [NSDictionary])
+            
+            
+            //Relaod Content
+            if self.arrayTwitterFacebook.count > 0 {
+                self.tableViewHome.reloadData()
+            }
+            
+            //Stop Loading
+            MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+            //AppUtils.stopLoading()
+            
+            //Get Ads
+            self.loadAds()
+        }
     }
     
     

@@ -12,6 +12,7 @@ class Constants: NSObject {
     
     //Web Service Pre URL
     static let WEBSERVICE_URL : String = "http://dawriyah.com/newsservices.aspx?cmd="
+    static let IMAGE_PREFIX   : String = "http://208.67.21.15/dawriyah_images/newsimages/"
     
     //Web Services End Points
     static let LOGIN : String               = "dlogin"
@@ -23,8 +24,16 @@ class Constants: NSObject {
     static let FACEBOOKWRITER : String      = "facebooknews"
     
     //Home Screen
+    static let SLIDER_ARTICLES: String       = "homeslider"
+    static let MOST_RATED_ARTICLES: String   = "homemostratedarticles"
+    static let MOST_RATED_NEWS: String       = "homemostratednews"
+    
     static let LATEST_TWEETS: String        = "homelasttweets"
     static let LATEST_FACEBOOK_POST: String = "homelastfacebookposts"
+    
+    static let CLUB:    String = "gethomeclubsnews"
+    static let PLAYERS: String = "gethomeplayersnews"
+    
     static let LATEST_ADS: String           = "ads"
     
     

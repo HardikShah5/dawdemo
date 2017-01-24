@@ -13,6 +13,7 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var collectionViewData: UICollectionView!
     
     var viewCTRParent: UIViewController!
+    var arrayData = [NSDictionary]()
 
     func getCollectionView() -> CollectionViewCustom {
         let arrayNIBs: NSArray! = Bundle.main.loadNibNamed("CollectionViewCustom", owner: self, options: nil) as NSArray!
@@ -45,7 +46,15 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
         //Resgister Cell
         collectionViewData.register(UINib(nibName: "CellCollectionViewCustom", bundle: nil), forCellWithReuseIdentifier: "CellData")
         
-        collectionViewData.reloadData()
+        //collectionViewData.reloadData()
+    }
+    
+    func showDataWithArray(array: [NSDictionary]) -> Void {
+        arrayData = array
+        
+        if arrayData.count > 0 {
+            collectionViewData.reloadData()
+        }
     }
     
     
@@ -60,26 +69,27 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return arrayData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellData", for: indexPath) as! CellCollectionViewCustom
     
+        let dict = arrayData[indexPath.row]
         
-        //For temporary Purpose
-        if collectionView.tag == TOP_RATED_NEWS {
-            cell.imageViewPost.image = UIImage(named: "news_stripe_img.png")
-        }else if collectionView.tag == MOST_POPULAR_NEWS {
-            cell.imageViewPost.image = UIImage(named: "presskit_img@3x.png")
-        }else if collectionView.tag == ELECTRONIC_PRESS {
-            cell.imageViewPost.image = UIImage(named: "SliderImage.png")
-        }
-        cell.lblTitle.text = "نوددجي نونطاوم ..نيزنبلا_عطاقن_حار ةديدجلا #راعسألل مهضفر ةديدجلا"
-        cell.lblDescription.text = "د أحمد بصفر ينال براءتي اختراع أوروبية عن مركبات بوليمرات لمحاكاة أنسجة جسم الإنسان تساعد في العلاج الإ ..."
+        //Image URL
+        let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+        let url = URL(string: strImageURL)
+        cell.imageViewPost.setImageWith(url!)
+        
+        //Set First Text
+        cell.lblTitle.text          = dict.value(forKey: "title") as? String
+        cell.lblDescription.text    = dict.value(forKey: "body") as? String
+        cell.lblDate.text           = dict.value(forKey: "publishdate") as? String
+        
         //Layer Properties
-        cell.layer.cornerRadius = 3.0
-        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius     = 3.0
+        cell.layer.masksToBounds    = true
         
         return cell
     }

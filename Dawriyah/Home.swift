@@ -50,6 +50,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     var viewMostPopularNews: CollectionViewCustom! = nil
     var viewElectronicPress: CollectionViewCustom! = nil
     
+    var arrayMostPopularNews    = [NSDictionary]()
+    var arrayElectronicPress    = [NSDictionary]()
+    
     
     var arrayTopOptions = [String]()
     var arrayNewImages = [String]()
@@ -396,6 +399,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             })
         }else {
             viewTopRatedNews.showCollectionViewIn(viewCTR: self)
+            viewTopRatedNews.showDataWithArray(array: self.arrayMostRatedNews)
+            
+            //Show Top Rated News
+            //self.showTopRatedNews()
         }
         
         //Swipe Gesture
@@ -420,6 +427,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }, completion: { (finished) -> Void in
         })
     }
+    
+    
+    
+    
+    
+    
     
     //MARK: - MOST Popular NEWS
     func mostPopularNews() -> Void {
@@ -450,6 +463,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             })
         }else {
             viewMostPopularNews.showCollectionViewIn(viewCTR: self)
+            
+            if self.arrayMostPopularNews.count <= 0 {
+                self.showMostViewedNews()
+            }else {
+                self.viewMostPopularNews.showDataWithArray(array: self.arrayMostPopularNews)
+            }
+            
         }
         
         //Swipe Gesture
@@ -460,10 +480,29 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNewsRightSwipe))
         swipeLeft.direction = .right
         viewMostPopularNews.addGestureRecognizer(swipeLeft)
-        
-        
-        
     }
+    
+    //MARK: - Show Most Viewed News
+    func showMostViewedNews() -> Void {
+        //Start Loading
+        MBProgressHUD.showAdded(to: self.viewMostPopularNews, animated: true)
+        
+        HomeScreenHandler.getMostViewedNews { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayMostPopularNews.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Relaod Content
+            if self.arraySliderArticles.count > 0 {
+                self.viewMostPopularNews.showDataWithArray(array: self.arrayMostPopularNews)
+            }
+            
+            //Stop Loading
+            MBProgressHUD.hideAllHUDs(for: self.viewMostPopularNews, animated: true)
+        }
+    }
+    
+    
     
     //MARK: - Electronic Press
     func electronicPress() -> Void {
@@ -482,6 +521,14 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //Show View
         viewElectronicPress.isHidden = false
         
+        
+        //Show Data
+        if self.arrayElectronicPress.count <= 0 {
+            self.showElectronicPress()
+        }else {
+            self.viewElectronicPress.showDataWithArray(array: self.arrayElectronicPress)
+        }
+        
         viewElectronicPress.collectionViewData.tag = ELECTRONIC_PRESS
         viewElectronicPress.showCollectionViewIn(viewCTR: self)
         
@@ -490,6 +537,27 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         swipeLeft.direction = .right
         viewElectronicPress.addGestureRecognizer(swipeLeft)
     }
+    
+    //MARK: - Show Electronic Press
+    func showElectronicPress() -> Void {
+        //Start Loading
+        MBProgressHUD.showAdded(to: self.viewElectronicPress, animated: true)
+        
+        HomeScreenHandler.getElectronicPress { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayElectronicPress.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Relaod Content
+            if self.arrayElectronicPress.count > 0 {
+                self.viewElectronicPress.showDataWithArray(array: self.arrayElectronicPress)
+            }
+            
+            //Stop Loading
+            MBProgressHUD.hideAllHUDs(for: self.viewElectronicPress, animated: true)
+        }
+    }
+    
     
     
     @IBAction func btnNewsDetailClicked(_ sender: Any) {

@@ -26,22 +26,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dawriyah/FBTwitterPost.swift"
-            timestampString = "505333831.404258"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dawriyah/FBTwitterPost.swift"
             timestampString = "505333887.154911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -74,7 +58,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "506675951.384305"
+                  timestampString = "506979770.648939"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -89,7 +73,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "506675951.385646"
+                  timestampString = "506979770.651268"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "92"
@@ -122,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dawriyah/FBTwitterPost.swift"
-            timestampString = "505335174.52363"
+            timestampString = "506978452.523093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "GetTwitter()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,13 +121,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dawriyah/Home.swift"
-            timestampString = "506675887.93073"
+            filePath = "Dawriyah/WebServices/NewsHandler.swift"
+            timestampString = "506979266.795158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "805"
-            endingLineNumber = "805"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "getPressNews(_:PageSize:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dawriyah/PressKit.swift"
+            timestampString = "506979600.595029"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getPressKitNews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

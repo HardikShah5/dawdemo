@@ -13,8 +13,9 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableViewNews: UITableView!
     
     var arrayNews = [NSDictionary]()
-    let PageCount = 0
-    let IsMoreRecordsAvailbale = true;
+    var PageCount = 1
+    var PageSize = Constants.ItemsPerPage
+    var IsMoreRecordsAvailbale = true;
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -42,17 +43,27 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         //Start Loading
         AppUtils.startLoading(view: self.view)
         
-        NewsHandler.latestNews(String(PageCount), PageSize: "10") { (responseObject, success) in
+        NewsHandler.latestNews(String(PageCount), PageSize: String(self.PageSize)) { (responseObject, success) in
             print("Response : \(responseObject)")
+            
             if(success){
-            let issuccess = responseObject?.value(forKey: "success") as! Bool
-            if(issuccess) {
-                let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
-                self.arrayNews = dicsData.value(forKey: "news") as! [NSDictionary]
-                print("Response : \(self.arrayNews)")
-                
-                self.tableViewNews.reloadData()
-            }
+                let issuccess = responseObject?.value(forKey: "success") as! Bool
+                if(issuccess) {
+                    let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    
+                    if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
+                        self.IsMoreRecordsAvailbale = false
+                    }
+                    
+                    if self.arrayNews.count <= 0 {
+                        self.arrayNews = dicsData.value(forKey: "news") as! [NSDictionary]
+                    }else {
+                        self.arrayNews.append(contentsOf: dicsData.value(forKey: "news") as! [NSDictionary])
+                    }
+                    print("Response : \(self.arrayNews)")
+                    
+                    self.tableViewNews.reloadData()
+                }
             }
             //Stop Loading
             AppUtils.stopLoading()
@@ -84,11 +95,11 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
         let urlImage = URL(string: strImageURL!)
         cell.imgNews.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
         
-        /*
-        cell.newsTitle.text = "مادلين مطر: لهذا السبب عزُّوا راغب علامة ولم يعزُّوني;"
-        cell.newsSubTitle.text = "اختارت الفنانة دنيا باطما أن تؤدي الأغنية المغربية الشهيرة \"ياك أجرحي\" لقيدومة ..."
-        cell.newsDate.text = "08/22/2016"
-        */
+        
+        if indexPath.row == self.arrayNews.count - 1 && self.IsMoreRecordsAvailbale {
+            PageCount = PageCount + 1
+            self.newsWS()
+        }
         
         cell.bgView.layer.cornerRadius = 4.0
         cell.selectionStyle = .none

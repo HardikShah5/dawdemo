@@ -94,9 +94,14 @@ class PressKit: SuperViewController, UICollectionViewDelegate, UICollectionViewD
         let dict = arrayOfWSData[indexPath.row]
         
         //Image URL
-        let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
-        let url = URL(string: strImageURL)
-        cell.imageViewPost.setImageWith(url!)
+        if dict.value(forKey: "image1") is NSNull {
+            cell.imageViewPost.image = UIImage(named: "DefaultImg")
+        }else {
+            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let url = URL(string: strImageURL)
+            //cell.imageViewPost.setImageWith(url!)
+            cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
+        }
         
         //Set First Text
         cell.lblTitle.text  = dict.value(forKey: "Title") as? String
@@ -112,7 +117,6 @@ class PressKit: SuperViewController, UICollectionViewDelegate, UICollectionViewD
             PageCount = PageCount + 1
             self.getPressKitNews()
         }
-        
         
         return cell
     }

@@ -183,7 +183,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 headerNews.lblSubTitleNews.text = dict.value(forKey: "body") as? String
                 
                 //For setting image to Board
-                headerNews.imageViewNews.setImageWith(url!)
+                //headerNews.imageViewNews.setImageWith(url!)
+                headerNews.imageViewNews.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
             }
             
             headerNews.scrollViewNewsImages.addSubview(button)
@@ -719,6 +720,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 let strURL = dict.value(forKey: "image") as! String
                 let url = URL(string: strURL)
                 imageViewAd.setImageWith(url!)
+                imageViewAd.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
+                
                 //btnAd.setImageFor(.normal, with: url!)
                 //btnAd.setBackgroundImageFor(.normal, with: url!)
                 
@@ -798,7 +801,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             //Image URL
             let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
             let url = URL(string: strImageURL)
-            cell.imageViewPost.setImageWith(url!)
+            //cell.imageViewPost.setImageWith(url!)
+            cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
             
             //Set First Text
             cell.lblTitle.text  = dict.value(forKey: "title") as? String
@@ -819,7 +823,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             //Image URL
             let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
             let url = URL(string: strImageURL)
-            cell.imageViewPost.setImageWith(url!)
+            //cell.imageViewPost.setImageWith(url!)
+            cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
             
             //Set First Text
             cell.lblTitle.text  = dict.value(forKey: "title") as? String

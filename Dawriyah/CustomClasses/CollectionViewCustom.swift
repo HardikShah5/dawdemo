@@ -80,7 +80,8 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
         //Image URL
         let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
         let url = URL(string: strImageURL)
-        cell.imageViewPost.setImageWith(url!)
+        //cell.imageViewPost.setImageWith(url!)
+        cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
         
         //Set First Text
         cell.lblTitle.text          = dict.value(forKey: "title") as? String

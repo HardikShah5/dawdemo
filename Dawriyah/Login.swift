@@ -26,7 +26,7 @@ class Login: SuperViewController, UITextFieldDelegate {
         
         
         //Login
-        txtUserName.text = "test"
+        txtUserName.text = "test3"
         txtPassword.text = "123456"
     }
     

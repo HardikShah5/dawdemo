@@ -72,4 +72,12 @@ class AppUtils: NSObject {
     
     static func hudWasHidden() {
     }
+    
+    
+    //MARK: - Show Alert
+    static func showAlertWith(Title title: String, Message message: String, ForController viewCTR: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: AppUtils.localized("OK", value: ""), style: .cancel, handler: nil))        
+        viewCTR.present(alert, animated: true, completion: nil)
+    }
 }

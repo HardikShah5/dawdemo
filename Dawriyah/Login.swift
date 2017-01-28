@@ -22,6 +22,12 @@ class Login: SuperViewController, UITextFieldDelegate {
         
         //Navigation Bar Title
         self.title = strNavBarTitle
+        
+        
+        
+        //Login
+        txtUserName.text = "test"
+        txtPassword.text = "123456"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,12 +72,14 @@ class Login: SuperViewController, UITextFieldDelegate {
 //            
 //        })
         
-        
-        let homeD = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! Home
-        self.navigationController?.pushViewController(homeD, animated: true)
-        
-        //Validation then Login
-        //doLogin()
+        //Validations
+        if (txtUserName.text?.characters.count)! <= 0 {
+            AppUtils.showAlertWith(Title: "", Message: "Please provide User Name.", ForController: self)
+        }else if (txtPassword.text?.characters.count)! <= 0 {
+            AppUtils.showAlertWith(Title: "", Message: "Please provide Password.", ForController: self)
+        }else {
+            doLogin()
+        }
     }
     
     func doLogin() -> Void {
@@ -82,16 +90,33 @@ class Login: SuperViewController, UITextFieldDelegate {
             
             print("Response : \(responseObject)")
             
-            let dictData = responseObject?.value(forKey: "clientData") as! NSDictionary
-            
-            if (dictData.value(forKey: "statusCode") as! NSNumber) == 1 {
+            if success == false {
+                AppUtils.showAlertWith(Title: "", Message: responseObject as! String, ForController: self)
+            }else if Int(responseObject?.value(forKey: "success") as! NSNumber) == 1 {
                 
                 //Navigate To The Dashboard
+                DispatchQueue.main.async {
+                    self.navigateToDashboard()
+                }
+            }else {
+                DispatchQueue.main.async {
+                    AppUtils.showAlertWith(Title: "", Message: responseObject?.value(forKey: "error") as! String, ForController: self)
+                }
             }
             
             //Stop Loading
-            AppUtils.stopLoading()
+            DispatchQueue.main.async {
+                AppUtils.stopLoading()
+            }
         })
+    }
+    
+    
+    
+    //MARK: - Navigate To The Dashboard
+    func navigateToDashboard() -> Void {
+        let homeD = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! Home
+        self.navigationController?.pushViewController(homeD, animated: true)
     }
     
     //MARK: - Sign Up

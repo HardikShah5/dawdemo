@@ -13,24 +13,48 @@ class UserHandler: WebServiceHandler {
     //MARK: Login
     static func loginWith(_ email: String!, password: String!, completion: ((AnyObject?, Bool) -> Void)?) {
         
-        let manager:AFHTTPRequestOperationManager! = getRequestManager()
-       
         //URL
         var strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL, Constants.LOGIN)
-        
         strWebServiceURL = strWebServiceURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        //print(strWebServiceURL)
         
-        //Params
-        let params: NSMutableDictionary! = NSMutableDictionary()
-        params.setValue(email, forKey: "email")
-        params.setValue(password, forKey: "password")
+        let url:URL = URL(string: strWebServiceURL)!
+        let session = URLSession.shared
         
-        manager.post(strWebServiceURL, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
-            completion!(responseObject as AnyObject?, true)
-        }) { (responseObject: Any, error: Error) in
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        
+        let paramString = "email=\(email!)&password=\(password!)"
+        request.httpBody = paramString.data(using: String.Encoding.utf8)
+        
+        let task = session.dataTask(with: request as URLRequest) {
+            (data, response, error) in
             
-            completion!(error as AnyObject?, false)
+            guard let data = data, let _:URLResponse = response, error == nil else {
+                print("error")
+                completion!(error?.localizedDescription as AnyObject?, false)
+                return
+            }
+            
+            let dataString =  String(data: data, encoding: String.Encoding.utf8)
+            let dict = self.convertToDictionary(text: dataString!)
+            print(dict!)
+            
+            //SUCCESS
+            completion!(dict! as AnyObject?, true)
         }
+        
+        task.resume()
+    }
+    
+    static func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
 }

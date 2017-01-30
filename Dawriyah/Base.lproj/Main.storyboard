@@ -576,6 +576,9 @@
                                 <state key="normal" title="تسجيل">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnSignUpClicked:" destination="4vC-X6-xju" eventType="touchUpInside" id="F1e-nA-qvO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

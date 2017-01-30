@@ -16,6 +16,8 @@ class Constants: NSObject {
     
     //Web Services End Points
     static let LOGIN : String               = "dlogin"
+    static let REG_NEWUSER : String         = "reg"
+    static let REG_PARTY  : String          = "compreg"
     static let LATESTNEWS : String          = "last"
     static let PRESS_NEWS: String           = "pressfilegendetails"
     

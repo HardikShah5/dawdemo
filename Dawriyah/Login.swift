@@ -23,8 +23,6 @@ class Login: SuperViewController, UITextFieldDelegate {
         //Navigation Bar Title
         self.title = strNavBarTitle
         
-        
-        
         //Login
         txtUserName.text = "test3"
         txtPassword.text = "123456"

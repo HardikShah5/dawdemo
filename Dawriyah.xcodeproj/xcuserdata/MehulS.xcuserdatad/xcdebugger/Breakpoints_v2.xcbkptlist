@@ -58,7 +58,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "507498884.888204"
+                  timestampString = "507666309.569621"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -73,7 +73,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "507498884.889502"
+                  timestampString = "507666309.571768"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "92"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dawriyah/Login.swift"
-            timestampString = "507316979.994942"
+            timestampString = "507668587.518519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "doLogin()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dawriyah/Login.swift"
-            timestampString = "507316994.770433"
+            timestampString = "507668587.518519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "doLogin()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dawriyah/Login.swift"
-            timestampString = "507316989.139024"
+            timestampString = "507668587.518519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "doLogin()"
             landmarkType = "7">
          </BreakpointContent>
@@ -241,6 +241,38 @@
             endingLineNumber = "493"
             landmarkName = "callSignUpPartyWebService()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.SignUp.callSignUpPartyWebService () -&gt; ()"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/SignUp.swift"
+                  timestampString = "507666309.601802"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "494"
+                  endingLineNumber = "494"
+                  offsetFromSymbolStart = "198">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.SignUp.(callSignUpPartyWebService () -&gt; ()).(closure #1)"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/SignUp.swift"
+                  timestampString = "507666309.603396"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "496"
+                  endingLineNumber = "496"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

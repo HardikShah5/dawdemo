@@ -482,7 +482,7 @@ class SignUp: SuperViewController, UITableViewDelegate, UITableViewDataSource, U
             AppUtils.showAlertWith(Title: "", Message: "Please provide Confirm Password.", ForController: self)
         }else if strPassword_Party != strConfirmPassword_Party {
             AppUtils.showAlertWith(Title: "", Message: "Password and Confirm password should be same.", ForController: self)
-        }else  {
+        }else {
             self.callSignUpPartyWebService()
         }
     }

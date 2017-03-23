@@ -11,6 +11,16 @@ import UIKit
 class OfficialMagazineCell: UITableViewCell {
 
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var imgRating: UIImageView!
+    @IBOutlet weak var lblCategory: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var lblCountry: UILabel!
+    @IBOutlet weak var lblLanguage: UILabel!
+    @IBOutlet weak var lblPublisher: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

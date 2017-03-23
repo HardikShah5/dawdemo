@@ -20,6 +20,9 @@ class Constants: NSObject {
     static let REG_PARTY  : String          = "compreg"
     static let LATESTNEWS : String          = "last"
     static let PRESS_NEWS: String           = "pressfilegendetails"
+    static let ANNUALREPORT : String          = "rep"
+    static let NEWSPAPER : String          = "paperall"
+    static let MAGAZINE : String          = "mag"
     
     static let TWITTER : String             = "twitter"
     static let TWITTERWRITER : String       = "twitternews"

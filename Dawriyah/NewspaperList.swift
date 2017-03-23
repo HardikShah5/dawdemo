@@ -16,6 +16,13 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
  
     var viewFilter: Filter!
     
+    var arrayOfWSData = [NSDictionary]()
+    var PageCount = 1
+    var PageSize = Constants.ItemsPerPage
+    
+    var IsMoreRecordsAvailbale = true
+    
+    
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +42,8 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
             
             lblTotal.textAlignment = .left
         }
+        
+        GetNewsPaperList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +51,41 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
+    //GET DATA
+    func GetNewsPaperList() -> Void{
+        //Start Loading
+        AppUtils.startLoading(view: self.view)
+        
+        NewsHandler.newsPaper(String(PageCount), PageSize: String(PageSize)) { (responseObject, success) in
+            print("Response : \(responseObject)")
+            
+            if(success){
+                let issuccess = responseObject?.value(forKey: "success") as! Bool
+                if issuccess{
+                    let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
+                        self.IsMoreRecordsAvailbale = false
+                    }
+                    
+//                    self.lblTotal.text = dicsData.value(forKey: "total") as? String
+                    
+                    if self.arrayOfWSData.count <= 0 {
+                        self.arrayOfWSData = dicsData.value(forKey: "reports") as! [NSDictionary]
+                    }else {
+                        self.arrayOfWSData.append(contentsOf: dicsData.value(forKey: "reports") as! [NSDictionary])
+                    }
+//                    print("Response : \(self.arrayOfWSData)")
+                    
+                    
+                    self.tblNewspaper.reloadData()
+                    
+                }
+            }
+            //Stop Loading
+            AppUtils.stopLoading()
+        }
+        
+    }
     
     //MARK: - UITableView Delegates
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,7 +93,7 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return self.arrayOfWSData.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,6 +101,31 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! NewspaperCell
         //var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellSignUp
         
+        let dictionary = self.arrayOfWSData[indexPath.row]
+        
+        cell.lblNewsTitle.text = dictionary.value(forKey: "product") as? String!
+        cell.lblCategory.text = dictionary.value(forKey: "classification") as? String!
+        cell.lblType.text = dictionary.value(forKey: "product_type") as? String!
+        cell.lblCountry.text = dictionary.value(forKey: "country") as? String!
+        cell.lblFrequency.text = dictionary.value(forKey: "freq") as? String!
+        cell.lblISSN.text = dictionary.value(forKey: "issn") as? String!
+        cell.lblPublisher.text = dictionary.value(forKey: "publisher") as? String!
+//        cell.lblFigure.text = dictionary.value(forKey: "report") as? String!
+        cell.lblLanguage.text = dictionary.value(forKey: "language_ar") as? String!
+        cell.lblDescription.text = dictionary.value(forKey: "productdesc") as? String!
+        cell.lblSubject.text = dictionary.value(forKey: "topic") as? String!
+//        cell.lblElectronic.text = dictionary.value(forKey: "report") as? String!
+        
+        let strImageURL = dictionary.value(forKey: "logo") as? String
+        let urlImage = URL(string: strImageURL!)
+        cell.imgNews.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+        
+        if indexPath.row == self.arrayOfWSData.count - 1 && self.IsMoreRecordsAvailbale {
+            PageCount = PageCount + 1
+            self.GetNewsPaperList()
+        }
+        
+        cell.selectionStyle = .none
         
         return cell
         

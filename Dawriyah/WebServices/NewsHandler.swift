@@ -61,4 +61,78 @@ class NewsHandler: WebServiceHandler {
     }
 
     
+    //MARK: - Annual Report
+    static func annualRport(_ CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?) {
+        
+        let manager:AFHTTPRequestOperationManager! = getRequestManager()
+        
+        //URL
+        var strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL, Constants.ANNUALREPORT)
+        
+        strWebServiceURL = strWebServiceURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        //print(strWebServiceURL)
+        
+        //Params
+        let params: NSMutableDictionary! = NSMutableDictionary()
+        params.setValue(CurrentPage, forKey: "currentpage")
+        params.setValue(PageSize, forKey: "pagesize")
+        
+        manager.get(strWebServiceURL, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
+            completion!(responseObject as AnyObject?, true)
+        }, failure: { (responseObject: Any, error: Error) in
+            
+            completion!(error as AnyObject?, false)
+        })
+    }
+    
+    
+    //MARK: - News Paper List
+    static func newsPaper(_ CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?) {
+        
+        let manager:AFHTTPRequestOperationManager! = getRequestManager()
+        
+        //URL
+        var strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL, Constants.NEWSPAPER)
+        
+        strWebServiceURL = strWebServiceURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        //print(strWebServiceURL)
+        
+        //Params
+        let params: NSMutableDictionary! = NSMutableDictionary()
+        params.setValue(CurrentPage, forKey: "currentpage")
+        params.setValue(PageSize, forKey: "pagesize")
+        
+        manager.get(strWebServiceURL, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
+            completion!(responseObject as AnyObject?, true)
+        }, failure: { (responseObject: Any, error: Error) in
+            
+            completion!(error as AnyObject?, false)
+        })
+    }
+    
+    //MARK: - Magazine List
+    static func magazineList(_ CurrentPage: String!, PageSize: String!, completion: ((AnyObject?, Bool) -> Void)?) {
+        
+        let manager:AFHTTPRequestOperationManager! = getRequestManager()
+        
+        //URL
+        var strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL, Constants.MAGAZINE)
+        
+        strWebServiceURL = strWebServiceURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        //print(strWebServiceURL)
+        
+        //Params
+        let params: NSMutableDictionary! = NSMutableDictionary()
+        params.setValue(CurrentPage, forKey: "currentpage")
+        params.setValue(PageSize, forKey: "pagesize")
+        
+        manager.get(strWebServiceURL, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
+            completion!(responseObject as AnyObject?, true)
+        }, failure: { (responseObject: Any, error: Error) in
+            
+            completion!(error as AnyObject?, false)
+        })
+    }
+
+    
 }

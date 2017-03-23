@@ -13,6 +13,19 @@ class NewspaperCell: UITableViewCell {
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var btnClickHereToDownload: UIButton!
     
+    @IBOutlet weak var lblNewsTitle: UILabel!
+    @IBOutlet weak var lblCategory: UILabel!
+    @IBOutlet weak var lblType: UILabel!
+    @IBOutlet weak var lblCountry: UILabel!
+    @IBOutlet weak var lblFrequency: UILabel!
+    @IBOutlet weak var lblISSN: UILabel!
+    @IBOutlet weak var lblPublisher: UILabel!
+    @IBOutlet weak var lblFigure: UILabel!
+    @IBOutlet weak var lblLanguage: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblSubject: UILabel!
+    @IBOutlet weak var lblElectronic: UILabel!
+    @IBOutlet weak var imgNews: UIImageView!
     
     
     override func awakeFromNib() {

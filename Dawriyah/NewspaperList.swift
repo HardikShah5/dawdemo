@@ -43,6 +43,10 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
             lblTotal.textAlignment = .left
         }
         
+        //Estimate Height of UITableView
+        self.tblNewspaper.estimatedRowHeight = 308
+        
+        //Call Web Service
         GetNewsPaperList()
     }
 
@@ -63,6 +67,14 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    
+                    //Set Total Records Label
+                    let strTotalRecords = dicsData.value(forKey: "total")
+                    let strTotalStatic = AppUtils.localized("TOTAL", value: "")
+                    
+                    self.lblTotal.text = "\(strTotalStatic) \(strTotalRecords!)"
+                    
+                    
                     if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
                         self.IsMoreRecordsAvailbale = false
                     }
@@ -94,6 +106,14 @@ class NewspaperList: SuperViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayOfWSData.count;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

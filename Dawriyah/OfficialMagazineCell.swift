@@ -10,6 +10,7 @@ import UIKit
 
 class OfficialMagazineCell: UITableViewCell {
 
+    @IBOutlet weak var imageViewMagazine: UIImageView!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgRating: UIImageView!

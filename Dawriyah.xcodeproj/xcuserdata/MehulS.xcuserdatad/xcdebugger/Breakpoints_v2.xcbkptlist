@@ -15,8 +15,70 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "awakeFromNib()"
-            landmarkType = "7">
+            landmarkName = "NewspaperCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.NewspaperCell.lblLanguage.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/NewspaperCell.swift"
+                  timestampString = "512767161.969443"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.NewspaperCell.lblLanguage.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/NewspaperCell.swift"
+                  timestampString = "512767161.971582"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.NewspaperCell.init (style : __C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; Dawriyah.NewspaperCell"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/NewspaperCell.swift"
+                  timestampString = "512767161.972868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "707">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.NewspaperCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Dawriyah.NewspaperCell&gt;"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/NewspaperCell.swift"
+                  timestampString = "512767161.974098"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "631">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,7 +120,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "507666309.569621"
+                  timestampString = "512767161.981825"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -73,7 +135,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/FBTwitterPost.swift"
-                  timestampString = "507666309.571768"
+                  timestampString = "512767161.983059"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "92"
@@ -112,54 +174,6 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "GetTwitter()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dawriyah/Login.swift"
-            timestampString = "507668587.518519"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "doLogin()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dawriyah/Login.swift"
-            timestampString = "507668587.518519"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "doLogin()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dawriyah/Login.swift"
-            timestampString = "507668587.518519"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "doLogin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,7 +264,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/SignUp.swift"
-                  timestampString = "507666309.601802"
+                  timestampString = "512767162.005176"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "494"
@@ -265,7 +279,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/SignUp.swift"
-                  timestampString = "507666309.603396"
+                  timestampString = "512767162.00657"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "496"
@@ -273,6 +287,86 @@
                   offsetFromSymbolStart = "27">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dawriyah/AnnualReportList.swift"
+            timestampString = "512745894.051264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "GetAnnualReportList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.AnnualReportList.(GetAnnualReportList () -&gt; ()).(closure #1)"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/AnnualReportList.swift"
+                  timestampString = "512767162.010302"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "462">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dawriyah.AnnualReportList.(GetAnnualReportList () -&gt; ()).(closure #1)"
+                  moduleName = "Dawriyah"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/AnnualReportList.swift"
+                  timestampString = "512767162.012823"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "7020">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dawriyah/NewspaperList.swift"
+            timestampString = "512764247.811709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "GetNewsPaperList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dawriyah/OfficialMagazineListing.swift"
+            timestampString = "512767660.729392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

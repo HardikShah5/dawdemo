@@ -78,7 +78,7 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
         let dict = arrayData[indexPath.row]
         
         //Image URL
-        let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+        let strImageURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
         let url = URL(string: strImageURL)
         //cell.imageViewPost.setImageWith(url!)
         cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))

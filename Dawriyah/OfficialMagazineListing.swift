@@ -66,6 +66,13 @@ class OfficialMagazineListing: SuperViewController, UITableViewDelegate, UITable
                         self.IsMoreRecordsAvailbale = false
                     }
                     
+                    //Set Total Records Label
+                    let strTotalRecords = dicsData.value(forKey: "total")
+                    let strTotalStatic = AppUtils.localized("TOTAL", value: "")
+                    
+                    self.lblTotal.text = "\(strTotalStatic) \(strTotalRecords!)"
+                    
+                    
                     if self.arrayOfWSData.count <= 0 {
                         self.arrayOfWSData = dicsData.value(forKey: "freeMag") as! [NSDictionary]
                     }else {
@@ -98,6 +105,11 @@ class OfficialMagazineListing: SuperViewController, UITableViewDelegate, UITable
         
         let dictionary = self.arrayOfWSData[indexPath.row]
         
+        //Image
+        let strImageURL = dictionary.value(forKey: "image") as? String
+        let urlImage = URL(string: strImageURL!)
+        cell.imageViewMagazine.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+        
         cell.lblTitle.text = dictionary.value(forKey: "title") as? String!
         cell.lblCategory.text = dictionary.value(forKey: "classification") as? String!
         cell.lblDate.text = dictionary.value(forKey: "publishingdate") as? String!
@@ -105,10 +117,11 @@ class OfficialMagazineListing: SuperViewController, UITableViewDelegate, UITable
         cell.lblLanguage.text = dictionary.value(forKey: "language_ar") as? String!
         cell.lblPublisher.text = dictionary.value(forKey: "publisher") as? String!
         
-//        let rate = (dictionary.value(forKey: "rate") as! Int)
-//        if(rate > 0){
-            cell.imgRating.image = UIImage(named: "rating_star_4.png")
-//        }
+        if let rate = Int(dictionary.value(forKey: "rate") as! String) {
+            cell.imgRating.image = UIImage(named: "Star\(rate)")
+        }else {
+            cell.imgRating.image = UIImage(named: "Star0")
+        }
        
        
         if indexPath.row == self.arrayOfWSData.count - 1 && self.IsMoreRecordsAvailbale {

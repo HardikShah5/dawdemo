@@ -166,7 +166,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         for dict in arraySliderArticles {
             
             //Image URL
-            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let strImageURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
             let url = URL(string: strImageURL)
             
             let button = UIButton(frame: CGRect(x: x, y: 0, width: 80, height: headerNews.scrollViewNewsImages.frame.size.height))
@@ -799,7 +799,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             let dict = arrayMostRatedNews[indexPath.row]
             
             //Image URL
-            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let strImageURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
             let url = URL(string: strImageURL)
             //cell.imageViewPost.setImageWith(url!)
             cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
@@ -821,7 +821,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             let dict = arrayMostRatedArticles[indexPath.row]
             
             //Image URL
-            let strImageURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let strImageURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
             let url = URL(string: strImageURL)
             //cell.imageViewPost.setImageWith(url!)
             cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
@@ -886,7 +886,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             
             
             //Image
-            let strURL = Constants.IMAGE_PREFIX + (dict.value(forKey: "image1") as! String)
+            let strURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
             let url = URL(string: strURL)
             cell.imageViewClubPlayer.setImageWith(url!, placeholderImage: UIImage(named: "ProfilePic"))
             

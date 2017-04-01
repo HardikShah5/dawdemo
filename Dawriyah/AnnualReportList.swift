@@ -59,8 +59,16 @@ class AnnualReportList: SuperViewController, UITableViewDataSource, UITableViewD
             
             if(success){
                 let issuccess = responseObject?.value(forKey: "success") as! Bool
+                
                 if issuccess{
                     let dicsData = responseObject?.value(forKey: "data") as! NSDictionary
+                    
+                    //Set Total Records Label
+                    let strTotalRecords = dicsData.value(forKey: "total")
+                    let strTotalStatic = AppUtils.localized("TOTAL", value: "")
+                    
+                    self.lblTotal.text = "\(strTotalStatic) \(strTotalRecords!)"
+                    
                     if(self.PageCount >= dicsData.value(forKey: "last_page") as! Int){
                         self.IsMoreRecordsAvailbale = false
                     }
@@ -106,8 +114,22 @@ class AnnualReportList: SuperViewController, UITableViewDataSource, UITableViewD
         cell.lblClassification.text = dictionary.value(forKey: "classification") as? String!
         cell.lblFreq.text = dictionary.value(forKey: "freq") as? String!
         
-        cell.lblDatePublish.text = dictionary.value(forKey: "publishdate") as? String!
-        cell.lblDateHistory.text = dictionary.value(forKey: "dateto") as? String!
+        //Publish Date
+        let strPubDate = dictionary.value(forKey: "publishdate") as! String
+        if let strDate = strPubDate.components(separatedBy: " ").first {
+            cell.lblDatePublish.text = strDate
+        }else {
+            cell.lblDatePublish.text = dictionary.value(forKey: "publishdate") as? String!
+        }
+        
+        //To Date
+        let strToDate = dictionary.value(forKey: "dateto") as! String
+        if let toDate = strToDate.components(separatedBy: " ").first {
+            cell.lblDatePublish.text = toDate
+        }else {
+            cell.lblDatePublish.text = dictionary.value(forKey: "dateto") as? String!
+        }
+        
         
         if indexPath.row == self.arrayOfWSData.count - 1 && self.IsMoreRecordsAvailbale {
             PageCount = PageCount + 1

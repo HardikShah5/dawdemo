@@ -35,12 +35,12 @@ class CollectionViewCustom: UIView, UICollectionViewDelegate, UICollectionViewDa
         
         
         //Set frame and add slider menu
-        self.frame = CGRect(x: viewCTR.view.frame.size.width, y: 104, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height - 104)
+        self.frame = CGRect(x: viewCTR.view.frame.size.width, y: 114, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height - 114)
         viewCTR.view.window?.addSubview(self)
         viewCTR.view.window?.bringSubview(toFront: self)
         
         UIView.animate(withDuration: 0.3, animations: {
-            self.frame = CGRect(x: 0, y: 104, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height - 104)
+            self.frame = CGRect(x: 0, y: 114, width: viewCTR.view.frame.size.width, height: viewCTR.navigationController!.view.frame.size.height - 114)
         })
         
         //Resgister Cell

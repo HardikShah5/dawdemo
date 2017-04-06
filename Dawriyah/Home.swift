@@ -589,7 +589,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     //MARK: - UITableView Methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 7
+        return 8
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -606,21 +606,24 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
+            //Writers
+            return 150
+        }else if indexPath.section == 1 {
             //Latest News
             print(arrayHomeCategory1.count)
             return CGFloat(arrayHomeCategory1.count * 118)
-        }else if indexPath.section == 1 {
+        }else if indexPath.section == 2 {
             //Latest News
             print(arrayHomeCategory2.count)
             return CGFloat(arrayHomeCategory2.count * 118)
-        }else if indexPath.section == 2 {
+        }else if indexPath.section == 3 {
             //Most Read Articles
             print(arrayMostRatedArticles.count)
             return CGFloat((arrayMostRatedArticles.count / 2) * 70)
-        }else if indexPath.section == 3 {
+        }else if indexPath.section == 4 {
             //Twitter & Facebook
             return 230
-        }else if indexPath.section == 4 {
+        }else if indexPath.section == 5 {
             //let size: CGFloat = (tableView.frame.size.width - 36) / 3
             //return (size * 6.0) + 60
             
@@ -634,9 +637,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }else {
                 return 0
             }
-        }else if indexPath.section == 5 {
-            return 40
         }else if indexPath.section == 6 {
+            return 40
+        }else if indexPath.section == 7 {
             return 180
         }
         return 0
@@ -646,25 +649,29 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         var headerSection = tableView.dequeueReusableCell(withIdentifier: "CellHeaderSection") as! CellHome
         
         if section == 0 {
-            //Latest News
+            //Writers
             headerSection.imageViewIcon.image = UIImage(named: "icn_latest_news")
-            headerSection.lblTitleHeader.text = AppUtils.localized("LATEST_NEWS", value: "")
+            headerSection.lblTitleHeader.text = AppUtils.localized("WRITERS", value: "")
         }else if section == 1 {
             //Latest News
             headerSection.imageViewIcon.image = UIImage(named: "icn_latest_news")
             headerSection.lblTitleHeader.text = AppUtils.localized("LATEST_NEWS", value: "")
         }else if section == 2 {
             //Latest News
+            headerSection.imageViewIcon.image = UIImage(named: "icn_latest_news")
+            headerSection.lblTitleHeader.text = AppUtils.localized("LATEST_NEWS", value: "")
+        }else if section == 3 {
+            //Latest News
             headerSection.imageViewIcon.image = UIImage(named: "icn_articles")
             headerSection.lblTitleHeader.text = AppUtils.localized("MOST_READ_ARTICLE", value: "")
-        }else if section == 3 {
+        }else if section == 4 {
             //Facebook & Twitter
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellHeaderFacebookTwitter") as! CellHome
             
             //Set Title
             headerSection.lblTweets.text = AppUtils.localized("LATEST_TWEET", value: "")
             headerSection.lblFacebookPost.text = AppUtils.localized("LATEST_FACEBOOK_POST", value: "")
-        }else if section == 4 {
+        }else if section == 5 {
             //Clubs & Players
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellClubPlayer") as! CellHome
             
@@ -686,11 +693,11 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             
             headerSection.btnClubs.addTarget(self, action: #selector(btnClubsClicked), for: .touchUpInside)
             headerSection.btnPlayers.addTarget(self, action: #selector(btnPlayersClicked), for: .touchUpInside)
-        }else if section == 5 {
+        }else if section == 6 {
             //Polls
             headerSection.imageViewIcon.image = UIImage(named: "icn_vote")
             headerSection.lblTitleHeader.text = AppUtils.localized("POLL", value: "")
-        }else if section == 6 {
+        }else if section == 7 {
             //Advertisement
             headerSection.imageViewIcon.image = UIImage(named: "icn_advertisement")
             headerSection.lblTitleHeader.text = AppUtils.localized("ADVERTISEMENT", value: "")
@@ -704,42 +711,84 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellHome
         
         if indexPath.section == 0 {
+            //Writers
+            cell = tableView.dequeueReusableCell(withIdentifier: "CellWriter") as! CellHome
+            
+            var xOrigin: CGFloat = 10.0
+            let width = (UIScreen.main.bounds.size.width - 30) / 3
+            for index in 1...10 {
+                //let btnAd = UIButton(frame:  CGRect(x: xOrigin, y: 0, width: width, height: cell.scrollViewAds.frame.size.height))
+                let imageViewAd = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: width, height: 120))
+                
+                imageViewAd.image = UIImage(named: "social_stripe_avatar@3x.png")
+                
+                //btnAd.imageView?.contentMode = .scaleAspectFill
+                //btnAd.imageView?.clipsToBounds = true
+                
+                /*
+                let strURL = dict.value(forKey: "image") as! String
+                let url = URL(string: strURL)
+                imageViewAd.setImageWith(url!)
+                imageViewAd.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
+                */
+                
+                //btnAd.setImageFor(.normal, with: url!)
+                //btnAd.setBackgroundImageFor(.normal, with: url!)
+                
+                imageViewAd.contentMode = .scaleAspectFill
+                imageViewAd.clipsToBounds = true
+                
+                cell.scrollViewWriter.addSubview(imageViewAd)
+                
+                //Add Label for Name
+                let lblName = UILabel(frame: CGRect(x: xOrigin, y: 120, width: width, height: 30))
+                lblName.textAlignment = .center
+                lblName.font = UIFont(name: "Helvetica", size: 16.0)
+                lblName.text = "Writer \(index)"
+                lblName.textColor = UIColor.white
+                lblName.backgroundColor = UIColor.clear
+                cell.scrollViewWriter.addSubview(lblName)
+                
+                xOrigin = xOrigin + width + 10
+            }
+            cell.scrollViewWriter.contentSize = CGSize(width: xOrigin, height: cell.scrollViewWriter.frame.size.height)
+        }else if indexPath.section == 1 {
             //Home Cate1 - Latest News
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = HOME_CATEGORY1
             cell.collectionView.register(UINib(nibName: "CellCollectionViewCustom", bundle: nil), forCellWithReuseIdentifier: "CellData")
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 1 {
+        }else if indexPath.section == 2 {
             //Home Cate2 - Latest News
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = HOME_CATEGORY2
             cell.collectionView.register(UINib(nibName: "CellCollectionViewCustom", bundle: nil), forCellWithReuseIdentifier: "CellData")
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 2 {
+        }else if indexPath.section == 3 {
             //Most Read Articles
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = MOST_READ_ARTICLES
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 3 {
+        }else if indexPath.section == 4 {
             //Facebook & Twitter
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = FACEBOOK_TWITTER
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 4 {
+        }else if indexPath.section == 5 {
             //Club Player
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = CLUB_PLAYER
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 5 {
+        }else if indexPath.section == 6 {
             //Polls
             cell = tableView.dequeueReusableCell(withIdentifier: "CellVote") as! CellHome
             
-        }else if indexPath.section == 6 {
+        }else if indexPath.section == 7 {
             //Advertisement
             cell = tableView.dequeueReusableCell(withIdentifier: "CellAd") as! CellHome
             

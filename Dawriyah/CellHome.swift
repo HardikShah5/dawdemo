@@ -10,6 +10,12 @@ import UIKit
 
 class CellHome: UITableViewCell {
     
+    //Writer Section - CellWriter
+    @IBOutlet weak var scrollViewWriter: UIScrollView!
+    @IBOutlet weak var btnPreviousWriter: UIButton!
+    @IBOutlet weak var btnNextWriter: UIButton!
+    
+    
     //News Header
     @IBOutlet weak var imageViewNews: UIImageView!
     @IBOutlet weak var lblTitleNews: UILabel!

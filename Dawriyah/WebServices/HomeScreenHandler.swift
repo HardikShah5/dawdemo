@@ -42,13 +42,28 @@ class HomeScreenHandler: WebServiceHandler {
     }
     
     
-    //MARK: - Get Most Rated News
-    static func getMostRatedNews(completion: ((AnyObject?, Bool) -> Void)?) {
+    //MARK: - Get Home Cate1
+    static func getHomeCate1(completion: ((AnyObject?, Bool) -> Void)?) {
         
         let manager:AFHTTPRequestOperationManager! = getRequestManager()
         
         //URL
-        let strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL,Constants.MOST_RATED_NEWS)
+        let strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL,Constants.HOME_CATEGORY1)
+        
+        manager.get(strWebServiceURL, parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: Any ) in
+            completion!(responseObject as AnyObject?, true)
+        }, failure: { (responseObject: Any, error: Error) in
+            completion!(error as AnyObject?, false)
+        })
+    }
+    
+    //MARK: - Get Home Cate2
+    static func getHomeCate2(completion: ((AnyObject?, Bool) -> Void)?) {
+        
+        let manager:AFHTTPRequestOperationManager! = getRequestManager()
+        
+        //URL
+        let strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL,Constants.HOME_CATEGORY2)
         
         manager.get(strWebServiceURL, parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: Any ) in
             completion!(responseObject as AnyObject?, true)

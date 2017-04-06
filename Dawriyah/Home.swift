@@ -13,7 +13,10 @@ let TOP_RATED_NEWS = 102
 let MOST_POPULAR_NEWS = 103
 let ELECTRONIC_PRESS = 104
 
-private let LATEST_NEWS = 101
+//private let LATEST_NEWS = 101
+private let HOME_CATEGORY1 = 101
+private let HOME_CATEGORY2 = 105
+//private let LATEST_NEWS = 101
 private let MOST_READ_ARTICLES = 102
 private let FACEBOOK_TWITTER = 103
 private let CLUB_PLAYER = 104
@@ -39,7 +42,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     var arraySliderArticles     = [NSDictionary]()
     var arrayMostRatedArticles  = [NSDictionary]()
-    var arrayMostRatedNews      = [NSDictionary]()
+//    var arrayMostRatedNews      = [NSDictionary]()
+    var arrayHomeCategory1      = [NSDictionary]()
+    var arrayHomeCategory2      = [NSDictionary]()
     
     var arrayClubs              = [NSDictionary]()
     var arrayPlayers            = [NSDictionary]()
@@ -86,29 +91,44 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //Top options
         arrayTopOptions = ["HIGHLIGHTS",
                             "TOP_RATED_NEWS",
-                            "MOST_POPULAR_NEWS",
-                            "ELECTRONIC_PRESS"]
+                            "MOST_POPULAR_NEWS"] //"ELECTRONIC_PRESS"
         
         var x: CGFloat = 0.0
         var index: Int = 101
         for str in arrayTopOptions {
-            let button = UIButton(frame: CGRect(x: x, y: 0, width: 150, height: scrollViewTopOptinos.frame.size.height))
+            
+            let btnWidth: CGFloat = self.view.frame.width/3
+//
+//            if(str == "HIGHLIGHTS"){
+//                btnWidth = 120
+//            }else if(str == "TOP_RATED_NEWS"){
+//                btnWidth = 130
+//            }else if(str == "MOST_POPULAR_NEWS"){
+//                btnWidth = 160
+//            }else{
+//                btnWidth = 150
+//            }
+            
+            let button = UIButton(frame: CGRect(x: x, y: 0, width: btnWidth, height: scrollViewTopOptinos.frame.size.height))
             button.setTitle(AppUtils.localized(str, value: ""), for: .normal)
             button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
             
             button.translatesAutoresizingMaskIntoConstraints = true
+            
+            button.titleLabel?.numberOfLines = 0
+            button.titleLabel?.textAlignment = NSTextAlignment.center
             scrollViewTopOptinos.addSubview(button)
             
             //Bottom Line
             if index == 101 {
-                viewBottomLineTopOptions.frame = CGRect(x: x, y: button.frame.size.height - 3, width: 150, height: 3.0)
+                viewBottomLineTopOptions.frame = CGRect(x: x, y: button.frame.size.height - 3, width: btnWidth, height: 3.0)
                 scrollViewTopOptinos.addSubview(viewBottomLineTopOptions)
             }
             
             button.tag = index
             index = index + 1
             
-            x = x + 150
+            x = x + btnWidth
             
             button.addTarget(self, action: #selector(btnTopOptionClicked), for: .touchUpInside)
         }
@@ -400,7 +420,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             })
         }else {
             viewTopRatedNews.showCollectionViewIn(viewCTR: self)
-            viewTopRatedNews.showDataWithArray(array: self.arrayMostRatedNews)
+            viewTopRatedNews.showDataWithArray(array: self.arrayHomeCategory1)
             
             //Show Top Rated News
             //self.showTopRatedNews()
@@ -474,9 +494,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         
         //Swipe Gesture
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(electronicPress))
-        swipeRight.direction = .left
-        viewMostPopularNews.addGestureRecognizer(swipeRight)
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(electronicPress))
+//        swipeRight.direction = .left
+//        viewMostPopularNews.addGestureRecognizer(swipeRight)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(topRatedNewsRightSwipe))
         swipeLeft.direction = .right
@@ -569,7 +589,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     //MARK: - UITableView Methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -587,16 +607,20 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             //Latest News
-            print(arrayMostRatedNews.count)
-            return CGFloat(arrayMostRatedNews.count * 118)
+            print(arrayHomeCategory1.count)
+            return CGFloat(arrayHomeCategory1.count * 118)
         }else if indexPath.section == 1 {
+            //Latest News
+            print(arrayHomeCategory2.count)
+            return CGFloat(arrayHomeCategory2.count * 118)
+        }else if indexPath.section == 2 {
             //Most Read Articles
             print(arrayMostRatedArticles.count)
             return CGFloat((arrayMostRatedArticles.count / 2) * 70)
-        }else if indexPath.section == 2 {
+        }else if indexPath.section == 3 {
             //Twitter & Facebook
             return 230
-        }else if indexPath.section == 3 {
+        }else if indexPath.section == 4 {
             //let size: CGFloat = (tableView.frame.size.width - 36) / 3
             //return (size * 6.0) + 60
             
@@ -610,9 +634,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }else {
                 return 0
             }
-        }else if indexPath.section == 4 {
-            return 40
         }else if indexPath.section == 5 {
+            return 40
+        }else if indexPath.section == 6 {
             return 180
         }
         return 0
@@ -627,16 +651,20 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             headerSection.lblTitleHeader.text = AppUtils.localized("LATEST_NEWS", value: "")
         }else if section == 1 {
             //Latest News
+            headerSection.imageViewIcon.image = UIImage(named: "icn_latest_news")
+            headerSection.lblTitleHeader.text = AppUtils.localized("LATEST_NEWS", value: "")
+        }else if section == 2 {
+            //Latest News
             headerSection.imageViewIcon.image = UIImage(named: "icn_articles")
             headerSection.lblTitleHeader.text = AppUtils.localized("MOST_READ_ARTICLE", value: "")
-        }else if section == 2 {
+        }else if section == 3 {
             //Facebook & Twitter
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellHeaderFacebookTwitter") as! CellHome
             
             //Set Title
             headerSection.lblTweets.text = AppUtils.localized("LATEST_TWEET", value: "")
             headerSection.lblFacebookPost.text = AppUtils.localized("LATEST_FACEBOOK_POST", value: "")
-        }else if section == 3 {
+        }else if section == 4 {
             //Clubs & Players
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellClubPlayer") as! CellHome
             
@@ -658,11 +686,11 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             
             headerSection.btnClubs.addTarget(self, action: #selector(btnClubsClicked), for: .touchUpInside)
             headerSection.btnPlayers.addTarget(self, action: #selector(btnPlayersClicked), for: .touchUpInside)
-        }else if section == 4 {
+        }else if section == 5 {
             //Polls
             headerSection.imageViewIcon.image = UIImage(named: "icn_vote")
             headerSection.lblTitleHeader.text = AppUtils.localized("POLL", value: "")
-        }else if section == 5 {
+        }else if section == 6 {
             //Advertisement
             headerSection.imageViewIcon.image = UIImage(named: "icn_advertisement")
             headerSection.lblTitleHeader.text = AppUtils.localized("ADVERTISEMENT", value: "")
@@ -676,35 +704,42 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CellHome
         
         if indexPath.section == 0 {
-            //Latest News
+            //Home Cate1 - Latest News
             cell.backgroundColor = UIColor.clear
-            cell.collectionView.tag = LATEST_NEWS
+            cell.collectionView.tag = HOME_CATEGORY1
             cell.collectionView.register(UINib(nibName: "CellCollectionViewCustom", bundle: nil), forCellWithReuseIdentifier: "CellData")
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
         }else if indexPath.section == 1 {
+            //Home Cate2 - Latest News
+            cell.backgroundColor = UIColor.clear
+            cell.collectionView.tag = HOME_CATEGORY2
+            cell.collectionView.register(UINib(nibName: "CellCollectionViewCustom", bundle: nil), forCellWithReuseIdentifier: "CellData")
+            cell.collectionView.isScrollEnabled = false
+            cell.collectionView.reloadData()
+        }else if indexPath.section == 2 {
             //Most Read Articles
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = MOST_READ_ARTICLES
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 2 {
+        }else if indexPath.section == 3 {
             //Facebook & Twitter
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = FACEBOOK_TWITTER
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 3 {
+        }else if indexPath.section == 4 {
             //Club Player
             cell.backgroundColor = UIColor.clear
             cell.collectionView.tag = CLUB_PLAYER
             cell.collectionView.isScrollEnabled = false
             cell.collectionView.reloadData()
-        }else if indexPath.section == 4 {
+        }else if indexPath.section == 5 {
             //Polls
             cell = tableView.dequeueReusableCell(withIdentifier: "CellVote") as! CellHome
             
-        }else if indexPath.section == 5 {
+        }else if indexPath.section == 6 {
             //Advertisement
             cell = tableView.dequeueReusableCell(withIdentifier: "CellAd") as! CellHome
             
@@ -743,7 +778,9 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     //MARK: - UICollectionView Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if collectionView.tag == LATEST_NEWS {
+        if collectionView.tag == HOME_CATEGORY1 {
+            return CGSize(width: collectionView.frame.size.width - 20, height: 110)
+        }else if collectionView.tag == HOME_CATEGORY2 {
             return CGSize(width: collectionView.frame.size.width - 20, height: 110)
         }else if collectionView.tag == MOST_READ_ARTICLES {
             return CGSize(width: (collectionView.frame.size.width - 26) / 2, height: CGFloat(arrayMostRatedArticles.count * 35))
@@ -761,8 +798,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag == LATEST_NEWS {
-            return arrayMostRatedNews.count
+        if collectionView.tag == HOME_CATEGORY1 {
+            return arrayHomeCategory1.count
+        }else if collectionView.tag == HOME_CATEGORY2 {
+            return arrayHomeCategory2.count
         }else if collectionView.tag == MOST_READ_ARTICLES {
             return arrayMostRatedArticles.count
         }else if collectionView.tag == FACEBOOK_TWITTER {
@@ -779,7 +818,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView.tag == LATEST_NEWS {
+        if collectionView.tag == HOME_CATEGORY1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellData", for: indexPath) as! CellCollectionViewCustom
             cell.backgroundColor = UIColor.white
             
@@ -796,7 +835,38 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 cell.imageViewPost.image = UIImage(named: "SliderImage.png")
             }*/
             
-            let dict = arrayMostRatedNews[indexPath.row]
+            let dict = arrayHomeCategory1[indexPath.row]
+            
+            //Image URL
+            let strImageURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
+            let url = URL(string: strImageURL)
+            //cell.imageViewPost.setImageWith(url!)
+            cell.imageViewPost.setImageWith(url!, placeholderImage: UIImage(named: "DefaultImg"))
+            
+            //Set First Text
+            cell.lblTitle.text  = dict.value(forKey: "title") as? String
+            cell.lblDescription.text = dict.value(forKey: "body") as? String
+            cell.lblDate.text = dict.value(forKey: "publishdate") as? String
+            
+            return cell
+        }else if collectionView.tag == HOME_CATEGORY2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellData", for: indexPath) as! CellCollectionViewCustom
+            cell.backgroundColor = UIColor.white
+            
+            //Layer Properties
+            cell.layer.cornerRadius = 3.0
+            cell.layer.masksToBounds = true
+            
+            //For few different images - Temporary Logic
+            /*if indexPath.row % 3 == 0 {
+             cell.imageViewPost.image = UIImage(named: "news_stripe_img.png")
+             }else if indexPath.row % 3 == 1 {
+             cell.imageViewPost.image = UIImage(named: "presskit_img@3x.png")
+             }else {
+             cell.imageViewPost.image = UIImage(named: "SliderImage.png")
+             }*/
+            
+            let dict = arrayHomeCategory2[indexPath.row]
             
             //Image URL
             let strImageURL = /*Constants.IMAGE_PREFIX + */(dict.value(forKey: "image1") as! String)
@@ -952,21 +1022,39 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }
             
             //Get Most Rated Articles
-            self.getMostRatedNews()
+            self.getHomeCate1()
         }
     }
     
     
-    //MARK: - Most Rated News
-    func getMostRatedNews() -> Void {
+    //MARK: - Home Cate1
+    func getHomeCate1() -> Void {
         
-        HomeScreenHandler.getMostRatedNews { (responseObject, success) in
+        HomeScreenHandler.getHomeCate1 { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayMostRatedNews.append(contentsOf: responseObject as! [NSDictionary])
+            self.arrayHomeCategory1.append(contentsOf: responseObject as! [NSDictionary])
             
             //Relaod Content
-            if self.arrayMostRatedNews.count > 0 {
+            if self.arrayHomeCategory1.count > 0 {
+                self.tableViewHome.reloadData()
+            }
+            
+            //Get Most Rated Articles
+            self.getHomeCate2()
+        }
+    }
+
+    //MARK: - Home Cate2
+    func getHomeCate2() -> Void {
+        
+        HomeScreenHandler.getHomeCate2 { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            self.arrayHomeCategory2.append(contentsOf: responseObject as! [NSDictionary])
+            
+            //Relaod Content
+            if self.arrayHomeCategory2.count > 0 {
                 self.tableViewHome.reloadData()
             }
             
@@ -974,6 +1062,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             self.getMostRatedArticles()
         }
     }
+    
     
     //MARK: - Most Rated Articles
     func getMostRatedArticles() -> Void {

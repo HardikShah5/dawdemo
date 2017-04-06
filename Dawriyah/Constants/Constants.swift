@@ -35,6 +35,8 @@ class Constants: NSObject {
     static let MOST_RATED_NEWS: String       = "homemostratednews"
     static let MOST_VIEWED_NEWS: String      = "homemostviewednews"
     static let ELECTRONIC_PRESS: String      = "homecategory1"
+    static let HOME_CATEGORY1: String       = "homecategory1"
+    static let HOME_CATEGORY2: String       = "homecategory2"
     
     static let LATEST_TWEETS: String        = "homelasttweets"
     static let LATEST_FACEBOOK_POST: String = "homelastfacebookposts"

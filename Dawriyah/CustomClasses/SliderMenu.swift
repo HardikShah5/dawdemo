@@ -24,6 +24,8 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
     var viewCTRParent: UIViewController!
     var arrayMenuItems = [String]()
     
+    var isSelectedLanguageCell: Bool = false
+    
     @IBOutlet weak var tableViewMenus: UITableView!
 
     class func getSliderMenuView() -> SliderMenu {
@@ -52,7 +54,7 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         
         //Set Menu Items in ARRAY
         arrayMenuItems = [AppUtils.localized("HOME", value: ""),
-                            AppUtils.localized("ADVANCE_SEARCH", value: ""),
+                            AppUtils.localized("SELECT_LANGUAGE", value: ""),
                             AppUtils.localized("NEWS", value: ""),
                             AppUtils.localized("PRESS_KIT", value: ""),
                             AppUtils.localized("TWITTER_TWEET", value: ""),
@@ -76,6 +78,12 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
         viewCTR.view.window?.bringSubview(toFront: tableViewMenus)
         
         self.tableViewMenus.layoutIfNeeded()
+        
+        //Register Cell
+        self.tableViewMenus.register(UINib(nibName: "CellLanguage", bundle: nil), forCellReuseIdentifier: "CellLanguage")
+
+        
+        
         
         //Blur View
         /*viewVisualBlur = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -172,11 +180,60 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 64
+        }else if indexPath.row == 1 && isSelectedLanguageCell == true {
+            return 145
         }
         return 56
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //Language Cell
+        if indexPath.row == 1 && isSelectedLanguageCell == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CellLanguage") as! CellLanguage
+            
+            //For RTL - Mehul April 06, 2017
+            if UIView.userInterfaceLayoutDirection(for: cell.btnSelectLanguage.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+                
+                cell.btnSelectLanguage.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                cell.btnArabic.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                cell.btnEnglish.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                
+                cell.btnArabic.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 15)
+                cell.btnArabic.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 25)
+                
+                cell.btnEnglish.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 15)
+                cell.btnEnglish.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 25)
+            }
+            
+            //Set Selected Button
+            if AppUtils.isArabicLayout == true {
+                cell.btnArabic.isSelected  = true
+                cell.btnEnglish.isSelected = false
+            }else {
+                cell.btnArabic.isSelected  = false
+                cell.btnEnglish.isSelected = true
+            }
+            
+            //Add Target
+            cell.btnSelectLanguage.addTarget(self, action: #selector(btnSelectLanguageClicked), for: .touchUpInside)
+            cell.btnEnglish.addTarget(self, action: #selector(btnEnglishLanguageClicked), for: .touchUpInside)
+            cell.btnArabic.addTarget(self, action: #selector(btnArabicLanguageClicked), for: .touchUpInside)
+            
+            //Set Langauge Text
+            cell.btnSelectLanguage.setTitle(AppUtils.localized("SELECT_LANGUAGE", value: ""), for: .normal)
+            cell.btnEnglish.setTitle(AppUtils.localized("LANGUAGE_ENGLISH", value: ""), for: .normal)
+            cell.btnArabic.setTitle(AppUtils.localized("LANGUAGE_ARABIC", value: ""), for: .normal)
+            
+            //Font
+            let font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
+            cell.btnSelectLanguage.titleLabel?.font = font
+            cell.btnEnglish.titleLabel?.font = font
+            cell.btnArabic.titleLabel?.font = font
+            
+            return cell
+        }
+        
         let identifier = "CellMenu"
         var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
         
@@ -200,11 +257,52 @@ class SliderMenu: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Select Language
+        if indexPath.row == 1 {
+            if isSelectedLanguageCell == false {
+                isSelectedLanguageCell = true
+            }else {
+                isSelectedLanguageCell = false
+            }
+            
+            //Reload First Cell
+            self.tableViewMenus.reloadRows(at: [indexPath], with: .fade)
+            
+        }else {
+            //Hide Self
+            self.hideSliderMenu()
+            
+            //Call Delegate method to get Selected Index
+            delegate.indexSelectedFromSliderMenu(index: indexPath.row)
+        }
+    }
+    
+    //MARK: - Select Language Button to Collapse
+    func btnSelectLanguageClicked() -> Void {
+        isSelectedLanguageCell = false
+        
+        //Reload First Cell
+        let indexPath = IndexPath(row: 1, section: 0)
+        self.tableViewMenus.reloadRows(at: [indexPath], with: .fade)
+    }
+    
+    //MARK: - English Language
+    func btnEnglishLanguageClicked() -> Void {
         //Hide Self
         self.hideSliderMenu()
         
         //Call Delegate method to get Selected Index
-        delegate.indexSelectedFromSliderMenu(index: indexPath.row)
+        delegate.indexSelectedFromSliderMenu(index: SliderMenuOption.LANGUAGE_ENGLISH)
+    }
+    
+    //MARK: - Arabic Language
+    func btnArabicLanguageClicked() -> Void {
+        //Hide Self
+        self.hideSliderMenu()
+        
+        //Call Delegate method to get Selected Index
+        delegate.indexSelectedFromSliderMenu(index: SliderMenuOption.LANGUAGE_ARABIC)
     }
 
 }

@@ -37,6 +37,7 @@
 //Slider Menu
 "HOME"                  =   "Home";
 "ADVANCE_SEARCH"        =   "Advance search";
+"SELECT_LANGUAGE"       =   "Select Language";
 "NEWS"                  =   "News";
 "PRESS_KIT"             =   "Press kit";
 "TWITTER_TWEET"         =   "Twitter Tweet";
@@ -51,6 +52,18 @@
 "CONTACT_US"            =   "Contact Us";
 "HELP"                  =   "Help";
 "LOGOUT"                =   "Log out";
+
+//Language
+"LANGUAGE_ENGLISH"      =   "English";
+"LANGUAGE_ARABIC"       =   "Arabic";
+
+"CHANGE_LANGUAGE"       =   "Change Language";
+"CHANGE_LANGUAGE_TEXT"  =   "By selecting change option, it will quit from application. You need to re-open from home screen. Do you want to change language?";
+
+"CHANGE_ENGLISH"        =   "Change to English";
+"CHANGE_ARABIC"         =   "Change to Arabic";
+"CANCEL"                =   "Cancel";
+
 
 //Twitter & Facebook
 "TWITTER_TWEETS"        =   "Twitter Tweets";

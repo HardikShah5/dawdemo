@@ -133,6 +133,12 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
         }else if index == SliderMenuOption.LOGOUT {
             //Logout
             doLogout()
+        }else if index == SliderMenuOption.LANGUAGE_ENGLISH {
+            //Show Alert for Language Change
+            self.changeLanguageToEnglish()
+        }else if index == SliderMenuOption.LANGUAGE_ARABIC {
+            //Show Alert for Language Change
+            self.changeLanguageToArabic()
         }
     }
     
@@ -233,6 +239,78 @@ class SuperViewController: UIViewController, SliderMenuDelegate {
     //MARK: - More Button
     func btnMoreClicked() -> Void {
         print("More Clicked.")
+    }
+    
+    
+    //MARK: - English Language Alert
+    func changeLanguageToEnglish() -> Void {
+        if AppUtils.isArabicLayout == false {
+            //Already English language, no need to do anything
+            return
+        }
+        
+        
+        let actionSheetController = UIAlertController(title: "Change Language", message: "By selecting change option, it will quit from application. You need to re-open from home screen. Do you want to change language?", preferredStyle: .actionSheet)
+        
+        //Cancel
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        }
+        actionSheetController.addAction(cancelActionButton)
+        
+        //Change
+        let saveActionButton = UIAlertAction(title: "Change to English", style: .default) { action -> Void in
+            //Change System Language
+            self.changeLanguageToArabic(false)
+            
+            //Quit App
+            exit(0)
+        }
+        actionSheetController.addAction(saveActionButton)
+        
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Arabic Language Alert
+    func changeLanguageToArabic() -> Void {
+        if AppUtils.isArabicLayout == true {
+            //Already English language, no need to do anything
+            return
+        }
+        
+        
+        let actionSheetController = UIAlertController(title: AppUtils.localized("SELECT_LANGUAGE", value: ""), message: AppUtils.localized("CHANGE_LANGUAGE_TEXT", value: ""), preferredStyle: .actionSheet)
+        
+        //Cancel
+        let cancelActionButton = UIAlertAction(title: AppUtils.localized("CANCEL", value: ""), style: .cancel) { action -> Void in
+        }
+        actionSheetController.addAction(cancelActionButton)
+        
+        //Change
+        let saveActionButton = UIAlertAction(title: AppUtils.localized("CHANGE_ARABIC", value: ""), style: .default) { action -> Void in
+            //Change System Language
+            self.changeLanguageToArabic(true)
+            
+            //Quit App
+            exit(0)
+        }
+        actionSheetController.addAction(saveActionButton)
+        
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    func changeLanguageToArabic(_ isArabic: Bool) -> Void {
+        var language = "ar"
+        
+        if isArabic == true {
+            language = "ar"
+            AppUtils.isArabicLayout = true
+        }else {
+            language = "en"
+            AppUtils.isArabicLayout = false
+        }
+        
+        UserDefaults.standard.set([language], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
     }
 
 }

@@ -90,6 +90,9 @@ struct SliderMenuOption {
     static let CONTACT_US           = 13
     static let HELP                 = 14
     static let LOGOUT               = 15
+    
+    static let LANGUAGE_ENGLISH     = 101
+    static let LANGUAGE_ARABIC      = 102
 }
 
 //Current Language

@@ -72,6 +72,8 @@
 		0E8E6FF71E0389FF00E6EEFA /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E6FF61E0389FF00E6EEFA /* Filter.swift */; };
 		0E96AC581E00921300A85F78 /* PressKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E96AC571E00921300A85F78 /* PressKit.swift */; };
 		0E98F0761E20342500E03B2F /* HomeScreenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */; };
+		0EA8314A1E96A81300D19C47 /* CellLanguage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA831491E96A81300D19C47 /* CellLanguage.xib */; };
+		0EA8314F1E96A83C00D19C47 /* CellLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA8314E1E96A83C00D19C47 /* CellLanguage.swift */; };
 		C7153CAA1DEE79E2004F0CCE /* FBTwitterPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7153CA91DEE79E2004F0CCE /* FBTwitterPost.swift */; };
 		C7153CAC1DEE7DEA004F0CCE /* FBTwitterPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7153CAB1DEE7DEA004F0CCE /* FBTwitterPostCell.swift */; };
 		C7153CAE1DEE7E98004F0CCE /* social_stripe_avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7153CAD1DEE7E98004F0CCE /* social_stripe_avatar@3x.png */; };
@@ -212,6 +214,8 @@
 		0E8E6FF61E0389FF00E6EEFA /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0E96AC571E00921300A85F78 /* PressKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressKit.swift; sourceTree = "<group>"; };
 		0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenHandler.swift; sourceTree = "<group>"; };
+		0EA831491E96A81300D19C47 /* CellLanguage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellLanguage.xib; sourceTree = "<group>"; };
+		0EA8314E1E96A83C00D19C47 /* CellLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLanguage.swift; sourceTree = "<group>"; };
 		C7153CA91DEE79E2004F0CCE /* FBTwitterPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterPost.swift; sourceTree = "<group>"; };
 		C7153CAB1DEE7DEA004F0CCE /* FBTwitterPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterPostCell.swift; sourceTree = "<group>"; };
 		C7153CAD1DEE7E98004F0CCE /* social_stripe_avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "social_stripe_avatar@3x.png"; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 				0E6CBF121DEF611D00826EA4 /* CellCollectionViewCustom.swift */,
 				0E6CBF161DEF712800826EA4 /* SliderMenu.swift */,
 				0E6CBF171DEF712800826EA4 /* SliderMenu.xib */,
+				0EA831481E96A7F200D19C47 /* SliderMenuCell */,
 				0E8E6FEC1E03796400E6EEFA /* ViewNewsComment.xib */,
 				0E8E6FEE1E03799000E6EEFA /* ViewNewsComment.swift */,
 				0E8E6FF31E0389E900E6EEFA /* Filter.xib */,
@@ -481,6 +486,15 @@
 			path = SliderImages;
 			sourceTree = "<group>";
 		};
+		0EA831481E96A7F200D19C47 /* SliderMenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				0EA831491E96A81300D19C47 /* CellLanguage.xib */,
+				0EA8314E1E96A83C00D19C47 /* CellLanguage.swift */,
+			);
+			name = SliderMenuCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -595,6 +609,7 @@
 				C747B4C61DF886C200BE0955 /* rating_star_4.png in Resources */,
 				C7153CAE1DEE7E98004F0CCE /* social_stripe_avatar@3x.png in Resources */,
 				0E6CBF111DEF5F7D00826EA4 /* CellCollectionViewCustom.xib in Resources */,
+				0EA8314A1E96A81300D19C47 /* CellLanguage.xib in Resources */,
 				0E6CBF191DEF712800826EA4 /* SliderMenu.xib in Resources */,
 				0E7957B61DF0A26800E929B9 /* image2.png in Resources */,
 				0E1802601DEA12FF00EC0C50 /* news_stripe_img.png in Resources */,
@@ -644,6 +659,7 @@
 				C7ADD6C71DF11A9700F1208A /* FBTWProfile.swift in Sources */,
 				0E2811D91DFDE11800E906E8 /* UIRefreshControl+AFNetworking.m in Sources */,
 				0E2811CF1DFDE11800E906E8 /* AFNetworkReachabilityManager.m in Sources */,
+				0EA8314F1E96A83C00D19C47 /* CellLanguage.swift in Sources */,
 				C798C20F1DE990CB00C3799C /* NewsListing.swift in Sources */,
 				0E70175D1DE4DD8D001636CF /* Login.swift in Sources */,
 				0E2811CC1DFDE11800E906E8 /* AFHTTPSessionManager.m in Sources */,

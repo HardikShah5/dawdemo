@@ -37,6 +37,7 @@
 //Slider Menu
 "HOME"                  =   "الرئيسية";
 "ADVANCE_SEARCH"        =   "البحث المتقدم";
+"SELECT_LANGUAGE"       =   "اختار اللغة";
 "NEWS"                  =   "أخبار";
 "PRESS_KIT"             =   "الملف الصحفي";
 "TWITTER_TWEET"         =   "تويتر تويت";
@@ -51,6 +52,17 @@
 "CONTACT_US"            =   "اتصل بنا";
 "HELP"                  =   "مساعدة";
 "LOGOUT"                =   "خروج";
+
+//Language
+"LANGUAGE_ENGLISH"      =   "الإنجليزية";
+"LANGUAGE_ARABIC"       =   "عربى";
+
+"CHANGE_LANGUAGE"       =   "غير اللغة";
+"CHANGE_LANGUAGE_TEXT"  =   "عن طريق تحديد خيار التغيير، فإنه سيتم إنهاء من التطبيق. تحتاج إلى إعادة فتح من الشاشة الرئيسية. هل تريد تغيير اللغة؟";
+
+"CHANGE_ENGLISH"        =   "تغيير إلى اللغة الإنجليزية";
+"CHANGE_ARABIC"         =   "تغيير إلى اللغة العربية";
+"CANCEL"                =   "إلغاء";
 
 //Twitter & Facebook
 "TWITTER_TWEETS"        =   "تغريدات تويتر";

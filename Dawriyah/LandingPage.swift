@@ -26,6 +26,9 @@ class LandingPage: UIViewController {
         
         //Hide Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        //To get the Title from server
+        getTitleTextAsPerLang()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +50,39 @@ class LandingPage: UIViewController {
         let signD = self.storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
         signD.strNavBarTitle = (btnSignUp.titleLabel?.text)!
         self.navigationController?.pushViewController(signD, animated: true)
+    }
+    
+    func getTitleTextAsPerLang() -> Void {
+        //Start Loading
+        AppUtils.startLoading(view: self.view!)
+        
+        LanguageHandler.GetTitleData("en") { (responseObject, success) in
+            print("Response : \(responseObject!)")
+            
+            if(success){
+                let arrData = responseObject?.value(forKey: "screens") as! [AnyObject]
+                for dicsData in arrData{
+                    print("Dics: \(dicsData)")
+                    let dics = dicsData as! NSDictionary
+                    let screenName = dics.value(forKey: "ScreenName") as! String
+                    
+                    for label in dics.allKeys
+                    {
+                        print(label)
+                        let key = label as! String
+                        let value = dics.value(forKey: key) as! String
+                        
+                        //DBM_INSERT
+                    }
+                }
+                
+                print("Response : \(arrData)")
+                
+            }
+            //Stop Loading
+            AppUtils.stopLoading()
+        }
+        
     }
 }
 

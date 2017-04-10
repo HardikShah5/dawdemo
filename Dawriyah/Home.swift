@@ -152,7 +152,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //self.tableViewHome.backgroundColor = UIColor.yellow
         
         //Get Facebook and Twitter POSTs
-        self.getSliderArticles()
+        
+//        AppDelegate.getTitleTextAsPerLang()
+        
+//        self.getSliderArticles()
     }
 
     override func didReceiveMemoryWarning() {

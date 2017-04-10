@@ -29,6 +29,8 @@ class Constants: NSObject {
     static let FACEBOOK : String            = "facebook"
     static let FACEBOOKWRITER : String      = "facebooknews"
     
+    static let LANGUAGE : String            = "screenslang"
+    
     //Home Screen
     static let SLIDER_ARTICLES: String       = "homeslider"
     static let MOST_RATED_ARTICLES: String   = "homemostratedarticles"

@@ -96,6 +96,7 @@
 		C7D6C59C1E1652A5003AD423 /* FBTwitterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D6C59B1E1652A5003AD423 /* FBTwitterHandler.swift */; };
 		C7D8C24B1DFC5FCB004C0A4B /* NewspaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */; };
 		C7D8C24D1DFC6051004C0A4B /* NewspaperList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */; };
+		C7EA9AE21E9A5F25003D2E78 /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EA9AE11E9A5F25003D2E78 /* LanguageHandler.swift */; };
 		C7F5EF9E1E0FDDA000C625A3 /* NewsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +239,7 @@
 		C7D6C59B1E1652A5003AD423 /* FBTwitterHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterHandler.swift; sourceTree = "<group>"; };
 		C7D8C24A1DFC5FCB004C0A4B /* NewspaperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperCell.swift; sourceTree = "<group>"; };
 		C7D8C24C1DFC6051004C0A4B /* NewspaperList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewspaperList.swift; sourceTree = "<group>"; };
+		C7EA9AE11E9A5F25003D2E78 /* LanguageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHandler.swift; sourceTree = "<group>"; };
 		C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -289,6 +291,7 @@
 				C7F5EF9D1E0FDDA000C625A3 /* NewsHandler.swift */,
 				C7D6C59B1E1652A5003AD423 /* FBTwitterHandler.swift */,
 				0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */,
+				C7EA9AE11E9A5F25003D2E78 /* LanguageHandler.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				0E8E6FEF1E03799000E6EEFA /* ViewNewsComment.swift in Sources */,
 				0E00304E1E0080D700F65678 /* CellNewsDetail.swift in Sources */,
 				0E2811CE1DFDE11800E906E8 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				C7EA9AE21E9A5F25003D2E78 /* LanguageHandler.swift in Sources */,
 				0E98F0761E20342500E03B2F /* HomeScreenHandler.swift in Sources */,
 				0E2811DB1DFDE11800E906E8 /* MBProgressHUD.m in Sources */,
 				0E7D5A881E04E1D400B1CF28 /* CellNewsDetailTable.swift in Sources */,

@@ -71,6 +71,7 @@
 		0E8E6FF41E0389E900E6EEFA /* Filter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E6FF31E0389E900E6EEFA /* Filter.xib */; };
 		0E8E6FF71E0389FF00E6EEFA /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E6FF61E0389FF00E6EEFA /* Filter.swift */; };
 		0E96AC581E00921300A85F78 /* PressKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E96AC571E00921300A85F78 /* PressKit.swift */; };
+		0E97C5031E9C02E40011E4E3 /* dawriyah.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E97C5011E9C02E40011E4E3 /* dawriyah.xcdatamodeld */; };
 		0E98F0761E20342500E03B2F /* HomeScreenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */; };
 		0EA8314A1E96A81300D19C47 /* CellLanguage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA831491E96A81300D19C47 /* CellLanguage.xib */; };
 		0EA8314F1E96A83C00D19C47 /* CellLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA8314E1E96A83C00D19C47 /* CellLanguage.swift */; };
@@ -214,6 +215,7 @@
 		0E8E6FF31E0389E900E6EEFA /* Filter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Filter.xib; sourceTree = "<group>"; };
 		0E8E6FF61E0389FF00E6EEFA /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0E96AC571E00921300A85F78 /* PressKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressKit.swift; sourceTree = "<group>"; };
+		0E97C5021E9C02E40011E4E3 /* dawriyah.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dawriyah.xcdatamodel; sourceTree = "<group>"; };
 		0E98F0751E20342500E03B2F /* HomeScreenHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenHandler.swift; sourceTree = "<group>"; };
 		0EA831491E96A81300D19C47 /* CellLanguage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellLanguage.xib; sourceTree = "<group>"; };
 		0EA8314E1E96A83C00D19C47 /* CellLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLanguage.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				0E7957AA1DF0A0A300E929B9 /* CellHome.swift */,
 				0E7957BD1DF0BA3400E929B9 /* CellInfo.swift */,
 				0E2811DC1DFDE18000E906E8 /* Dawriyah-Bridging-Header.h */,
+				0E97C5001E9C02AB0011E4E3 /* CoreData */,
 				0E28119D1DFDE11700E906E8 /* ThirdParty */,
 				0E2811961DFDE0D400E906E8 /* WebServices */,
 				0E7885F01DF895D600DB1848 /* Constants */,
@@ -487,6 +490,14 @@
 				0E7957B41DF0A26800E929B9 /* image8.png */,
 			);
 			path = SliderImages;
+			sourceTree = "<group>";
+		};
+		0E97C5001E9C02AB0011E4E3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0E97C5011E9C02E40011E4E3 /* dawriyah.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		0EA831481E96A7F200D19C47 /* SliderMenuCell */ = {
@@ -665,6 +676,7 @@
 				0EA8314F1E96A83C00D19C47 /* CellLanguage.swift in Sources */,
 				C798C20F1DE990CB00C3799C /* NewsListing.swift in Sources */,
 				0E70175D1DE4DD8D001636CF /* Login.swift in Sources */,
+				0E97C5031E9C02E40011E4E3 /* dawriyah.xcdatamodeld in Sources */,
 				0E2811CC1DFDE11800E906E8 /* AFHTTPSessionManager.m in Sources */,
 				0E8E6FEF1E03799000E6EEFA /* ViewNewsComment.swift in Sources */,
 				0E00304E1E0080D700F65678 /* CellNewsDetail.swift in Sources */,
@@ -1022,6 +1034,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0E97C5011E9C02E40011E4E3 /* dawriyah.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0E97C5021E9C02E40011E4E3 /* dawriyah.xcdatamodel */,
+			);
+			currentVersion = 0E97C5021E9C02E40011E4E3 /* dawriyah.xcdatamodel */;
+			path = dawriyah.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0E7017231DE4D09C001636CF /* Project object */;
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LandingPage: UIViewController {
 
@@ -56,23 +57,55 @@ class LandingPage: UIViewController {
         //Start Loading
         AppUtils.startLoading(view: self.view!)
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        //Get Language
+        var strLang = "ar"
+        let language = NSLocale.preferredLanguages.first
+        if language == "ar" {
+            strLang = "ar"
+        }else {
+            strLang = "en"
+        }
+        
+        
         LanguageHandler.GetTitleData("en") { (responseObject, success) in
             print("Response : \(responseObject!)")
             
-            if(success){
+            if(success) {
                 let arrData = responseObject?.value(forKey: "screens") as! [AnyObject]
                 for dicsData in arrData{
                     print("Dics: \(dicsData)")
                     let dics = dicsData as! NSDictionary
                     let screenName = dics.value(forKey: "ScreenName") as! String
                     
-                    for label in dics.allKeys
-                    {
+                    for label in dics.allKeys {
                         print(label)
                         let key = label as! String
                         let value = dics.value(forKey: key) as! String
                         
                         //DBM_INSERT
+                        // Create Managed Object
+                        
+                        
+                        let entityDescription = NSEntityDescription.entity(forEntityName: "Language", in: appDelegate.managedObjectContext)
+                        let newRecord = NSManagedObject(entity: entityDescription!, insertInto: appDelegate.managedObjectContext)
+                        
+                        //Add Data
+                        newRecord.setValue(screenName, forKey: "screenName")
+                        newRecord.setValue(key, forKey: "key")
+                        newRecord.setValue(value, forKey: "value")
+                        newRecord.setValue(strLang, forKey: "language")
+                        
+                        // we save our entity
+                        do {
+                            try appDelegate.managedObjectContext.save()
+                        } catch {
+                            fatalError("Failure to save context: \(error)")
+                        }
+                        
                     }
                 }
                 

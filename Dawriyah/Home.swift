@@ -155,7 +155,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         
 //        AppDelegate.getTitleTextAsPerLang()
         
-//        self.getSliderArticles()
+        self.getSliderArticles()
     }
 
     override func didReceiveMemoryWarning() {

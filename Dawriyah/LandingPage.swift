@@ -38,6 +38,10 @@ class LandingPage: UIViewController {
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Language")
         
+        //Key : ScreenName
+        //Value : 01_Splash
+        fetchRequest.predicate = NSPredicate(format: "screenName == %@", "01_Splash")
+        
         // Initialize Asynchronous Fetch Request
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
             

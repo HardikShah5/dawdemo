@@ -1066,8 +1066,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getSliderArticles { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arraySliderArticles.append(contentsOf: responseObject as! [NSDictionary])
             
+            if success == true {
+                self.arraySliderArticles.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arraySliderArticles.removeAll()
+            }
+                
             //Relaod Content
             if self.arraySliderArticles.count > 0 {
                 self.loadNewsHeader()
@@ -1085,8 +1090,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getHomeCate1 { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayHomeCategory1.append(contentsOf: responseObject as! [NSDictionary])
             
+            if success == true {
+                self.arrayHomeCategory1.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayHomeCategory1.removeAll()
+            }
+                
             //Relaod Content
             if self.arrayHomeCategory1.count > 0 {
                 self.tableViewHome.reloadData()
@@ -1103,8 +1113,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getHomeCate2 { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayHomeCategory2.append(contentsOf: responseObject as! [NSDictionary])
             
+            if success == true {
+                self.arrayHomeCategory2.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayHomeCategory2.removeAll()
+            }
+                
             //Relaod Content
             if self.arrayHomeCategory2.count > 0 {
                 self.tableViewHome.reloadData()
@@ -1122,8 +1137,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getMostRatedArticles { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayMostRatedArticles.append(contentsOf: responseObject as! [NSDictionary])
             
+            if success == true {
+                self.arrayMostRatedArticles.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayMostRatedArticles.removeAll()
+            }
+                
             //Get Most Rated Articles
             self.getTwitterPosts()
         }
@@ -1141,7 +1161,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getLatestTweets { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayTweets.append(contentsOf: responseObject as! [NSDictionary])
+            
+            if success == true {
+                self.arrayTweets.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayTweets.removeAll()
+            }
             
             //Get Facebook Posts
             self.getFacebookPosts()
@@ -1154,7 +1179,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getLatestFacebookPosts { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayFacebookPosts.append(contentsOf: responseObject as! [NSDictionary])
+            
+            if success == true {
+                self.arrayFacebookPosts.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayFacebookPosts.removeAll()
+            }
             
             //Arrange Twitter and Facebook Response
             self.arrangeTwitterAndFacebookData()
@@ -1192,7 +1222,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getClubNews { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayClubs.append(contentsOf: responseObject as! [NSDictionary])
+            
+            if success == true {
+                self.arrayClubs.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayClubs.removeAll()
+            }
             
             //Get Players News
             self.getPlayersNews()
@@ -1206,8 +1241,12 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getPlayersNews { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayPlayers.append(contentsOf: responseObject as! [NSDictionary])
             
+            if success == true {
+                self.arrayPlayers.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayPlayers.removeAll()
+            }
             
             //Relaod Content
             if self.arrayTwitterFacebook.count > 0 {
@@ -1229,8 +1268,13 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         HomeScreenHandler.getAds { (responseObject, success) in
             
             print("Response : \(responseObject)")
-            self.arrayAds.append(contentsOf: responseObject as! [NSDictionary])
             
+            if success == true {
+                self.arrayAds.append(contentsOf: responseObject as! [NSDictionary])
+            }else {
+                self.arrayAds.removeAll()
+            }
+                
             //Relaod Content
             if self.arrayAds.count > 0 {
                 self.tableViewHome.reloadData()

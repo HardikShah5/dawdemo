@@ -31,11 +31,54 @@ class LandingPage: UIViewController {
         //To get the Title from server
         getTitleTextAsPerLang()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Get Records from Table
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Language")
+        
+        // Initialize Asynchronous Fetch Request
+        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
+            
+            DispatchQueue.main.async {
+                self.processAsynchronousFetchResult(asynchronousFetchResult: asynchronousFetchResult)
+            }
+        }
+        
+        do {
+            // Execute Asynchronous Fetch Request
+            let asynchronousFetchResult = try AppUtils.APPDELEGATE().managedObjectContext.execute(asynchronousFetchRequest)
+            
+            print(asynchronousFetchResult)
+            
+        }catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func processAsynchronousFetchResult(asynchronousFetchResult: NSAsynchronousFetchResult<NSFetchRequestResult>) {
+        if let result = asynchronousFetchResult.finalResult {
+            // Update Items
+            let items = result as! [NSManagedObject]
+            
+            print("Items : \(items)")
+            
+            for item in items {
+                print("Key : \(item.value(forKey: "key")!)")
+                print("Value : \(item.value(forKey: "value")!)")
+                print("\n")
+            }
+        }
+    }
+    
 
     //MARK: - Login
     @IBAction func btnLoginClicked(_ sender: Any) {
@@ -88,8 +131,6 @@ class LandingPage: UIViewController {
                         
                         //DBM_INSERT
                         // Create Managed Object
-                        
-                        
                         let entityDescription = NSEntityDescription.entity(forEntityName: "Language", in: appDelegate.managedObjectContext)
                         let newRecord = NSManagedObject(entity: entityDescription!, insertInto: appDelegate.managedObjectContext)
                         
@@ -108,10 +149,8 @@ class LandingPage: UIViewController {
                         
                     }
                 }
-                
-                print("Response : \(arrData)")
-                
             }
+            
             //Stop Loading
             AppUtils.stopLoading()
         }

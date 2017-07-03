@@ -14,11 +14,19 @@ class LandingPage: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
     
+    var screenLabelTitles = [NSManagedObject]()
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.btnLogin.isHidden = true
+        self.btnSignUp.isHidden = true
+        
+        //To get the Title from server
+        getTitleTextAsPerLang()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +36,7 @@ class LandingPage: UIViewController {
         //Hide Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        //To get the Title from server
-        getTitleTextAsPerLang()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,21 +47,28 @@ class LandingPage: UIViewController {
         
         //Key : ScreenName
         //Value : 01_Splash
-        fetchRequest.predicate = NSPredicate(format: "screenName == %@", "01_Splash")
+        fetchRequest.predicate = NSPredicate(format: "screenName == %@", " ")
         
         // Initialize Asynchronous Fetch Request
-        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
-            
-            DispatchQueue.main.async {
-                self.processAsynchronousFetchResult(asynchronousFetchResult: asynchronousFetchResult)
-            }
-        }
+//        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
+//            
+//            DispatchQueue.main.async {
+//                self.processAsynchronousFetchResult(asynchronousFetchResult: asynchronousFetchResult)
+//            }
+//        }
         
         do {
             // Execute Asynchronous Fetch Request
-            let asynchronousFetchResult = try AppUtils.APPDELEGATE().managedObjectContext.execute(asynchronousFetchRequest)
+//            let asynchronousFetchResult = try AppUtils.APPDELEGATE().managedObjectContext.execute(asynchronousFetchRequest)
+            let results = try AppUtils.APPDELEGATE().managedObjectContext.fetch(fetchRequest)
             
-            print(asynchronousFetchResult)
+             let items = results as! [NSManagedObject]
+            for item in items {
+                print("Key : \(item.value(forKey: "key")!)")
+                print("Value : \(item.value(forKey: "value")!)")
+                print("\n")
+            }
+//            print(asynchronousFetchResult)
             
         }catch {
             let fetchError = error as NSError
@@ -153,10 +167,21 @@ class LandingPage: UIViewController {
                         
                     }
                 }
+                
+                
+                self.screenLabelTitles = DataBaseHandler.getLabelTitleForPage(ScreenName: "01_Splash")
+                
+                self.btnLogin.setTitle(DataBaseHandler.getTheLabelTitle(ScreenLabelData: self.screenLabelTitles, key: "login_button"), for: UIControlState.normal)
+                self.btnSignUp.setTitle(DataBaseHandler.getTheLabelTitle(ScreenLabelData: self.screenLabelTitles, key: "registration_button"), for: UIControlState.normal)
+                
+                self.screenLabelTitles.removeAll()
             }
+            
             
             //Stop Loading
             AppUtils.stopLoading()
+            self.btnLogin.isHidden = false
+            self.btnSignUp.isHidden = false;
         }
         
     }

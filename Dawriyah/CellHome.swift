@@ -44,6 +44,8 @@ class CellHome: UITableViewCell {
     @IBOutlet weak var btnExcellent: UIButton!
     @IBOutlet weak var btnGood: UIButton!
     @IBOutlet weak var btnAcceptable: UIButton!
+    @IBOutlet weak var btnVote: UIButton!
+    
     
     
     //Advertisement

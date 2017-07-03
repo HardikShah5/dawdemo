@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 let HIGHLIGHTS = 101
 let TOP_RATED_NEWS = 102
@@ -57,6 +58,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     
     var arrayMostPopularNews    = [NSDictionary]()
     var arrayElectronicPress    = [NSDictionary]()
+    var homeLabelTitles = [NSManagedObject]()
     
     
     var arrayTopOptions = [String]()
@@ -88,11 +90,20 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         
         print("Lang : \(AppUtils.currentLanguage())")
         
-        //Top options
-        arrayTopOptions = ["HIGHLIGHTS",
-                            "TOP_RATED_NEWS",
-                            "MOST_POPULAR_NEWS"] //"ELECTRONIC_PRESS"
+        //GetPageLableFromDB
+        //        SetLabelValues()
+        homeLabelTitles = DataBaseHandler.getLabelTitleForPage(ScreenName: "02_Home")
         
+        
+        //Top options
+//        arrayTopOptions = ["HIGHLIGHTS",
+//                            "TOP_RATED_NEWS",
+//                            "MOST_POPULAR_NEWS"] //"ELECTRONIC_PRESS"
+        
+        arrayTopOptions = ["sction_1_label_1",
+                           "sction_1_label_2",
+                           "sction_1_label_3"] //"ELECTRONIC_PRESS"
+
         var x: CGFloat = 0.0
         var index: Int = 101
         for str in arrayTopOptions {
@@ -110,7 +121,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
 //            }
             
             let button = UIButton(frame: CGRect(x: x, y: 0, width: btnWidth, height: scrollViewTopOptinos.frame.size.height))
-            button.setTitle(AppUtils.localized(str, value: ""), for: .normal)
+            button.setTitle(DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: str), for: .normal)
             button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
             
             button.translatesAutoresizingMaskIntoConstraints = true
@@ -141,6 +152,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         //Load News Header
         //self.loadNewsHeader()
         
+        
         //Load Email Subscription Footer 
         self.loadFooter()
         
@@ -162,6 +174,36 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: - SET LABEL VALUES
+    
+//    func SetLabelValues() -> Void {
+//        // Initialize Fetch Request
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Language")
+//        
+//        //Key : ScreenName
+//        //Value : 01_Splash
+//        fetchRequest.predicate = NSPredicate(format: "screenName == %@", "02_Home")
+//        
+//        do {
+//
+//            let results = try AppUtils.APPDELEGATE().managedObjectContext.fetch(fetchRequest)
+//            
+//            homeLabelTitles = results as! [NSManagedObject]
+////            for item in homeLabelTitles {
+////                print("Key : \(item.value(forKey: "key")!)")
+////                print("Value : \(item.value(forKey: "value")!)")
+////                print("\n")
+////                
+////                if(item.value(forKey: "key") as! String == "sction_4_label_1"){
+////                    print("Tweeter Section found")
+////                }
+////            }
+//        }catch {
+//            let fetchError = error as NSError
+//            print("\(fetchError), \(fetchError.userInfo)")
+//        }
+//    }
     
     
     //MARK: - Load News Header
@@ -266,7 +308,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         let footer = tableViewHome.dequeueReusableCell(withIdentifier: "CellFooter") as! CellHome
         
         //Title
-        footer.lblTitleNews.text = AppUtils.localized("MAIL_LIST_SUBSCRIPTION", value: "")
+        footer.lblTitleNews.text = DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_8_label")//getTheLabelTitle(key: "sction_8_label") //AppUtils.localized("MAIL_LIST_SUBSCRIPTION", value: "")
         
         tableViewHome.tableFooterView = footer
     }
@@ -647,7 +689,18 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         return 0
     }
-    
+//    func getTheLabelTitle(key: String) -> String? {
+//                    for item in homeLabelTitles {
+////                        print("Key : \(item.value(forKey: "key")!)")
+////                        print("Value : \(item.value(forKey: "value")!)")
+////                        print("\n")
+//                        
+//                        if(item.value(forKey: "key") as! String == key){
+//                           return item.value(forKey: "value") as? String
+//                        }
+//                    }
+//        return ""
+//    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var headerSection = tableView.dequeueReusableCell(withIdentifier: "CellHeaderSection") as! CellHome
         
@@ -672,8 +725,10 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellHeaderFacebookTwitter") as! CellHome
             
             //Set Title
-            headerSection.lblTweets.text = AppUtils.localized("LATEST_TWEET", value: "")
-            headerSection.lblFacebookPost.text = AppUtils.localized("LATEST_FACEBOOK_POST", value: "")
+//            headerSection.lblTweets.text = AppUtils.localized("LATEST_TWEET", value: "")
+//            headerSection.lblFacebookPost.text = AppUtils.localized("LATEST_FACEBOOK_POST", value: "")
+            headerSection.lblTweets.text = DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_4_label_1") //getTheLabelTitle(key: "sction_4_label_1")
+            headerSection.lblFacebookPost.text = DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_4_label_2") //getTheLabelTitle(key: "sction_4_label_2")
         }else if section == 5 {
             //Clubs & Players
             headerSection = tableView.dequeueReusableCell(withIdentifier: "CellClubPlayer") as! CellHome
@@ -691,19 +746,24 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }
             
             //Add Target
-            headerSection.btnClubs.setTitle(AppUtils.localized("CLUBS", value: ""), for: .normal)
-            headerSection.btnPlayers.setTitle(AppUtils.localized("PLAYERS", value: ""), for: .normal)
+//            headerSection.btnClubs.setTitle(AppUtils.localized("CLUBS", value: ""), for: .normal)
+//            headerSection.btnPlayers.setTitle(AppUtils.localized("PLAYERS", value: ""), for: .normal)
+            headerSection.btnClubs.setTitle(DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_5_label_1"), for: .normal)
+            headerSection.btnPlayers.setTitle(DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_5_label_2"), for: .normal)
             
             headerSection.btnClubs.addTarget(self, action: #selector(btnClubsClicked), for: .touchUpInside)
             headerSection.btnPlayers.addTarget(self, action: #selector(btnPlayersClicked), for: .touchUpInside)
         }else if section == 6 {
             //Polls
             headerSection.imageViewIcon.image = UIImage(named: "icn_vote")
-            headerSection.lblTitleHeader.text = AppUtils.localized("POLL", value: "")
+//            headerSection.lblTitleHeader.text = AppUtils.localized("POLL1", value: "")
+            headerSection.lblTitleHeader.text = DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_6_label")//getTheLabelTitle(key: "sction_6_label")
+            
         }else if section == 7 {
             //Advertisement
             headerSection.imageViewIcon.image = UIImage(named: "icn_advertisement")
-            headerSection.lblTitleHeader.text = AppUtils.localized("ADVERTISEMENT", value: "")
+//            headerSection.lblTitleHeader.text = AppUtils.localized("ADVERTISEMENT1", value: "")
+            headerSection.lblTitleHeader.text = DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_7_label")//getTheLabelTitle(key: "sction_7_label")
         }
         
         return headerSection
@@ -790,7 +850,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
         }else if indexPath.section == 6 {
             //Polls
             cell = tableView.dequeueReusableCell(withIdentifier: "CellVote") as! CellHome
-            
+            cell.btnVote.setTitle(DataBaseHandler.getTheLabelTitle(ScreenLabelData: homeLabelTitles, key: "sction_6_button"), for: .normal) //getTheLabelTitle(key: "sction_6_button")
         }else if indexPath.section == 7 {
             //Advertisement
             cell = tableView.dequeueReusableCell(withIdentifier: "CellAd") as! CellHome

@@ -44,6 +44,7 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
     var arraySliderArticles     = [NSDictionary]()
     var arrayMostRatedArticles  = [NSDictionary]()
 //    var arrayMostRatedNews      = [NSDictionary]()
+    var arrayWriters            = [NSDictionary]()
     var arrayHomeCategory1      = [NSDictionary]()
     var arrayHomeCategory2      = [NSDictionary]()
     
@@ -779,11 +780,25 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             
             var xOrigin: CGFloat = 10.0
             let width = (UIScreen.main.bounds.size.width - 30) / 3
-            for index in 1...10 {
+            
+            if self.arrayWriters.count <= 0 {
+                return cell
+            }
+            
+            for index in 0...self.arrayWriters.count-1 {
                 //let btnAd = UIButton(frame:  CGRect(x: xOrigin, y: 0, width: width, height: cell.scrollViewAds.frame.size.height))
                 let imageViewAd = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: width, height: 120))
                 
-                imageViewAd.image = UIImage(named: "social_stripe_avatar@3x.png")
+                //imageViewAd.image = UIImage(named: "social_stripe_avatar@3x.png")
+                
+                //Set Image
+                let dict = self.arrayWriters[index] as! [String : AnyObject]
+                let strURL = dict["Img"] as! String
+                if let url = URL(string: strURL) {
+                    imageViewAd.setImageWith(url, placeholderImage: UIImage(named: "DefaultImg"))
+                }else {
+                    imageViewAd.image = UIImage(named: "DefaultImg")
+                }
                 
                 //btnAd.imageView?.contentMode = .scaleAspectFill
                 //btnAd.imageView?.clipsToBounds = true
@@ -807,7 +822,8 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
                 let lblName = UILabel(frame: CGRect(x: xOrigin, y: 120, width: width, height: 30))
                 lblName.textAlignment = .center
                 lblName.font = UIFont(name: "Helvetica", size: 16.0)
-                lblName.text = "Writer \(index)"
+                //lblName.text = "Writer \(index)"
+                lblName.text = dict["Name"] as? String
                 lblName.textColor = UIColor.white
                 lblName.backgroundColor = UIColor.clear
                 cell.scrollViewWriter.addSubview(lblName)
@@ -1139,7 +1155,36 @@ class Home: SuperViewController, UICollectionViewDataSource, UICollectionViewDel
             }
             
             //Get Most Rated Articles
-            self.getHomeCate1()
+            //self.getHomeCate1()
+            
+            //Get Writers
+            self.getWriters()
+        }
+    }
+    
+    
+    //MARK: - Home Cate1
+    func getWriters() -> Void {
+        
+        HomeScreenHandler.getWriters { (responseObject, success) in
+            
+            print("Response : \(responseObject)")
+            
+            if success == true {
+                let data = responseObject?.value(forKey: "data") as! NSDictionary
+                let writers = data.value(forKey: "writers") as! [NSDictionary]
+                self.arrayWriters = writers
+            }else {
+                self.arrayWriters.removeAll()
+            }
+            
+            //Relaod Content
+            if self.arrayWriters.count > 0 {
+                self.tableViewHome.reloadData()
+            }
+            
+            //Get Most Rated Articles
+            self.self.getHomeCate1()
         }
     }
     

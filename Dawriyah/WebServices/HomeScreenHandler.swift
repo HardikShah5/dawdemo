@@ -42,6 +42,22 @@ class HomeScreenHandler: WebServiceHandler {
     }
     
     
+    //MARK: - Get Writers
+    static func getWriters(completion: ((AnyObject?, Bool) -> Void)?) {
+        
+        let manager:AFHTTPRequestOperationManager! = getRequestManager()
+        
+        //URL
+        let strWebServiceURL: String! = String(format: "%@%@", Constants.WEBSERVICE_URL,Constants.HOME_WRITERS)
+        
+        manager.get(strWebServiceURL, parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: Any ) in
+            completion!(responseObject as AnyObject?, true)
+        }, failure: { (responseObject: Any, error: Error) in
+            completion!(error as AnyObject?, false)
+        })
+    }
+    
+    
     //MARK: - Get Home Cate1
     static func getHomeCate1(completion: ((AnyObject?, Bool) -> Void)?) {
         

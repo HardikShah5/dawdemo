@@ -17,6 +17,8 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     var PageSize = Constants.ItemsPerPage
     var IsMoreRecordsAvailbale = true;
     
+    
+    
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +111,10 @@ class NewsListing: SuperViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newsDVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.NEWS_DETAILS) as! NewsDetail
+        
+        //Pass Data
+        newsDVC.indexSelected = indexPath.row
+        newsDVC.arrayNews = self.arrayNews
         
         self.navigationController?.pushViewController(newsDVC, animated: true)
     }

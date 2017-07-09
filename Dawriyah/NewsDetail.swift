@@ -11,9 +11,11 @@ import UIKit
 class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var arrayNews = [NSDictionary]()
+    var indexSelected: Int = 0
     
     
-    
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -73,6 +75,12 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
         //lblNewsTitle.text = "بالفيديو: هل ستنتقل دنيا باطما إلى التمثيل؟"
         //lblNewsDesc.text = "اختارت الفنانة دنيا باطما أن تؤدي الأغنية المغربية الشهيرة ياك أجرحي لقيدومة الطرب المغربي نعيمة سميح ، وذلك في الحفل الختامي لسهرات مهرجان أصوات نسائية في دورته التاسعة بمدينة تطوان (شمال المغرب) ، حيث خصص المهرجان تكريماً خاصاً لنجمة الطرب المغربي الأصيل نعيمة سميح ، التي اختارت التواري عن الأضواء والاستمتاع بوقتها مع عائلتها ."
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Navigate to selected index
+        let indexP = IndexPath(row: self.indexSelected, section: 0)
+        self.collectionView.scrollToItem(at: indexP, at: .right, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -92,7 +100,7 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.arrayNews.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -101,7 +109,11 @@ class NewsDetail: SuperViewController, UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CellNewsDetail
         cell.backgroundColor = UIColor.clear
         
+        //Get Dicitonary
+        let dictionary = self.arrayNews[indexPath.row]
+        
         //Reload TableView
+        cell.dataDictionary = dictionary
         cell.tableViewNewsDetails.backgroundColor = UIColor.clear
         cell.tableViewNewsDetails.reloadData()
         

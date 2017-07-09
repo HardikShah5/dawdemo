@@ -122,7 +122,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/SignUp.swift"
-                  timestampString = "521057615.987544"
+                  timestampString = "521315545.336628"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "494"
@@ -137,7 +137,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/SignUp.swift"
-                  timestampString = "521057615.989045"
+                  timestampString = "521315545.338143"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "496"
@@ -170,7 +170,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/AnnualReportList.swift"
-                  timestampString = "521057615.992377"
+                  timestampString = "521315545.3427"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -185,7 +185,7 @@
                   moduleName = "Dawriyah"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MehulS/Desktop/Desktop/WorkSpace/HardikShah/Dawriyah/Project/dawdemo/Dawriyah/AnnualReportList.swift"
-                  timestampString = "521057615.993795"
+                  timestampString = "521315545.344157"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -217,29 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dawriyah/Home.swift"
-            timestampString = "521057244.706837"
+            filePath = "Dawriyah/CellNewsDetail.swift"
+            timestampString = "521315811.910523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "795"
-            endingLineNumber = "795"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dawriyah/Home.swift"
-            timestampString = "521057609.986366"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1171"
-            endingLineNumber = "1171"
-            landmarkName = "getWriters()"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "tableView(_:heightForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

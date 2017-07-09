@@ -12,7 +12,7 @@ class CellNewsDetail: UICollectionViewCell, UITableViewDataSource, UITableViewDe
     
     //CellNewsDetails
     @IBOutlet weak var tableViewNewsDetails: UITableView!
-    
+    var dataDictionary = NSDictionary()
     
     
     //MARK: - UITableView Methods
@@ -30,7 +30,16 @@ class CellNewsDetail: UICollectionViewCell, UITableViewDataSource, UITableViewDe
             return 200
         }else if indexPath.row == 1 {
             //News Info
-            return 369
+            let constraintRect = CGSize(width: tableView.frame.size.width - 30, height: .greatestFiniteMagnitude)
+            
+            let strTitle = self.dataDictionary.value(forKey: "NTitle") as? String
+            let titleBox = strTitle?.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17.0)!], context: nil)
+            
+            let strDetails = self.dataDictionary.value(forKey: "NBody") as? NSString
+            let detailBox = strDetails?.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 15.0)!], context: nil)
+            
+            return (titleBox?.height)! + (detailBox?.height)! + 30
+            //return 369
         }else if indexPath.row == 2 {
             //Comment
             return 143
@@ -50,10 +59,18 @@ class CellNewsDetail: UICollectionViewCell, UITableViewDataSource, UITableViewDe
         
         if indexPath.row == 0 {
             //For Image
+            let strImageURL = self.dataDictionary.value(forKey: "NImg") as? String
+            let urlImage = URL(string: strImageURL!)
+            cell.imageViewNews.setImageWith(urlImage!, placeholderImage: UIImage(named: "DefaultImg"))
+            
         }else if indexPath.row == 1 {
             //News Info
             cell = tableView.dequeueReusableCell(withIdentifier: "CellInfo") as! CellNewsDetailTable
             cell.backgroundColor = UIColor.white
+            
+            cell.lblTitle.text = self.dataDictionary.value(forKey: "NTitle") as? String
+            cell.lblDetails.text = self.dataDictionary.value(forKey: "NBody") as? String
+            
         }else if indexPath.row == 2 {
             //Comment
             cell = tableView.dequeueReusableCell(withIdentifier: "CellComment") as! CellNewsDetailTable
